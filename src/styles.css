@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background: #fff !important;
+}
+
+/* nav.navbar {
+    -webkit-box-shadow: 0px 1px 91px 0px rgba(0,0,0,0.75) !important;
+    -moz-box-shadow: 0px 1px 91px 0px rgba(0,0,0,0.75) !important;
+    box-shadow: 0px 1px 91px 0px rgba(0,0,0,0.75) !important;
+} */
+
+
+nav.bgd-primary, .bgd-primary {
+    background: #005387 !important;
+}
+
+.color-primary {
+    color: #005387 !important;
+}
