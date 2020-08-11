@@ -1,0 +1,13 @@
+fa-icon.social {
+    cursor: pointer;
+}
+
+fa-icon.social:hover {
+    color: #6c9ebe;
+}
+
+footer.footer {
+    background: #005387;
+    color: #fff;
+    padding: 30px !important;
+}
