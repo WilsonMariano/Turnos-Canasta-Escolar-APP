@@ -1,0 +1,88 @@
+<form [formGroup]="forma" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-3">
+                <h3>Completá con los datos de tu hijo/a</h3>
+                <hr />
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="dni">DNI</label>
+                    <input type="number" class="form-control" id="dni" formControlName="dni" placeholder="DNI">
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['dni'].errors?.required && forma.get('dni').touched">*El campo es
+                        requerido</small>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder="Apellido">
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['apellido'].errors?.required && forma.get('apellido').touched">*El campo es
+                        requerido</small>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['nombre'].errors?.required && forma.get('nombre').touched">*El campo es
+                        requerido</small>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="form-group">
+                    <label for="sexo">Sexo</label>
+                    <select class="form-control" formControlName="sexo" id="sexo">
+                        <option value="">Seleccione una opción</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                    </select>
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['sexo'].errors?.required && forma.get('sexo').touched">*El campo es
+                        requerido</small>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-12">
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['fechaNacimiento'].errors?.required && forma.get('fechaNacimiento').touched">*El campo es
+                        requerido</small>
+                        
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="edad">Edad</label>
+                    <input type="number" class="form-control" id="edad" formControlName="edad" placeholder="Edad">
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['edad'].errors?.required && forma.get('edad').touched">*El campo
+                        es requerido</small>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="nivelEducacion">Nivel educación</label>
+                    <select class="form-control" formControlName="nivelEducacion" id="nivelEducacion">
+                        <option value="">Seleccione una opción</option>
+                        <option value="preescolar">Preescolar</option>
+                        <option value="primario1">Primario (1° a 3°)</option>
+                        <option value="primario2">Primario (4° a 6°)</option>
+                        <option value="secundario">Secundario</option>
+                    </select>
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['nivelEducacion'].errors?.required && forma.get('nivelEducacion').touched">*El campo
+                        es requerido</small>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <button class="btn btn-primary float-right" type="submit" [disabled]="forma.invalid">Continuar</button>
+            </div>
+        </div>
+    </div>
+</form>

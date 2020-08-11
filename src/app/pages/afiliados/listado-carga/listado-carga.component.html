@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Datos del Titular </h3>
+        <hr/>
+        <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>{{titular.nombre +" "+ titular.apellido}}</td>
+                <td>{{'cuil ' + titular.cuil}}</td>
+                <td>{{'email ' + titular.email}}</td>
+                <td>{{'celular ' + titular.celular}}</td>
+                <td><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')"></fa-icon></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+        <div class="col-md-12 mt-4">
+            <h3>Familiares cargados</h3>
+            <hr/>
+            <span class="form-invalid" *ngIf="familiares.length == 0">Sin familiares cargados...</span>
+            <table class="table">
+                <tbody>
+                  <tr *ngFor="let familiar of familiares">
+                    <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
+                    <td>{{familiar.dni}}</td>
+                    <td>{{familiar.nivelEducacion}}</td>
+                    <td>
+                        <fa-icon [icon]="faEdit" class="fa-button"></fa-icon>
+                        <fa-icon [icon]="faTrash" class="ml-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div class="col-md-12 mt-4">
+            <button class="btn btn-secondary float-right ml-4" [disabled]="familiares.length == 0">Finalizar trámite</button>
+            <button class="btn btn-primary float-right" (click)="navigateTo('afiliados/registro-familiar')">Agregar familiar</button>
+        </div>
+    </div>
+</div>
