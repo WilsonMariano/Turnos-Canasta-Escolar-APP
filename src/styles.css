@@ -10,6 +10,16 @@ body {
     box-shadow: 0px 1px 91px 0px rgba(0,0,0,0.75) !important;
 } */
 
+footer.footer {
+    background: #005387;
+    color: #fff;
+}
+
+/* footer.footer {
+    display: block;
+    position: absolute;
+    bottom: 0;
+} */
 
 nav.bgd-primary, .bgd-primary {
     background: #005387 !important;
@@ -18,3 +28,7 @@ nav.bgd-primary, .bgd-primary {
 .color-primary {
     color: #005387 !important;
 }
+
+
+
+

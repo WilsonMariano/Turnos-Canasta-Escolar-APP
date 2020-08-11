@@ -1,0 +1,7 @@
+.card.card-link {
+    cursor: pointer;
+}
+
+.card.card-link:hover {
+    background-color: rgba(0,83,135,0.05);
+}

@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { PagesModule } from './pages/pages.module';
 
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +12,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
