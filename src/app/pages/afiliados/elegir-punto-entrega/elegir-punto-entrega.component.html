@@ -1,0 +1,50 @@
+<app-jumbotron titulo="Elección de punto de entrega"
+    subtitulo="Deberás elegir el lugar por el cual retirarás los kits escolares y los juguetes."></app-jumbotron>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5 mb-3">
+            <h3>Puntos de entrega</h3>
+            <hr />
+        </div>
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SEC'}" (click)="puntoEntrega = 'SEC'">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Sindicato Adrogué</h6>
+                    <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
+                    <span class="text-muted d-block">9:00 a 16:00 hs</span>
+                </div>
+            </button>
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'CAM'}" (click)="puntoEntrega = 'CAM'">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Campo Deportivo Burzaco</h6>
+                    <span class="text-muted d-block">Pino 999, Burzaco</span>
+                    <span class="text-muted d-block">9:00 a 16:00 hs</span>
+                </div>
+            </button>
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'GUE'}" (click)="puntoEntrega = 'GUE'">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Filial Guernica</h6>
+                    <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
+                    <span class="text-muted d-block">9:00 a 16:00 hs</span>
+                </div>
+            </button>
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SAN'}" (click)="puntoEntrega = 'SAN'">
+                <div class="card-body text-center">
+                    <h6 class="card-subtitle mb-2 text-muted">Filial San Vicente</h6>
+                    <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
+                    <span class="text-muted d-block">9:00 a 16:00 hs</span>
+                </div>
+            </button>
+    </div>
+    <div class="row mt-3">
+        <!-- <div class="col-md-12">
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+        </div> -->
+        <div class="col-md-12 mt-5">
+            <button class="btn btn-secondary btn-lg float-right" (click)="finalizarTramite()" [disabled]="puntoEntrega == null">Finalizar trámite</button>
+        </div>
+    </div>
+</div>

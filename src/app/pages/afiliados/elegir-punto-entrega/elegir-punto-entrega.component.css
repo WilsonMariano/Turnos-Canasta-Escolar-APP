@@ -1,0 +1,20 @@
+button.btn {
+    cursor: pointer;
+    padding: 10px;
+    text-align: center !important;
+    border: 1px solid #eaeaea;  
+}
+
+
+button.btn:hover, button.btn.active {
+    background: #6c9ebe !important;
+}
+
+button.btn:hover h6, button.btn:hover span, button.btn.active h6, button.btn.active span {
+    color: #fff !important;
+}
+
+agm-map {
+    height: 300px;
+    width: auto;
+}

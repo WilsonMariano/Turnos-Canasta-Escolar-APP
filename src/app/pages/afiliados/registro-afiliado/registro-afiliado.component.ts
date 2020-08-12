@@ -12,6 +12,10 @@ import { FxGlobalsService } from '../../../services/fx-globals.service';
 export class RegistroAfiliadoComponent implements OnInit {
 
   public forma: FormGroup;
+  public urls = [{
+    name: "Datos del afiliado",
+    url: 'afiliados/registro-afiliado'
+  }]
 
   constructor(
     private router: Router, 

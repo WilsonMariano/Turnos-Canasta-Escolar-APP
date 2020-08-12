@@ -1,6 +1,9 @@
+<app-jumbotron titulo="Confirmación de datos" subtitulo="Revisá que los datos cargados sean correctos, caso contrario podrás modificarlos."></app-jumbotron>
+<app-breadcrumb></app-breadcrumb>
+
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 mt-5">
         <h3>Datos del Titular </h3>
         <hr/>
         <table class="table table-borderless">
@@ -34,7 +37,7 @@
               </table>
         </div>
         <div class="col-md-12 mt-4">
-            <button class="btn btn-secondary float-right ml-4" [disabled]="familiares.length == 0">Finalizar trámite</button>
+            <button class="btn btn-secondary float-right ml-4" [disabled]="familiares.length == 0" (click)="navigateTo('afiliados/elegir-punto-entrega')">Continuar</button>
             <button class="btn btn-primary float-right" (click)="navigateTo('afiliados/registro-familiar')">Agregar familiar</button>
         </div>
     </div>
