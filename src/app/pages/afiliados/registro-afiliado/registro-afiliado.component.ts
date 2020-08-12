@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
+declare var $;
 
 @Component({
   selector: 'app-registro-afiliado',
@@ -24,7 +25,7 @@ export class RegistroAfiliadoComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
-      'numAfiliado': new FormControl(''),
+      'numAfiliado': new FormControl('', Validators.required),
       'cuil': new FormControl('', Validators.required),
       'apellido': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
@@ -37,7 +38,8 @@ export class RegistroAfiliadoComponent implements OnInit {
       'email': new FormControl('', [Validators.required, Validators.email])
     });
 
-    this.forma.setValue(this._state.consultarTitular() || {});
+    this.forma.setValue(this._state.consultarTitular() || null);
+    $('#numAfiliado').tooltip();
   }
 
   public submit() {

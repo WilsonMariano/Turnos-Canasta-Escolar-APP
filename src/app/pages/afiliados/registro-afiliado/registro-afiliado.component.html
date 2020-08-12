@@ -10,7 +10,10 @@
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
                     <label for="numAfiliado">Número de afiliado</label>
-                    <input type="number" class="form-control" id="numAfiliado" formControlName="numAfiliado" placeholder="Número de afiliado">
+                    <input type="number" class="form-control" id="numAfiliado" formControlName="numAfiliado" placeholder="Número de afiliado" data-toggle="tooltip" data-placement="bottom" title="Si no lo recordás comunicate con el sindicato">
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['numAfiliado'].errors?.required && forma.get('numAfiliado').touched">*El campo es
+                    requerido</small>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
