@@ -29,14 +29,14 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       'nombre': new FormControl('', Validators.required),
       'sexo': new FormControl('', Validators.required),
       'fechaNacimiento': new FormControl('', Validators.required),
-      'edad': new FormControl('', Validators.required),
+      'edad': new FormControl('', [Validators.required, Validators.min(0), Validators.max(18)]),
       'nivelEducacion': new FormControl('', Validators.required)
     });
 
     // Verifico si se recibe un familiar a editar
     this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
-    console.log(this.edicion);
-    this.forma.setValue(this.edicion);
+
+    this.edicion && this.forma.setValue(this.edicion);
   }
 
   ngOnDestroy() {
@@ -49,7 +49,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       .then(() => {
              this._state.guardarFamiliar(this.forma.value);
 
-            this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success")
+            this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success", ['No', 'Si'])
               .then(() => {
                 this.forma.reset();
               })

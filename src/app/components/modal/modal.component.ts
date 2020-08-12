@@ -1,6 +1,8 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { StateService } from '../../services/state.service';
 import { Router } from '@angular/router';
+import { FxGlobalsService } from 'src/app/services/fx-globals.service';
+declare var $;
 
 @Component({
   selector: 'app-modal',
@@ -15,7 +17,8 @@ export class ModalComponent implements OnChanges {
 
   constructor(
     private _state: StateService,
-    private _router: Router
+    private _router: Router,
+    private _fx: FxGlobalsService
   ) { }
 
   ngOnChanges() {
@@ -49,7 +52,11 @@ export class ModalComponent implements OnChanges {
 
   public confirmarSolicitud() {
     console.log(this._state.consultarState());
-    
+    $("#modal").modal('hide');
+    this._fx.alert("Solicitud enviada", "La solicitud se efectuó correctamente, deberas esperar a que la misma sea validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success");
+    setTimeout(() => {
+      this.navigateTo('home');
+    }, 3000);
   }
 
 }

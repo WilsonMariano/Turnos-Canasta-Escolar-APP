@@ -38,7 +38,7 @@ export class RegistroAfiliadoComponent implements OnInit {
       'email': new FormControl('', [Validators.required, Validators.email])
     });
 
-    this.forma.setValue(this._state.consultarTitular() || null);
+    this._state.consultarTitular() && this.forma.setValue(this._state.consultarTitular());
     $('#numAfiliado').tooltip();
   }
 

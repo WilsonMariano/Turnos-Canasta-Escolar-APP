@@ -1,4 +1,4 @@
-<app-jumbotron titulo="Datos del familiar" subtitulo="Deberás completar el formulario con los datos de tus hijo/a"></app-jumbotron>
+<app-jumbotron titulo="Datos del familiar" subtitulo="Deberás completar el formulario con los datos de tu hijo/a. Su edad debe ser entre 0 y 18 años"></app-jumbotron>
 <app-breadcrumb></app-breadcrumb>
 
 <form [formGroup]="forma" (ngSubmit)="submit()">
@@ -65,6 +65,9 @@
                     <small class="form-invalid"
                         *ngIf="forma.controls['edad'].errors?.required && forma.get('edad').touched">*El campo
                         es requerido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['edad'].errors?.min || forma.controls['edad'].errors?.max">*La edad debe ser de 0 a 18 años</small>
+                        
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">

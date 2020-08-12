@@ -8,13 +8,13 @@ export class FxGlobalsService {
 
   constructor() { }
 
-  public alertConfirm(title: string, text:  string, icon: string): Promise<any> {
+  public alertConfirm(title: string, text:  string, icon: string, buttons = ["Cancelar", "Aceptar"]): Promise<any> {
     return new Promise((resolve, reject) => {
       swal({
         title,
         text,
         icon,
-        buttons: ["Cancelar", "Aceptar"],
+        buttons,
         dangerMode: true,
       })
       .then((result) => {
