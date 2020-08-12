@@ -38,11 +38,9 @@
             </button>
     </div>
     <div class="row mt-3">
-        <!-- <div class="col-md-12">
-            <agm-map [latitude]="lat" [longitude]="lng">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-              </agm-map>
-        </div> -->
+        <div class="col-md-12">
+            <div id='map'></div>
+        </div>
         <div class="col-md-12 mt-5">
             <button class="btn btn-secondary btn-lg float-right" (click)="finalizarTramite()" [disabled]="puntoEntrega == null" data-toggle="modal" data-target="#modal">Finalizar trámite</button>
         </div>

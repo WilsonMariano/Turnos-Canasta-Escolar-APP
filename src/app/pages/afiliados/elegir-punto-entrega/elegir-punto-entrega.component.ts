@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../../services/state.service';
+declare var mapboxgl;
 
 @Component({
   selector: 'app-elegir-punto-entrega',
@@ -19,6 +20,20 @@ export class ElegirPuntoEntregaComponent implements OnInit {
 
   ngOnInit() {
     this.puntoEntrega = this._state.consultarPuntoEntrega() || null;
+
+    
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGVwdXNhIiwiYSI6ImNrZHJramNmMTBiMzEydXE5N2d5dXV2N2cifQ.r8I-XyG1Mjo2odf1xUEshw';
+    let map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        center: [-58.388479, -34.801165], // starting position [lng, lat]
+        zoom: 14 // starting zoom
+    });
+
+    var marker = new mapboxgl.Marker()
+    .setLngLat([-58.388479, -34.801165])
+    .addTo(map); // add the marker to the map
+
   }
 
   public guardarPuntoEntrega(puntoEntrega: string) {

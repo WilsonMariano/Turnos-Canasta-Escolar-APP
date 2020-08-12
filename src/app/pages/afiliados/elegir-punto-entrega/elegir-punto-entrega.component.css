@@ -14,7 +14,7 @@ button.btn:hover h6, button.btn:hover span, button.btn.active h6, button.btn.act
     color: #fff !important;
 }
 
-agm-map {
+#map {
     height: 300px;
-    width: auto;
 }
+
