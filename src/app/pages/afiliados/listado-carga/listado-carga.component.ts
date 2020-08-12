@@ -33,6 +33,11 @@ export class ListadoCargaComponent implements OnInit {
   public borrarFamiliar(familiar) {
     this._state.borrarFamiliar(familiar);
   }
+
+  public editarFamiliar(familiar) {
+    localStorage.setItem('familiarEditar', JSON.stringify(familiar));
+    this.navigateTo('afiliados/registro-familiar');
+  }
   
 
 }

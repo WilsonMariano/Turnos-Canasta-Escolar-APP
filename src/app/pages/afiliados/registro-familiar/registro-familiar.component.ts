@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
   templateUrl: './registro-familiar.component.html',
   styleUrls: ['./registro-familiar.component.css']
 })
-export class RegistroFamiliarComponent implements OnInit {
+export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
 
   public forma: FormGroup;
+  public edicion = null;
 
   constructor(
     private _router: Router,
@@ -31,12 +32,23 @@ export class RegistroFamiliarComponent implements OnInit {
       'edad': new FormControl('', Validators.required),
       'nivelEducacion': new FormControl('', Validators.required)
     });
+
+    // Verifico si se recibe un familiar a editar
+    this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
+    console.log(this.edicion);
+    this.forma.setValue(this.edicion);
+  }
+
+  ngOnDestroy() {
+    localStorage.removeItem('familiarEditar');
+    this.forma.reset();
   }
 
   public submit() {
     this._fx.alertConfirm("Confirmación", "¿Los datos son correctos?", "warning")
       .then(() => {
-            this._state.guardarFamiliar(this.forma.value);
+             this._state.guardarFamiliar(this.forma.value);
+
             this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success")
               .then(() => {
                 this.forma.reset();
@@ -46,5 +58,16 @@ export class RegistroFamiliarComponent implements OnInit {
               })
       })
       .catch(() => {});
+  }
+
+  public editar() {
+    this._fx.alertConfirm("Confirmación", "¿Los datos son correctos?", "warning")
+      .then(() => {
+        this._state.editarFamiliar(this.edicion, this.forma.value);
+
+          this._fx.alert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
+          this._router.navigate(['afiliados/listado-carga']);
+    })
+    .catch(() => {});
   }
 }

@@ -14,7 +14,7 @@ export class FxGlobalsService {
         title,
         text,
         icon,
-        buttons: true,
+        buttons: ["Cancelar", "Aceptar"],
         dangerMode: true,
       })
       .then((result) => {
@@ -25,6 +25,14 @@ export class FxGlobalsService {
           reject();
         }
       });
+    });
+  }
+
+  public alert(title: string, text: string, icon: string) {
+    swal({
+      title,
+      text,
+      icon
     });
   }
 }

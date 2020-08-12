@@ -29,7 +29,7 @@
                     <td>{{familiar.dni}}</td>
                     <td>{{familiar.nivelEducacion}}</td>
                     <td>
-                        <fa-icon [icon]="faEdit" class="fa-button"></fa-icon>
+                        <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>
                         <fa-icon [icon]="faTrash" class="ml-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
                     </td>
                   </tr>

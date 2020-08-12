@@ -12,7 +12,7 @@ const pagesRoutes: Routes = [
         path: 'afiliados',
         component: PagesAfiliadosComponent,
         children: [
-            { path: '',                             redirectTo: '/registro-afiliado'    ,   pathMatch: 'full' },
+            { path: '',                             redirectTo: '/registro-afiliado',       pathMatch: 'full'                            },
             { path: 'registro-afiliado',            component: RegistroAfiliadoComponent,   data: { titulo: 'Registro afiliado' }        },
             { path: 'registro-familiar',            component: RegistroFamiliarComponent,   data: { titulo: 'Registro familiar' }        },
             { path: 'listado-carga',                component: ListadoCargaComponent,       data: { titulo: 'Datos cargados'    }        },

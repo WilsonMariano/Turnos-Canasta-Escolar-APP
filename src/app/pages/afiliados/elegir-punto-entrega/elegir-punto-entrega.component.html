@@ -8,28 +8,28 @@
             <h3>Puntos de entrega</h3>
             <hr />
         </div>
-            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SEC'}" (click)="puntoEntrega = 'SEC'">
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SEC'}" (click)="guardarPuntoEntrega('SEC')">
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">Sindicato Adrogué</h6>
                     <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
                     <span class="text-muted d-block">9:00 a 16:00 hs</span>
                 </div>
             </button>
-            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'CAM'}" (click)="puntoEntrega = 'CAM'">
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'CAM'}" (click)="guardarPuntoEntrega('CAM')">
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">Campo Deportivo Burzaco</h6>
                     <span class="text-muted d-block">Pino 999, Burzaco</span>
                     <span class="text-muted d-block">9:00 a 16:00 hs</span>
                 </div>
             </button>
-            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'GUE'}" (click)="puntoEntrega = 'GUE'">
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'GUE'}" (click)="guardarPuntoEntrega('GUE')">
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">Filial Guernica</h6>
                     <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
                     <span class="text-muted d-block">9:00 a 16:00 hs</span>
                 </div>
             </button>
-            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SAN'}" (click)="puntoEntrega = 'SAN'">
+            <button class="btn col-sm-6 col-md-3" [ngClass]="{'active': puntoEntrega == 'SAN'}" (click)="guardarPuntoEntrega('SAN')">
                 <div class="card-body text-center">
                     <h6 class="card-subtitle mb-2 text-muted">Filial San Vicente</h6>
                     <span class="text-muted d-block">Av. Espora 953, Adrogué</span>
@@ -44,7 +44,9 @@
               </agm-map>
         </div> -->
         <div class="col-md-12 mt-5">
-            <button class="btn btn-secondary btn-lg float-right" (click)="finalizarTramite()" [disabled]="puntoEntrega == null">Finalizar trámite</button>
+            <button class="btn btn-secondary btn-lg float-right" (click)="finalizarTramite()" [disabled]="puntoEntrega == null" data-toggle="modal" data-target="#modal">Finalizar trámite</button>
         </div>
     </div>
 </div>
+
+<app-modal [open]="abrirModal"></app-modal>

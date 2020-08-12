@@ -11,6 +11,10 @@ export class StateService {
     this.loadStorage();
    }
 
+  public consultarState() {
+    return this.state;
+  }
+
   public guardarTitular(titular) {
     this.state.titular = titular;
     this.saveStorage();
@@ -38,6 +42,24 @@ export class StateService {
     }
   }
 
+  public editarFamiliar(famAnterior, famNuevo) {
+    this.state.familiares.map((familiar, i) => {
+      if(familiar.dni == famAnterior.dni) {
+        this.state.familiares[i] = famNuevo;
+      } 
+    });
+    this.saveStorage();
+  }
+
+  public guardarPuntoEntrega(puntoEntrega: string) {
+    this.state.puntoEntrega = puntoEntrega;
+    this.saveStorage();
+  }
+
+  public consultarPuntoEntrega() {
+    return this.state.puntoEntrega;
+  }
+
   private loadStorage() {
     this.state = JSON.parse(localStorage.getItem('state')) || this.stateInit();
   }
@@ -49,7 +71,8 @@ export class StateService {
   private stateInit() {
     return {
       titular: null,
-      familiares: []
+      familiares: [],
+      puntoEntrega: null
     }
   }
 }
