@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AgmCoreModule } from '@agm/core'
 
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
@@ -33,9 +32,6 @@ import { ElegirPuntoEntregaComponent } from './afiliados/elegir-punto-entrega/el
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCxTr0uKFACsVcILjQIcx1F-zqzfnP_NZY'
-    }),
     PAGES_ROUTES,
     FontAwesomeModule,
     SharedModule,

@@ -3,31 +3,35 @@
 <form [formGroup]="forma" (ngSubmit)="submit()">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-3">
+            <div class="col-md-12 mt-5 mb-3">
                 <h3>Completá con tus datos</h3>
                 <hr />
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
-                    <label for="numAfiliado">Número de afiliado</label>
+                    <label for="numAfiliado">Número de afiliado*</label>
                     <input type="number" class="form-control" id="numAfiliado" formControlName="numAfiliado" placeholder="Número de afiliado" data-toggle="tooltip" data-placement="bottom" title="Si no lo recordás comunicate con el sindicato">
                     <small class="form-invalid"
                     *ngIf="forma.controls['numAfiliado'].errors?.required && forma.get('numAfiliado').touched">*El campo es
                     requerido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['numAfiliado'].errors?.max || forma.controls['numAfiliado'].errors?.min">*Deben ser 4 números</small>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
                 <div class="form-group">
-                    <label for="cuil">CUIL</label>
+                    <label for="cuil">CUIL*</label>
                     <input type="number" class="form-control" id="cuil" formControlName="cuil" placeholder="Cuil">
                     <small class="form-invalid"
                         *ngIf="forma.controls['cuil'].errors?.required && forma.get('cuil').touched">*El campo es
                         requerido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['cuil'].errors?.cuitInvalid && forma.get('cuil').touched">*El CUIL es inválido</small>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="apellido">Apellido</label>
+                    <label for="apellido">Apellido*</label>
                     <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder="Apellido">
                     <small class="form-invalid"
                         *ngIf="forma.controls['apellido'].errors?.required && forma.get('apellido').touched">*El campo
@@ -36,7 +40,7 @@
             </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Nombre*</label>
                         <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
                         <small class="form-invalid"
                             *ngIf="forma.controls['nombre'].errors?.required && forma.get('nombre').touched">*El campo
@@ -45,7 +49,7 @@
                 </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="domicilio">Domicilio</label>
+                    <label for="domicilio">Domicilio*</label>
                     <input type="text" class="form-control" id="domicilio" formControlName="domicilio" placeholder="Domicilio">
                     <small class="form-invalid"
                         *ngIf="forma.controls['domicilio'].errors?.required && forma.get('domicilio').touched">*El campo
@@ -54,7 +58,7 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="localidad">Localidad</label>
+                    <label for="localidad">Localidad*</label>
                     <input type="text" class="form-control" id="localidad" formControlName="localidad" placeholder="Localidad">
                     <small class="form-invalid"
                         *ngIf="forma.controls['localidad'].errors?.required && forma.get('localidad').touched">*El campo
@@ -69,7 +73,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
-                    <label for="celular">Celular</label>
+                    <label for="celular">Celular*</label>
                     <input type="number" class="form-control" id="celular" formControlName="celular" placeholder="Celular">
                     <small class="form-invalid"
                         *ngIf="forma.controls['celular'].errors?.required && forma.get('celular').touched">*El campo es
@@ -78,7 +82,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Email*</label>
                     <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
                     <small class="form-invalid"
                         *ngIf="forma.controls['email'].errors?.required && forma.get('email').touched">*El campo es
@@ -90,11 +94,13 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-group">
-                    <label for="cuitEmpresa">CUIT empresa</label>
+                    <label for="cuitEmpresa">CUIT empresa*</label>
                     <input type="number" class="form-control" id="cuitEmpresa" formControlName="cuitEmpresa" placeholder="Cuit empresa">
                     <small class="form-invalid"
-                        *ngIf="forma.controls['celular'].errors?.required && forma.get('celular').touched">*El campo es
+                        *ngIf="forma.controls['cuitEmpresa'].errors?.required && forma.get('cuitEmpresa').touched">*El campo es
                         requerido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['cuitEmpresa'].errors?.cuitInvalid && forma.get('cuitEmpresa').touched">*El CUIT es inválido</small>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">

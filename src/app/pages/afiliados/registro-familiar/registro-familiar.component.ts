@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
 import { Router } from '@angular/router';
+import { iif } from 'rxjs';
+declare var moment;
 
 
 @Component({
@@ -28,8 +30,8 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       'apellido': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
       'sexo': new FormControl('', Validators.required),
-      'fechaNacimiento': new FormControl('', Validators.required),
-      'edad': new FormControl('', [Validators.required, Validators.min(0), Validators.max(18)]),
+      'fechaNacimiento': new FormControl('', [Validators.required, this.validarFechaNacimiento]),
+      'edad': new FormControl({value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
       'nivelEducacion': new FormControl('', Validators.required)
     });
 
@@ -69,5 +71,30 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
           this._router.navigate(['afiliados/listado-carga']);
     })
     .catch(() => {});
+  }
+
+
+  public calcularEdad() {
+    let fecha = this.forma.get('fechaNacimiento').value;
+    
+    if(fecha != '') {
+      let edad = moment().diff(fecha, 'years');
+      this.forma.get('edad').setValue(edad);
+    }
+  }
+
+  public validarFechaNacimiento(control: FormControl) {
+
+    let fechaIngresada = control.value;
+
+    let edad = moment().diff(fechaIngresada, 'years');
+
+    if(edad > 18 || edad < 0) {
+      return  {
+        fechaInvalida: true
+      }
+    } else {
+      return null;
+    }
   }
 }

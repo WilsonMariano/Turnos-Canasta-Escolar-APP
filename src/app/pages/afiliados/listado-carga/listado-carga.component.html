@@ -13,7 +13,7 @@
                 <td>{{'cuil ' + titular.cuil}}</td>
                 <td>{{'email ' + titular.email}}</td>
                 <td>{{'celular ' + titular.celular}}</td>
-                <td><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')"></fa-icon></td>
+                <td class="text-right"><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')"></fa-icon></td>
               </tr>
             </tbody>
           </table>
@@ -28,9 +28,9 @@
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
                     <td>{{familiar.dni}}</td>
                     <td>{{familiar.nivelEducacion}}</td>
-                    <td>
-                        <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>
-                        <fa-icon [icon]="faTrash" class="ml-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
+                    <td class="text-right">
+                      <fa-icon [icon]="faTrash" class="mr-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
+                      <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>
                     </td>
                   </tr>
                 </tbody>

@@ -1,14 +1,14 @@
 <app-jumbotron titulo="Elección del punto de entrega"
     subtitulo="Deberás elegir el lugar por el cual retirarás los kits escolares y los juguetes."></app-jumbotron>
 <app-breadcrumb></app-breadcrumb>
-
+<app-alert></app-alert>
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-5 mb-3">
             <h3>Puntos de entrega</h3>
             <hr />
         </div>
-            <button class="btn col-sm-6 col-md-3" *ngFor="let punto of puntosEntrega" [ngClass]="{'active': _state.consultarPuntoEntrega() == punto.codigo}" (click)="guardarPuntoEntrega(punto)">
+            <button class="btn col-sm-6 col-md-3" *ngFor="let punto of puntosEntrega" [ngClass]="{'active': _state.consultarPuntoEntrega().codigo == punto.codigo}" (click)="guardarPuntoEntrega(punto)">
                 <div class="card-body text-center active">
                     <h6 class="card-subtitle mb-2 text-muted">{{punto.nombre}}</h6>
                     <span class="text-muted d-block">{{punto.domicilio}}</span>

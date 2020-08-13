@@ -25,13 +25,13 @@ export class RegistroAfiliadoComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
-      'numAfiliado': new FormControl('', Validators.required),
-      'cuil': new FormControl('', Validators.required),
+      'numAfiliado': new FormControl('', [Validators.required, Validators.min(1111), Validators.max(9999)]),
+      'cuil': new FormControl('', [Validators.required, this.validarCuit]),
       'apellido': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
       'domicilio': new FormControl('', Validators.required),
       'localidad': new FormControl('', Validators.required),
-      'cuitEmpresa': new FormControl('', Validators.required),
+      'cuitEmpresa': new FormControl('', [Validators.required, this.validarCuit]),
       'razonSocialEmpresa': new FormControl(''),
       'telefono': new FormControl(''),
       'celular': new FormControl('', Validators.required),
@@ -57,4 +57,41 @@ export class RegistroAfiliadoComponent implements OnInit {
       .catch(() => {});
   }
 
+
+  /*************MEJORAR FUNCIÓN******************/
+  public validarCuit(control: FormControl) {
+
+    let cuit = control.value;
+
+    let error = {
+      cuitInvalid: true
+    };
+
+    //Compruebo que tenga 11 digitos
+    if(cuit == undefined || !/[0-9]{11}/.test(cuit.toString()))
+      return error;
+
+    let cadena: string = cuit.toString();
+    let coeficiente: string = "5432765432"
+    let suma = 0;
+
+    for(let i = 0; i < cadena.length-1; i++) {
+      suma += parseInt(cadena[i]) * parseInt(coeficiente[i]);
+    }
+    
+    let resto = suma % 11;
+
+    if(resto == 0 && cadena[cadena.length-1] == "0")
+      return null;
+    
+    if(parseInt(cadena[cadena.length-1]) == 11 - resto) {
+      return null;
+    } else {
+      return error;
+    }
+
+  }
+
 }
+
+

@@ -1,7 +1,10 @@
  <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item" *ngFor="let url of urls"><a [routerLink]="url.url">{{url.name}}</a></li>
-      <li class="breadcrumb-item"><a href="#">Library</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Data</li>
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <div *ngFor="let route of routes ; let i = index">
+        <li class="breadcrumb-item" *ngIf="i != routes.length-1">&nbsp; <fa-icon [icon]="faAngleRight"></fa-icon> &nbsp;<a [routerLink]="route.url">{{route.title}}</a></li>
+        <li class="breadcrumb-item" *ngIf="i == routes.length-1">&nbsp; <fa-icon [icon]="faAngleRight"></fa-icon> &nbsp;<a>{{route.title}}</a></li>
+      </div>
+
     </ol>
   </nav>

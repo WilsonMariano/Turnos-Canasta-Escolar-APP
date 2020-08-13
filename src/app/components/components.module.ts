@@ -7,13 +7,15 @@ import { StateService } from '../services/state.service';
 
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { ModalComponent } from './modal/modal.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
 @NgModule({
   declarations: [
     JumbotronComponent,
-    ModalComponent
+    ModalComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ModalComponent } from './modal/modal.component';
   ], 
   exports: [
     JumbotronComponent,
-    ModalComponent
+    ModalComponent,
+    AlertComponent
   ],
   providers: [
     StateService 

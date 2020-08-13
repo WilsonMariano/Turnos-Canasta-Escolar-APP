@@ -4,7 +4,7 @@
 <form [formGroup]="forma" (ngSubmit)="submit()">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 mt-3">
+            <div class="col-md-12 mt-5 mb-3">
                 <h3>Completá con los datos de tu hijo/a</h3>
                 <hr />
             </div>
@@ -51,10 +51,12 @@
             <div class="col-md-8 col-sm-12">
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
-                    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">
+                    <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento" (blur)="calcularEdad()">
                     <small class="form-invalid"
                         *ngIf="forma.controls['fechaNacimiento'].errors?.required && forma.get('fechaNacimiento').touched">*El campo es
                         requerido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['fechaNacimiento'].errors?.fechaInvalida && forma.get('fechaNacimiento').touched">*La edad debe ser igual o menor a 18 años</small>
                         
                 </div>
             </div>
