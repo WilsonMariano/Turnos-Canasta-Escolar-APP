@@ -8,16 +8,28 @@
           </button>
         </div>
         <div class="modal-body">
-            <h6 class="text-center">Canasta escolar <small>(4-18 años) </small><span class="badge badge-info">{{calcularCantUtiles()}}</span></h6>
-
-            <tr *ngFor="let fam of familiares">
-                <td *ngIf="fam.edad >= 4 && fam.edad <= 18"><small>{{fam.nombre +' '+ fam.apellido }}</small></td>
-            </tr>
-
-            <h6 class="text-center mt-4">Juguetes <small>(0-12 años) </small><span class="badge badge-info">{{calcularCantJuguetes()}}</span></h6>
-            <tr *ngFor="let fam of familiares">
-                <td *ngIf="fam.edad >= 0 && fam.edad <= 12"><small>{{fam.nombre +' '+ fam.apellido }}</small></td>
-            </tr>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Útiles</th>
+                <th>Juguete</th>
+              </tr>
+              <tr *ngFor="let familiar of familiares">
+                <td>{{familiar.nombre +' '+ familiar.apellido}}</td>
+                <td>{{familiar.edad}}</td>
+                <td>
+                  <span class="badge badge-pill badge-success"  *ngIf="familiar.edad >= 4 && familiar.edad <= 18">Si</span>
+                  <span class="badge badge-pill badge-danger"   *ngIf="!(familiar.edad >= 4 && familiar.edad <= 18)">No</span>
+              </td>
+                <td>
+                  <span class="badge badge-pill badge-success"  *ngIf="familiar.edad >= 0 && familiar.edad <= 12">Si</span>
+                  <span class="badge badge-pill badge-danger"   *ngIf="!(familiar.edad >= 0 && familiar.edad <= 12)">No</span>
+                </td>
+              </tr>
+            </thead>
+          </table>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="navigateTo('afiliados/listado-carga')">Editar datos</button>

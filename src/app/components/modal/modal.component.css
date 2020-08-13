@@ -2,3 +2,15 @@
     background: #005387;
     color: white;
 }
+
+.card {
+    width: 100% !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.list-group-item {
+    padding: 5px;
+}

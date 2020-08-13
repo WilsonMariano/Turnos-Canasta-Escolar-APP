@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
 import { Router } from '@angular/router';
-import { iif } from 'rxjs';
 declare var moment;
 
 
@@ -49,7 +48,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
   public submit() {
     this._fx.alertConfirm("Confirmación", "¿Los datos son correctos?", "warning")
       .then(() => {
-             this._state.guardarFamiliar(this.forma.value);
+             this._state.guardarFamiliar(this.forma.getRawValue());
 
             this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success", ['No', 'Si'])
               .then(() => {
@@ -65,7 +64,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
   public editar() {
     this._fx.alertConfirm("Confirmación", "¿Los datos son correctos?", "warning")
       .then(() => {
-        this._state.editarFamiliar(this.edicion, this.forma.value);
+        this._state.editarFamiliar(this.edicion, this.forma.getRawValue());
 
           this._fx.alert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
           this._router.navigate(['afiliados/listado-carga']);
@@ -79,7 +78,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     
     if(fecha != '') {
       let edad = moment().diff(fecha, 'years');
-      this.forma.get('edad').setValue(edad);
+      this.forma.controls.edad.setValue(edad);
     }
   }
 
@@ -96,5 +95,9 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     } else {
       return null;
     }
+  }
+
+  public navigateTo(url: string) {
+    this._router.navigate([url]);
   }
 }
