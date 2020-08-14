@@ -13,12 +13,17 @@ export class PagesAfiliadosComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit() {
+
+    this.scrollTop();
+
     this._router.events.subscribe((evt) => {
-      if (!(evt instanceof NavigationEnd)) {
-          return;
+      if (event instanceof NavigationEnd) {
+          this.scrollTop();
       }
-      window.scrollTo(0, 0)
-  });
+    });
   }
 
+  private scrollTop() {
+    window.scrollTo(0, 0);
+  }
 }
