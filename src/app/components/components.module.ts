@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { StateService } from '../services/state.service';
-
 import { JumbotronComponent } from './jumbotron/jumbotron.component';
 import { ModalComponent } from './modal/modal.component';
 import { AlertComponent } from './alert/alert.component';
@@ -27,9 +25,6 @@ import { AlertComponent } from './alert/alert.component';
     JumbotronComponent,
     ModalComponent,
     AlertComponent
-  ],
-  providers: [
-    StateService 
   ]
 })
 export class ComponentsModule { }

@@ -7,9 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { PAGES_ROUTES } from './afiliados/pages-afiliados.routes';
 
-import { StateService } from '../services/state.service';
-import { FxGlobalsService } from '../services/fx-globals.service';
-
 import { HomeComponent } from './home/home.component';
 import { PagesAfiliadosComponent } from './afiliados/pages-afiliados.component';
 import { RegistroAfiliadoComponent } from './afiliados/registro-afiliado/registro-afiliado.component';
@@ -39,10 +36,6 @@ import { ElegirPuntoEntregaComponent } from './afiliados/elegir-punto-entrega/el
   ],
   exports: [
     PagesAfiliadosComponent
-  ],
-  providers: [
-    StateService,
-    FxGlobalsService
   ]
 })
 export class PagesModule { }
