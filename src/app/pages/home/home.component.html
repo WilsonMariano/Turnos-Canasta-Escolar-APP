@@ -6,14 +6,14 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="../assets/img/carousel/1.jpg" class="d-block w-100" alt="...">
+          <img src="../assets/img/carousel/1.jpg" class="d-block w-100 img-carousel" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Día del niño 2020</h5>
             <p>Si bien este año no podremos realizar la fiesta familiar que tanto disfrutamos, nos aseguraremos de que los chicos tenga el juguete que tanto merecen</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="../assets/img/carousel/2.jpg" class="d-block w-100" alt="...">
+          <img src="../assets/img/carousel/2.jpg" class="d-block w-100 img-carousel" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Canasta escolar</h5>
             <p>Seguimos entregando los útiles escolares para nuestros afiliados.</p>
@@ -31,7 +31,7 @@
     </div>
   </section>
   <section id="info">
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5">
       <div class="row text-center">
         <div class="col-md-4">
           <fa-icon [icon]="faEdit" size="5x" class="color-primary"></fa-icon>
@@ -59,9 +59,9 @@
   
   <section id="cards">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card card-link" style="width: 25rem;" routerLink="afiliados/registro-afiliado">
+      <div class="row justify-content-md-center">
+        <div class="col-md-4 col-sm-12 mt-5">
+          <div class="card card-link" (click)="navigateTo('afiliados/registro-afiliado')">
             <img src="../assets/img/banner1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Registro de grupo familiar</h5>
@@ -69,8 +69,8 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card card-link" style="width: 25rem;">
+        <div class="col-md-4 col-sm-12">
+          <div class="card card-link mt-5">
             <img src="../assets/img/banner2.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Consultar estado del trámite</h5>

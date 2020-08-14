@@ -5,3 +5,13 @@
 .card.card-link:hover {
     background-color: rgba(0,83,135,0.05);
 }
+
+@media (max-width: 640px) {
+    .carousel-caption {
+        width: 100%;
+    }
+
+    .img-carousel {
+        height: 300px !important;
+    }
+}

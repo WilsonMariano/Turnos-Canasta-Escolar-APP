@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +14,13 @@ export class HomeComponent implements OnInit {
   public faAddressCard = faAddressCard;
   public faEraser = faEraser;
 
-  constructor() { }
+  constructor(public _router: Router) { }
 
   ngOnInit() {
+  }
+
+  public navigateTo(path) {
+    this._router.navigate([path]);
   }
 
 }

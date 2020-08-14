@@ -3,7 +3,7 @@
       <div class="col-md-12 mt-5">
         <h3>Datos del Titular </h3>
         <hr/>
-        <table class="table table-borderless">
+        <table class="table table-borderless table-responsive-sm">
             <tbody>
               <tr>
                 <td>{{titular.nombre +" "+ titular.apellido}}</td>
@@ -19,7 +19,7 @@
             <h3>Familiares cargados</h3>
             <hr/>
             <span class="form-invalid" *ngIf="familiares.length == 0">Sin familiares cargados...</span>
-            <table class="table">
+            <table class="table table-responsive-sm">
                 <tbody>
                   <tr *ngFor="let familiar of familiares">
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>

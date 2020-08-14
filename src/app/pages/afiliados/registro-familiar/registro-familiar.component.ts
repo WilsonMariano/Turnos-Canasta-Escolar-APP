@@ -19,7 +19,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
   constructor(
     private _router: Router,
-    private _state: StateService,
+    public _state: StateService,
     private _fx: FxGlobalsService
   ) { }
 

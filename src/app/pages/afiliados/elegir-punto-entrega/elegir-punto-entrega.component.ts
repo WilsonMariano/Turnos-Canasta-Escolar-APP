@@ -44,7 +44,7 @@ export class ElegirPuntoEntregaComponent implements OnInit {
     }
   ];
 
-  constructor(private _state: StateService) { }
+  constructor(public _state: StateService) { }
 
   ngOnInit() {
     // Init map
