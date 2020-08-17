@@ -13,6 +13,7 @@ import { RegistroAfiliadoComponent } from './afiliados/registro-afiliado/registr
 import { RegistroFamiliarComponent } from './afiliados/registro-familiar/registro-familiar.component';
 import { ListadoCargaComponent } from './afiliados/listado-carga/listado-carga.component';
 import { ElegirPuntoEntregaComponent } from './afiliados/elegir-punto-entrega/elegir-punto-entrega.component';
+import { ConsultarTramiteComponent } from './afiliados/consultar-tramite/consultar-tramite.component';
 
 
 
@@ -23,7 +24,8 @@ import { ElegirPuntoEntregaComponent } from './afiliados/elegir-punto-entrega/el
     RegistroAfiliadoComponent,
     RegistroFamiliarComponent,
     ListadoCargaComponent,
-    ElegirPuntoEntregaComponent
+    ElegirPuntoEntregaComponent,
+    ConsultarTramiteComponent
   ],
   imports: [
     CommonModule,

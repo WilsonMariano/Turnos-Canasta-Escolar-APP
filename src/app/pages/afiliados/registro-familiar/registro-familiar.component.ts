@@ -40,6 +40,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
 
     this.edicion && this.forma.setValue(this.edicion);
+    console.log(this.edicion);
   }
 
   ngOnDestroy() {

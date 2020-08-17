@@ -17,7 +17,6 @@ export class DataService {
     private traerPuntosEntrega() {
       this._httpGeneric.getAll('LugaresEntrega')
         .subscribe(
-          //data => this.puntosEntrega = data,
           data => {this.puntosEntrega = this.lnglatTransform(data); console.log(data)},
           err => console.error(err)
         );
@@ -31,7 +30,6 @@ export class DataService {
         }])
         .subscribe(
           data => this.nivelesEducacion = data.data,
-          //data => console.log(data),
           err => console.error(err)
         );
     }
@@ -47,5 +45,10 @@ export class DataService {
         punto.lnglat = y;
       });
       return arr;
+    }
+
+    public obtenerNivelEducacion(clave) {
+
+      return this.nivelesEducacion.find(element => element.clave = clave);
     }
 }

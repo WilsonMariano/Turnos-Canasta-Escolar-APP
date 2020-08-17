@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faEdit, faEraser } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faCarSide } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   public faEdit =  faEdit;
   public faAddressCard = faAddressCard;
-  public faEraser = faEraser;
+  public faCar = faCarSide;
 
   constructor(public _router: Router) { }
 

@@ -15,3 +15,7 @@
         height: 300px !important;
     }
 }
+
+div.card-body {
+    height: 148px;
+}

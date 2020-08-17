@@ -5,6 +5,7 @@ import { RegistroAfiliadoComponent } from './registro-afiliado/registro-afiliado
 import { RegistroFamiliarComponent } from './registro-familiar/registro-familiar.component';
 import { ListadoCargaComponent } from './listado-carga/listado-carga.component';
 import { ElegirPuntoEntregaComponent } from './elegir-punto-entrega/elegir-punto-entrega.component';
+import { ConsultarTramiteComponent } from './consultar-tramite/consultar-tramite.component';
 
 
 const pagesRoutes: Routes = [
@@ -16,7 +17,8 @@ const pagesRoutes: Routes = [
             { path: 'registro-afiliado',            component: RegistroAfiliadoComponent,   data: { titulo: 'Registro afiliado' }        },
             { path: 'registro-familiar',            component: RegistroFamiliarComponent,   data: { titulo: 'Registro familiar' }        },
             { path: 'listado-carga',                component: ListadoCargaComponent,       data: { titulo: 'Datos cargados'    }        },
-            { path: 'elegir-punto-entrega',         component: ElegirPuntoEntregaComponent, data: { titulo: 'Elegir punto de entrega' }  }
+            { path: 'elegir-punto-entrega',         component: ElegirPuntoEntregaComponent, data: { titulo: 'Elegir punto de entrega' }  },
+            { path: 'consultar-tramite',            component: ConsultarTramiteComponent,   data: { titulo: 'Consultar tramite' }        }
         ]
     }
 ];

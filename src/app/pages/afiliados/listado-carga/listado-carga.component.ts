@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { StateService } from '../../../services/state.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-listado-carga',
@@ -18,7 +19,8 @@ export class ListadoCargaComponent implements OnInit {
 
   constructor(
     private _router: Router,
-    private _state: StateService
+    private _state: StateService,
+    public _data: DataService
    ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class ListadoCargaComponent implements OnInit {
     localStorage.setItem('familiarEditar', JSON.stringify(familiar));
     this.navigateTo('afiliados/registro-familiar');
   }
+
   
 
 }

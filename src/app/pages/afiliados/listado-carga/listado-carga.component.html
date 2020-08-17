@@ -24,7 +24,7 @@
                   <tr *ngFor="let familiar of familiares">
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
                     <td>{{familiar.dni}}</td>
-                    <td>{{familiar.nivelEducacion}}</td>
+                    <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
                     <td class="text-right">
                       <fa-icon [icon]="faTrash" class="mr-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
                       <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>
