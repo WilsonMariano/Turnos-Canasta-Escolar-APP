@@ -2,6 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import { StateService } from '../../services/state.service';
 import { Router } from '@angular/router';
 import { FxGlobalsService } from 'src/app/services/fx-globals.service';
+import { SolicitudService } from 'src/app/services/http/solicitud.service';
 declare var $;
 
 @Component({
@@ -18,7 +19,8 @@ export class ModalComponent implements OnChanges {
   constructor(
     private _state: StateService,
     private _router: Router,
-    private _fx: FxGlobalsService
+    private _fx: FxGlobalsService,
+    private _http: SolicitudService
   ) { }
 
   ngOnChanges() {
@@ -52,11 +54,22 @@ export class ModalComponent implements OnChanges {
 
   public confirmarSolicitud() {
     console.log(this._state.consultarState());
-    $("#modal").modal('hide');
-    this._fx.alert("Solicitud enviada", "La solicitud se efectuó correctamente, deberas esperar a que la misma sea validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success");
-    setTimeout(() => {
-      this.navigateTo('home');
-    }, 3000);
+
+    this._http.insert(this._state.consultarState())
+      .subscribe(
+        data => {
+          if(data) {
+            $("#modal").modal('hide');
+            this._fx.alert("Solicitud enviada", "La solicitud se efectuó correctamente, deberas esperar a que la misma sea validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success");
+            setTimeout(() => this.navigateTo('home'), 2000);
+            this._state.clearStorage();
+          }
+        },
+        err => {
+          $("#modal").modal('hide');
+          this._fx.alert("Error", "Se produjo un error al procesar la solicitud, por favor intente más tarde.", "error");
+        }
+      )
   }
 
 }

@@ -4,7 +4,8 @@
             <h3>Puntos de entrega</h3>
             <hr />
         </div>
-            <button class="btn col-sm-6 col-md-3" *ngFor="let punto of puntosEntrega" [ngClass]="{'active': _state.consultarPuntoEntrega().codigo == punto.codigo}" (click)="guardarPuntoEntrega(punto)">
+            <!--<button class="btn col-sm-6 col-md-3" *ngFor="let punto of _data.puntosEntrega" (click)="guardarPuntoEntrega(punto)">-->
+            <button class="btn col-sm-6 col-md-3" *ngFor="let punto of _data.puntosEntrega" [ngClass]="{'active': _state.consultarPuntoEntrega()?.id == punto.id}" (click)="guardarPuntoEntrega(punto)">
                 <div class="card-body text-center active">
                     <h6 class="card-subtitle mb-2 text-muted">{{punto.nombre}}</h6>
                     <span class="text-muted d-block">{{punto.domicilio}}</span>

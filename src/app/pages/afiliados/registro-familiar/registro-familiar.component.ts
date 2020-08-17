@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 declare var moment;
 
 
@@ -20,7 +21,8 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
   constructor(
     private _router: Router,
     public _state: StateService,
-    private _fx: FxGlobalsService
+    private _fx: FxGlobalsService,
+    private _data: DataService
   ) { }
 
   ngOnInit() {

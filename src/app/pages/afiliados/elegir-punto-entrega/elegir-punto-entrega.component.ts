@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StateService } from '../../../services/state.service';
+import { DataService } from 'src/app/services/data.service';
 declare var mapboxgl;
 
 @Component({
@@ -13,38 +14,10 @@ export class ElegirPuntoEntregaComponent implements OnInit {
   public map = null;
   private marker = null; 
 
-  public puntosEntrega = [
-    {
-      codigo: "SEC",
-      nombre: "Sindicato Adrogué",
-      domicilio: "Av. Espora 953, Adrogué",
-      horario: "09:00 a 16:00 hs",
-      lnglat: [-58.388479, -34.801165] 
-    },
-    {
-      codigo: "CAM",
-      nombre: "Campo Deportivo Burzaco",
-      domicilio: "Pino 2085, Burzaco",
-      horario: "09:00 a 16:00 hs",
-      lnglat: [-58.420550, -34.822067] 
-    },
-    {
-      codigo: "GUE",
-      nombre: "Filial Guernica",
-      domicilio: "Calle 101 N° 49, Guernica",
-      horario: "09:00 a 16:00 hs",
-      lnglat: [-58.382249, -34.915978] 
-    },
-    {
-      codigo: "SAN",
-      nombre: "Filial San Vicente",
-      domicilio: "Belgrano 305, San Vicente",
-      horario: "09:00 a 16:00 hs",
-      lnglat: [-58.420288, -35.025269] 
-    }
-  ];
 
-  constructor(public _state: StateService) { }
+  constructor(
+    public _state: StateService,
+    public _data: DataService) { }
 
   ngOnInit() {
     // Init map
@@ -61,6 +34,7 @@ export class ElegirPuntoEntregaComponent implements OnInit {
   }
 
   public guardarPuntoEntrega(puntoEntrega) {
+    console.log(puntoEntrega);
     this._state.guardarPuntoEntrega(puntoEntrega);
     this.setMarker(puntoEntrega);
   }

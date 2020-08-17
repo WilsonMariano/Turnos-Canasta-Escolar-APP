@@ -37,8 +37,8 @@
                     <label for="sexo">Sexo</label>
                     <select class="form-control" formControlName="sexo" id="sexo">
                         <option value="">Seleccione una opción</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
+                        <option value="m">Masculino</option>
+                        <option value="f">Femenino</option>
                     </select>
                     <small class="form-invalid"
                         *ngIf="forma.controls['sexo'].errors?.required && forma.get('sexo').touched">*El campo es
@@ -74,10 +74,7 @@
                     <label for="nivelEducacion">Nivel educación</label>
                     <select class="form-control" formControlName="nivelEducacion" id="nivelEducacion">
                         <option value="">Seleccione una opción</option>
-                        <option value="preescolar">Preescolar</option>
-                        <option value="primario1">Primario (1° a 3°)</option>
-                        <option value="primario2">Primario (4° a 6°)</option>
-                        <option value="secundario">Secundario</option>
+                        <option [value]="nivel.clave" *ngFor="let nivel of _data.nivelesEducacion">{{nivel.valor}}</option>
                     </select>
                     <small class="form-invalid"
                         *ngIf="forma.controls['nivelEducacion'].errors?.required && forma.get('nivelEducacion').touched">*El campo

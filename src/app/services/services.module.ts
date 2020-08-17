@@ -5,6 +5,7 @@ import { GenericService } from './http/generic.service';
 import { DataService } from './data.service';
 import { FxGlobalsService } from './fx-globals.service';
 import { StateService } from './state.service';
+import { SolicitudService } from './http/solicitud.service';
 
 
 
@@ -16,6 +17,7 @@ import { StateService } from './state.service';
   providers: [
     EmpresasDelegadosService,
     GenericService,
+    SolicitudService,
     DataService,
     FxGlobalsService,
     StateService

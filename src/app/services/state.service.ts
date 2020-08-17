@@ -68,6 +68,10 @@ export class StateService {
     localStorage.setItem('state', JSON.stringify(this.state));
   }
 
+  public clearStorage() {
+    localStorage.clear();
+  }
+
   private stateInit() {
     return {
       titular: null,
