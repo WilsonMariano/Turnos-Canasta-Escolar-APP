@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faThemeisle } from '@fortawesome/free-brands-svg-icons';
+import { faCalendarAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { CronogramaService } from 'src/app/services/http/cronograma.service';
 
 @Component({
   selector: 'app-consultar-tramite',
@@ -9,16 +10,22 @@ import { faThemeisle } from '@fortawesome/free-brands-svg-icons';
 export class ConsultarTramiteComponent implements OnInit {
 
   public resultado = null;
-  public cuil: number;
+  public cuil: number = 20375584973;
   
-  constructor() { }
+  public faCalendar = faCalendarAlt;
+  public faMapMarker = faMapMarkerAlt;
+
+  constructor(private _http: CronogramaService) { }
 
   ngOnInit() {
   }
 
   public consultar() {
-    this.resultado = true;
-    console.log(this.cuil);
+    this._http.getOne(this.cuil)
+      .subscribe( 
+        data => this.resultado = data,
+        err => this.resultado = false
+      )
   }
 
 }

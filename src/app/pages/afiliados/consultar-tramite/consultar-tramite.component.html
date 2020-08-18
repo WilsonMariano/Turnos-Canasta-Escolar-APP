@@ -5,18 +5,49 @@
             <hr />
             <form class="form-inline">
                 <div class="form-group mx-sm-3 mb-2">
-                  <input type="numbber" class="form-control" placeholder="Cuil" [(ngModel)]="cuil" name="cuil">
+                  <input type="number" class="form-control" placeholder="Cuil" [(ngModel)]="cuil" name="cuil">
                 </div>
-                <button type="button" class="btn btn-secondary mb-2" (click)="consultar()">Consultar</button>
+                <button type="submit" class="btn btn-secondary mb-2" (click)="consultar()">Consultar</button>
               </form>
         </div>
-        <div class="col-md-12" *ngIf="resultado">
-            <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Solicitud confirmada</h4>
-                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+        <div class="col-md-12" *ngIf="resultado == false">
+          <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">CUIL no encontrado</h4>
+              <hr>
+              <p class="mb-0">No se ha encontrado ninguna solicitud relacionada al cuil ingresado.</p>
+            </div>
+      </div>
+        <div class="col-md-12" *ngIf="resultado?.estado == 'ESTADO_SOLICITUD_1'">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">Estado: {{resultado.estadoDescripcion}}</h4>
                 <hr>
-                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                <p class="mb-0">Tu solicitud aún está en proceso, por favor consultá más tarde.</p>
               </div>
         </div>
+        <div class="col-md-12" *ngIf="resultado?.estado == 'ESTADO_SOLICITUD_2'">
+          <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Estado: {{resultado.estadoDescripcion}}</h4>
+              <p class="mb-2">Tu solicitud se ha aprobado, deberas pasar a retirar los juguetes/útiles el día <b>{{resultado.fechaEntrega}}</b>, a las <b>{{resultado.horaEntrega}} hs.</b> por <b>{{resultado.nombrePunto}}</b> sito en <b>{{resultado.domicilioPunto}}.</b></p>
+              <p class="mb-0"><fa-icon [icon]="faCalendar"></fa-icon>&nbsp;{{resultado.fechaEntrega}}, {{resultado.horaEntrega}} hs.</p>
+              <p class="mb-2"><fa-icon [icon]="faMapMarker"></fa-icon>&nbsp;{{resultado.domicilioPunto}}</p>
+              <p class="mb-0">Si por alguna razón no podés asistir en la fecha y hora indicadas, comunicate con el sindicato al 4293-2851 / 4294-0716</p>
+              <hr>
+              <p class="mb-0"><b>Observaciones: </b>{{resultado.observaciones}}</p>
+          </div>
+      </div>
+      <div class="col-md-12" *ngIf="resultado?.estado == 'ESTADO_SOLICITUD_3'">
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Estado: {{resultado.estadoDescripcion}}</h4>
+            <hr>
+            <p class="mb-0"><b>Observaciones:</b> {{resultado.observaciones}}</p>
+         </div>
     </div>
+    <div class="col-md-12" *ngIf="resultado?.estado == 'ESTADO_SOLICITUD_4'">
+      <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">Estado: {{resultado.estadoDescripcion}}</h4>
+          <hr>
+          <p class="mb-0">Los útiles/juguetes ya han sido retirados por <b>{{resultado.nombrePunto}}</b> el día <b>{{resultado.fechaEntrega}}</b></p>
+       </div>
+  </div>
+  </div>
 </div>

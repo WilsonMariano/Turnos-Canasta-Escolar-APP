@@ -6,6 +6,7 @@ import { DataService } from './data.service';
 import { FxGlobalsService } from './fx-globals.service';
 import { StateService } from './state.service';
 import { SolicitudService } from './http/solicitud.service';
+import { CronogramaService } from './http/cronograma.service';
 
 
 
@@ -18,6 +19,7 @@ import { SolicitudService } from './http/solicitud.service';
     EmpresasDelegadosService,
     GenericService,
     SolicitudService,
+    CronogramaService,
     DataService,
     FxGlobalsService,
     StateService
