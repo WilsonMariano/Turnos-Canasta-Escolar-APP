@@ -22,7 +22,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     private _router: Router,
     public _state: StateService,
     private _fx: FxGlobalsService,
-    private _data: DataService
+    public _data: DataService
   ) { }
 
   ngOnInit() {
