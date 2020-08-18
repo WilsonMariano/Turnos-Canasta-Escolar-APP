@@ -25,6 +25,8 @@
                         requerido</small>
                     <small class="form-invalid"
                     *ngIf="forma.controls['cuil'].errors?.cuitInvalid && forma.get('cuil').touched">*El CUIL es inválido</small>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['cuil'].errors?.cuilRegistrado && !forma.get('cuil').cuitInvalid">*El CUIL ya se ha registrado</small>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12">

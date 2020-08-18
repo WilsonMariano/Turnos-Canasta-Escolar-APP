@@ -16,7 +16,7 @@ export class StateService {
   }
 
   public guardarTitular(titular) {
-    this.state.titular = titular;
+    this.state.titular = this.objToUpperCase(titular);
     this.saveStorage();
   }
 
@@ -29,7 +29,7 @@ export class StateService {
   }
 
   public guardarFamiliar(familiar) {
-    this.state.familiares.push(familiar);
+    this.state.familiares.push(this.objToUpperCase(familiar));
     this.saveStorage();
   }
 
@@ -83,5 +83,14 @@ export class StateService {
       familiares: [],
       puntoEntrega: null
     }
+  }
+
+  private objToUpperCase(obj) {
+    for(let key in obj){
+      if(typeof obj[key] == 'string'){
+        obj[key] = obj[key].toUpperCase();
+      }
+    }
+    return obj;
   }
 }

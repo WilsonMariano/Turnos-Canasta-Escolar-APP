@@ -29,7 +29,7 @@ export class DataService {
           txt: 'NIVEL_EDUCACION'
         }])
         .subscribe(
-          data => this.nivelesEducacion = data.data,
+          data => {this.nivelesEducacion = data.data; console.log(data)},
           err => console.error(err)
         );
     }
@@ -48,7 +48,6 @@ export class DataService {
     }
 
     public obtenerNivelEducacion(clave) {
-
-      return this.nivelesEducacion.find(element => element.clave = clave);
+      return this.nivelesEducacion.find(element => element.clave == clave);
     }
 }

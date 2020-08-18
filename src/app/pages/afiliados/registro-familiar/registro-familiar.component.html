@@ -37,8 +37,8 @@
                     <label for="sexo">Sexo</label>
                     <select class="form-control" formControlName="sexo" id="sexo">
                         <option value="">Seleccione una opción</option>
-                        <option value="m">Masculino</option>
-                        <option value="f">Femenino</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
                     </select>
                     <small class="form-invalid"
                         *ngIf="forma.controls['sexo'].errors?.required && forma.get('sexo').touched">*El campo es
@@ -85,7 +85,7 @@
             <div class="col-md-12">
                 <button class="btn btn-secondary float-right" type="submit" [disabled]="forma.invalid" [hidden]="edicion">Continuar</button>
                 <button class="btn btn-secondary float-right" type="button" [disabled]="forma.invalid" [hidden]="!edicion" (click)="editar()">Continuar</button>
-                <button class="btn btn-primary float-right mr-4" type="button" [hidden]="!edicion && !_state.consultarFamiliares()" (click)="navigateTo('afiliados/listado-carga')">Cancelar</button>
+                <button class="btn btn-primary float-right mr-4" type="button" *ngIf="edicion || _state.consultarFamiliares().length != 0" (click)="navigateTo('afiliados/listado-carga')">Cancelar</button>
             </div>
         </div>
     </div>

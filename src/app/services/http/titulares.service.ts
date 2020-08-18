@@ -6,16 +6,16 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class EmpresasDelegadosService {
+export class TitularesService {
 
   constructor(private _http: HttpClient) { }
 
-  public getOne(cuit: number): Observable<any> {
+  public getOne(cuil: number): Observable<any> {
 
     let params = new HttpParams()
-      .set('cuit', cuit.toString());
+      .set('cuil', cuil.toString());
 
-    return this._http.get(`${environment.apiUrl}/empresasDelegados/one`, 
+    return this._http.get(`${environment.apiUrl}/titulares/one`, 
       { params }
     );
   }

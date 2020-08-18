@@ -53,9 +53,11 @@ export class ModalComponent implements OnChanges {
   }
 
   public confirmarSolicitud() {
-    console.log(this._state.consultarState());
 
-    this._http.insert(this._state.consultarState())
+    let solicitud = this._state.consultarState();
+
+    if(this.validarSolicitud(solicitud)) {
+      this._http.insert(solicitud)
       .subscribe(
         data => {
           if(data) {
@@ -70,6 +72,17 @@ export class ModalComponent implements OnChanges {
           this._fx.alert("Error", "Se produjo un error al procesar la solicitud, por favor intente más tarde.", "error");
         }
       )
+    }
   }
 
+  private validarSolicitud(solicitud) {
+    let valid = (solicitud.titular && solicitud.familiares.length != 0 && solicitud.puntoEntrega ? true : false); 
+
+    if(!valid) {
+      $("#modal").modal('hide');
+          this._fx.alert("Error", "La solicitud no está completa.", "error");
+    }
+
+    return valid;
+  }
 }
