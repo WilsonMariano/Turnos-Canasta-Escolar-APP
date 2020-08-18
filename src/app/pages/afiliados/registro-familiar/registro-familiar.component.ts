@@ -32,7 +32,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       'nombre': new FormControl('', Validators.required),
       'sexo': new FormControl('', Validators.required),
       'fechaNacimiento': new FormControl('', [Validators.required, this.validarFechaNacimiento]),
-      'edad': new FormControl({value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
+      'edad': new FormControl({ value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
       'nivelEducacion': new FormControl('', Validators.required)
     });
 
@@ -40,7 +40,6 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
 
     this.edicion && this.forma.setValue(this.edicion);
-    console.log(this.edicion);
   }
 
   ngOnDestroy() {
@@ -51,17 +50,24 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
   public submit() {
     this._fx.alertConfirm("Confirmación", "¿Los datos son correctos?", "warning")
       .then(() => {
-             this._state.guardarFamiliar(this.forma.getRawValue());
 
-            this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success", ['No', 'Si'])
-              .then(() => {
-                this.forma.reset();
-              })
-              .catch(() => {
-                this._router.navigate(['afiliados/listado-carga']);
-              })
+        if (this._state.buscarFamiliar(this.forma.getRawValue())) {
+
+          this._fx.alert("No se pudo agregar al familiar", "El dni ingresado ya se ha registrado anteriormente", "warning");
+
+        } else {
+          this._state.guardarFamiliar(this.forma.getRawValue());
+
+          this._fx.alertConfirm("Operación exitosa", "¿Desea agregar otro familiar?", "success", ['No', 'Si'])
+            .then(() => {
+              this.forma.reset();
+            })
+            .catch(() => {
+              this._router.navigate(['afiliados/listado-carga']);
+            })
+        }
       })
-      .catch(() => {});
+      .catch(() => { });
   }
 
   public editar() {
@@ -69,17 +75,17 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       .then(() => {
         this._state.editarFamiliar(this.edicion, this.forma.getRawValue());
 
-          this._fx.alert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
-          this._router.navigate(['afiliados/listado-carga']);
-    })
-    .catch(() => {});
+        this._fx.alert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
+        this._router.navigate(['afiliados/listado-carga']);
+      })
+      .catch(() => { });
   }
 
 
   public calcularEdad() {
     let fecha = this.forma.get('fechaNacimiento').value;
-    
-    if(fecha != '') {
+
+    if (fecha != '') {
       let edad = moment().diff(fecha, 'years');
       this.forma.controls.edad.setValue(edad);
     }
@@ -91,8 +97,8 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
     let edad = moment().diff(fechaIngresada, 'years');
 
-    if(edad > 18 || edad < 0) {
-      return  {
+    if (edad > 18 || edad < 0) {
+      return {
         fechaInvalida: true
       }
     } else {

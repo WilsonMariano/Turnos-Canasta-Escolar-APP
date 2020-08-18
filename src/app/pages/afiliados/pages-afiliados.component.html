@@ -1,4 +1,4 @@
-<app-jumbotron></app-jumbotron>
-<app-breadcrumb></app-breadcrumb>
-<app-alert></app-alert>
+<app-jumbotron  *ngIf="jumbotron"></app-jumbotron>
+<app-breadcrumb *ngIf="breadcrumb"></app-breadcrumb>
+<app-alert      *ngIf="alert"></app-alert>
 <router-outlet></router-outlet>

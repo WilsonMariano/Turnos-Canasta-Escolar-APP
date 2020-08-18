@@ -1,1 +1,22 @@
-<p>consultar-tramite works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5 mb-3">
+            <h3>Ingresar CUIL</h3>
+            <hr />
+            <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                  <input type="numbber" class="form-control" placeholder="Cuil" [(ngModel)]="cuil" name="cuil">
+                </div>
+                <button type="button" class="btn btn-secondary mb-2" (click)="consultar()">Consultar</button>
+              </form>
+        </div>
+        <div class="col-md-12" *ngIf="resultado">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Solicitud confirmada</h4>
+                <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                <hr>
+                <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+              </div>
+        </div>
+    </div>
+</div>

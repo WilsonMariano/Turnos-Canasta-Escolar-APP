@@ -33,6 +33,11 @@ export class StateService {
     this.saveStorage();
   }
 
+  public buscarFamiliar(familiar) {
+    let encontrado = this.state.familiares.find(f => f.dni == familiar.dni);
+    return encontrado ? true : false;
+  }
+
   public borrarFamiliar(familiar) {
     let i = this.state.familiares.indexOf(familiar);
 
