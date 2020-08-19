@@ -5,7 +5,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
-import { PAGES_ROUTES } from './afiliados/pages-afiliados.routes';
+import { PAGES_AFILI_ROUTES } from './afiliados/pages-afiliados.routes';
+import { PAGES_ADMIN_ROUTES } from './admin/pages-admin.routes';
 
 import { HomeComponent } from './home/home.component';
 import { PagesAfiliadosComponent } from './afiliados/pages-afiliados.component';
@@ -14,6 +15,9 @@ import { RegistroFamiliarComponent } from './afiliados/registro-familiar/registr
 import { ListadoCargaComponent } from './afiliados/listado-carga/listado-carga.component';
 import { ElegirPuntoEntregaComponent } from './afiliados/elegir-punto-entrega/elegir-punto-entrega.component';
 import { ConsultarTramiteComponent } from './afiliados/consultar-tramite/consultar-tramite.component';
+import { PagesAdminComponent } from './admin/pages-admin.component';
+import { LoginComponent } from './admin/login/login.component';
+import { GrillaSolicitudesComponent } from './admin/grilla-solicitudes/grilla-solicitudes.component';
 
 
 
@@ -25,13 +29,17 @@ import { ConsultarTramiteComponent } from './afiliados/consultar-tramite/consult
     RegistroFamiliarComponent,
     ListadoCargaComponent,
     ElegirPuntoEntregaComponent,
-    ConsultarTramiteComponent
+    ConsultarTramiteComponent,
+    PagesAdminComponent,
+    LoginComponent,
+    GrillaSolicitudesComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    PAGES_ROUTES,
+    PAGES_AFILI_ROUTES,
+    PAGES_ADMIN_ROUTES,
     FontAwesomeModule,
     SharedModule,
     ComponentsModule

@@ -16,9 +16,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-input {
+/*input {
     text-transform: uppercase;
-}
+}*/
 
 /* nav.navbar {
     -webkit-box-shadow: 0px 1px 91px 0px rgba(0,0,0,0.75) !important;
@@ -65,6 +65,11 @@ small.form-invalid {
 
 input, select {
     border-radius: 0 !important;
+}
+
+.modal-header.modal-header-secondary {
+    background: #005387 !important;
+    color: white !important;
 }
 
 

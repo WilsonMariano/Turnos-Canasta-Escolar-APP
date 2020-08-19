@@ -8,10 +8,12 @@ export class DataService {
 
   public nivelesEducacion = [];
   public puntosEntrega = [];
+  public estadosSolicitud = [];
 
   constructor(private _httpGeneric: GenericService) {
     this.traerNivelesEducacion();
     this.traerPuntosEntrega();
+    this.traerEstadosSolicitud();
   }
 
     private traerPuntosEntrega() {
@@ -30,6 +32,18 @@ export class DataService {
         }])
         .subscribe(
           data => {this.nivelesEducacion = data.data; console.log(data)},
+          err => console.error(err)
+        );
+    }
+
+    private traerEstadosSolicitud() {
+      this._httpGeneric.getWithPaged('Diccionario', 100, 0, [
+        {
+          col: 'clave', 
+          txt: 'ESTADO_SOLICITUD'
+        }])
+        .subscribe(
+          data => {this.estadosSolicitud = data.data; console.log(data)},
           err => console.error(err)
         );
     }

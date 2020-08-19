@@ -1,0 +1,11 @@
+.table{
+    margin: 0;
+}
+
+.table td {
+    border: 0;
+}
+
+input:disabled {
+    background: #dddddd;
+  }

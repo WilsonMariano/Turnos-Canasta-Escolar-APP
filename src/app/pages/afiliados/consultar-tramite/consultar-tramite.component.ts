@@ -10,7 +10,7 @@ import { CronogramaService } from 'src/app/services/http/cronograma.service';
 export class ConsultarTramiteComponent implements OnInit {
 
   public resultado = null;
-  public cuil: number = 20375584973;
+  public cuil: number;
   
   public faCalendar = faCalendarAlt;
   public faMapMarker = faMapMarkerAlt;
@@ -23,7 +23,7 @@ export class ConsultarTramiteComponent implements OnInit {
   public consultar() {
     this._http.getOne(this.cuil)
       .subscribe( 
-        data => this.resultado = data,
+        data => {this.resultado = data; console.log(data)},
         err => this.resultado = false
       )
   }

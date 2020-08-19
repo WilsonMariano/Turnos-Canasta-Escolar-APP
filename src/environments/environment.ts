@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  //apiUrl: 'http://www.c1511496.ferozo.com/diaDelNinoAPI'
   apiUrl: 'http://localhost:8080'
 };
 

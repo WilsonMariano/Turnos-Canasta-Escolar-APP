@@ -1,0 +1,22 @@
+/* Botones del paginado */
+
+tr td i.mdi,
+.page-link {
+    cursor: pointer;
+}
+
+button.page-link,
+button.page-link:hover {
+    color: #67757c !important;
+    font-weight: 300;
+}
+
+.table td,
+.table th {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.text-green {
+    color: green;
+}

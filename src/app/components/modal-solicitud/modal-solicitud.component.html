@@ -1,0 +1,60 @@
+<div class="modal" id="modalSolicitud" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header modal-header-secondary">
+        <h5 class="modal-title">Cambiar estado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="forma" (ngSubmit)="submit()">
+        <div class="modal-body" *ngIf="solicitud != null">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="alert alert-warning">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>{{solicitud.apellido +' '+ solicitud.nombre }}</td>
+                      <td>{{solicitud.puntoEntrega}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <select id="estado" class="form-control" formControlName="estado" (change)="changeEstado()">
+                  <option *ngFor="let estado of _data.estadosSolicitud" [value]="estado.clave">{{estado.valor}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="fecha">Fecha</label>
+                <input type="date" class="form-control" id="fecha" formControlName="fechaEntrega">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="hora">Hora</label>
+                <input type="time" class="form-control" id="hora" formControlName="horaEntrega">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" cols="30" rows="5" class="form-control" formControlName="observaciones"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-secondary">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

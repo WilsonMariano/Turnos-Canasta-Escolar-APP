@@ -52,4 +52,15 @@ export class GenericService {
       { params }
     );
   }  
+
+  public putOne(entity: String, obj): Observable<any> {
+
+    let params = new HttpParams()
+      .set('t', entity.toString());
+
+    return this._http.put(`${environment.apiUrl}/generic/put`, 
+      obj,
+      { params }
+    );
+  }
 }
