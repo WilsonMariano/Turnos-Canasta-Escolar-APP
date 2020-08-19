@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/http/usuario.service';
+import { FxGlobalsService } from 'src/app/services/fx-globals.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router,
+    private _http: UsuarioService,
+    private _fx: FxGlobalsService) { }
 
   ngOnInit() {
   }
@@ -17,8 +22,14 @@ export class LoginComponent implements OnInit {
     let email = emailCtrl.control.value;
     let password = passwordCtrl.control.value;
 
-    console.log(email, password);
-    this._router.navigate(['/admin/grilla-solicitudes']);
+    this._http.login(email, password)
+      .subscribe(
+        data => {
+          localStorage.setItem('token', data);
+          this._router.navigate(['/admin/grilla-solicitudes']);
+        },
+        err => this._fx.alert("Usuario inválido", "Los datos ingresados son incorrectos", "error")
+      );
   }
 
 }

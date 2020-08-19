@@ -57,6 +57,7 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
     if(this.forma.get('estado').value !== 'ESTADO_SOLICITUD_2') {
       this.forma.get('fechaEntrega').disable();
       this.forma.get('horaEntrega').disable();
+      
     } else {
       this.forma.get('fechaEntrega').enable();
       this.forma.get('horaEntrega').enable();

@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
+import { AuthModule } from '../services/auth/auth.module';
 import { PAGES_AFILI_ROUTES } from './afiliados/pages-afiliados.routes';
 import { PAGES_ADMIN_ROUTES } from './admin/pages-admin.routes';
 
@@ -42,7 +43,8 @@ import { GrillaSolicitudesComponent } from './admin/grilla-solicitudes/grilla-so
     PAGES_ADMIN_ROUTES,
     FontAwesomeModule,
     SharedModule,
-    ComponentsModule
+    ComponentsModule,
+    AuthModule
   ],
   exports: [
     PagesAfiliadosComponent
