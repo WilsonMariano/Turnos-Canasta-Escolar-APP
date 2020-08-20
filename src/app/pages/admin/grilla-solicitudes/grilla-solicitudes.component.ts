@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 declare var $;
 
 @Component({
@@ -15,14 +16,14 @@ export class GrillaSolicitudesComponent implements OnInit {
   public objSolicitud = null;
 
   public arrAttr = [
-    { 'attr': 'id',           'type': 'Number' }, 
-    { 'attr': 'fechaAlta',    'type': 'Date'   }, 
-    { 'attr': 'numAfiliado',  'type': 'Number' },
-    { 'attr': 'cuil',         'type': 'Number' },
-    { 'attr': 'apellido',     'type': 'String' },
-    { 'attr': 'nombre',       'type': 'String' }, 
+    { 'attr': 'id', 'type': 'Number' },
+    { 'attr': 'fechaAlta', 'type': 'Date' },
+    { 'attr': 'numAfiliado', 'type': 'Number' },
+    { 'attr': 'cuil', 'type': 'Number' },
+    { 'attr': 'apellido', 'type': 'String' },
+    { 'attr': 'nombre', 'type': 'String' },
     { 'attr': 'puntoEntrega', 'type': 'String' },
-    { 'attr': 'nombreEstado',       'type': 'String' }
+    { 'attr': 'nombreEstado', 'type': 'String' }
   ];
 
 
@@ -34,27 +35,33 @@ export class GrillaSolicitudesComponent implements OnInit {
     'arrAttr': this.arrAttr,
     'arrControls': this.arrControls,
     'buttons': [
-      { 'url': 'admin/cambiar-estado', 'title': 'Cambiar estado' }
+      { 'url': 'admin/cambiar-estado', 'title': 'Cambiar estado' },
+      { 'url': 'admin/grilla-familiares', 'title': 'Ver solicitud' }
     ],
     'reload': null
   }
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
 
   public handleEvents(event) {
     console.log(event);
-    
-    if(event.control == 'Cambiar estado') {
-      this.objSolicitud = event.obj;
-      $("#modalSolicitud").modal("show");
+
+    switch (event.control) {
+      case 'Cambiar estado':
+        this.objSolicitud = event.obj;
+        $("#modalSolicitud").modal("show");
+      break;
+      case 'Ver solicitud':
+        this._router.navigate(['admin/solicitud', event.obj.idTitular]);
+      break;
     }
   }
 
   public editSuccess(result) {
-    if(result) {
+    if (result) {
       $("#modalSolicitud").modal("hide");
       this.reloadGrid.next();
     }

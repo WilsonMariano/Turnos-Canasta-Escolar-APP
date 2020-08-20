@@ -20,6 +20,16 @@ export class GenericService {
     );
   }
 
+  public getOne(entity: String, id: number): Observable<any> {
+
+    let params = new HttpParams()
+      .set('t', entity.toString());
+
+    return this._http.get(`${environment.apiUrl}/generic/one/${id}`, 
+      { params }
+    );
+  }
+
   public getWithPaged(entity: String, rows: Number, page: Number, arrFilterParams?: any): Observable<any> {
 
     let params = new HttpParams()

@@ -8,6 +8,8 @@ import { StateService } from './state.service';
 import { SolicitudService } from './http/solicitud.service';
 import { CronogramaService } from './http/cronograma.service';
 import { UsuarioService } from './http/usuario.service';
+import { TitularesService } from './http/titulares.service';
+import { FamiliaresService } from './http/familiares.service';
 
 
 
@@ -22,6 +24,8 @@ import { UsuarioService } from './http/usuario.service';
     SolicitudService,
     CronogramaService,
     UsuarioService,
+    TitularesService,
+    FamiliaresService,
     DataService,
     FxGlobalsService,
     StateService

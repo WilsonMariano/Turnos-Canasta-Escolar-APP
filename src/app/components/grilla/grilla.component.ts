@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { GenericService } from 'src/app/services/http/generic.service';
 import { Observable, Subscription } from 'rxjs';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 declare var $ : any;
 
@@ -50,6 +51,9 @@ export class GrillaComponent implements OnInit, OnDestroy {
 
   public arrViewDetails = [];
 
+  public faSpinner = faSpinner;
+  public showSpinner = false;
+
 
 
   constructor(private _http: GenericService) { }
@@ -84,7 +88,8 @@ export class GrillaComponent implements OnInit, OnDestroy {
      Se usa también cuando se filtra la tabla, pasando como parámetro el objeto de filtros.
      ***********************************************************************************************************************************/
     public getObjects() {
-    
+    this.showSpinner = true;
+
     this._http.getWithPaged(this.options['entity'], this.rowsWithPage, this.numPage-1, this.filterParams).subscribe(
       data => {
 
@@ -94,8 +99,9 @@ export class GrillaComponent implements OnInit, OnDestroy {
         this.arrObjects = data.data;
         this.totalResults = data.total_rows;
         this.genControlsPaginate( data.total_pages );
+        setTimeout(() => this.showSpinner = false, 500);
       },
-      e => console.log(e)
+      err => this.showSpinner = false
     );
   }
 

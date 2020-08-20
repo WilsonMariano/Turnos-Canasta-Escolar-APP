@@ -19,6 +19,7 @@ import { ConsultarTramiteComponent } from './afiliados/consultar-tramite/consult
 import { PagesAdminComponent } from './admin/pages-admin.component';
 import { LoginComponent } from './admin/login/login.component';
 import { GrillaSolicitudesComponent } from './admin/grilla-solicitudes/grilla-solicitudes.component';
+import { SolicitudComponent } from './admin/solicitud/solicitud.component';
 
 
 
@@ -33,7 +34,8 @@ import { GrillaSolicitudesComponent } from './admin/grilla-solicitudes/grilla-so
     ConsultarTramiteComponent,
     PagesAdminComponent,
     LoginComponent,
-    GrillaSolicitudesComponent
+    GrillaSolicitudesComponent,
+    SolicitudComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-5">Solicitud</h2>
+            <hr>
+        </div>
+        <div class="col-md-4">
+            <div class="card" *ngIf="titular">
+                <div class="card-header text-center titular">
+                    <h5>Titular</h5>
+                </div>
+                <div class="card-body">
+                    <p><span class="badge badge-primary">Afiliado</span> {{titular.numAfiliado}}</p>
+                    <p><span class="badge badge-primary">CUIL</span> {{titular.cuil}}</p>
+                    <p><span class="badge badge-primary">Nombre</span> {{titular.apellido +' '+ titular.nombre}}</p>
+                    <p><span class="badge badge-primary">Domicilio</span> {{titular.domicilio}}</p>
+                    <p><span class="badge badge-primary">Localidad</span> {{titular.localidad}}</p>
+                    <p><span class="badge badge-primary">Email</span> {{titular.email}}</p>
+                    <p><span class="badge badge-primary">CUIT</span> {{titular.cuitEmpresa}}</p>
+                    <p><span class="badge badge-primary">Razón social</span> {{titular.razonSocialEmpresa}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" *ngFor="let familiar of familiares">
+            <div class="card">
+                <div class="card-header text-center familiar">
+                    <h5>Familiar</h5>
+                </div>
+                <div class="card-body">
+                    <p><span class="badge badge-info">DNI</span> {{familiar.dni}}</p>
+                    <p><span class="badge badge-info">Nombre</span> {{familiar.apellido +' '+ familiar.nombre}}</p>
+                    <p><span class="badge badge-info">Nacimiento</span> {{familiar.fechaNacimiento | date:'dd-MM-yyyy'}}</p>
+                    <p><span class="badge badge-info">Edad</span> {{familiar.edad}} años</p>
+                    <p><span class="badge badge-info">Educación</span> {{familiar.nivelEducacion}}</p>
+                    <p><span class="badge badge-info">Sexo</span> {{familiar.sexo == 'f'? 'Femenino' : 'Masculino'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

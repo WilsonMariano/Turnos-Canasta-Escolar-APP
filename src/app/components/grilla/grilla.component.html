@@ -10,31 +10,37 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td *ngFor="let c of options['arrAttr']"><input class="form-control form-control-sm" type="text" [id]="c.attr" (keyup)="filter($event)"></td>
-            <ng-container *ngIf="options['buttons'] != undefined">
-                <td *ngFor="let c of options['buttons']"></td>
+            <tr>
+                <td *ngFor="let c of options['arrAttr']"><input class="form-control form-control-sm" type="text" [id]="c.attr" (keyup)="filter($event)"></td>
+                <ng-container *ngIf="options['buttons'] != undefined">
+                    <td *ngFor="let c of options['buttons']"></td>
+                </ng-container>
+            </tr>
+            <ng-container *ngIf="!showSpinner">
+                <tr *ngFor="let obj of arrObjects">
+                    <ng-container *ngFor="let item of options['arrAttr']">
+                        <td *ngIf="item.type == 'Date'">{{obj[item.attr] | date:'dd-MM-yyyy'}}</td>
+                        <td *ngIf="item.type != 'Date'">{{obj[item.attr]}}</td>
+                    </ng-container>
+                    <!--td *ngIf="options['btnDetails']" (click)="openModalDetalle(obj)"><i class="mdi mdi-eye"></i></td-->
+                    <ng-container *ngIf="options['buttons'] != undefined">
+                        <td *ngFor="let c of options['buttons']">
+                            <button class="btn btn-sm btn-primary" (click)="evenEmit(c.title, obj)">{{c.title}}</button>
+                        </td>
+                        <!--td *ngFor="let c of options['buttons']"><i [class]="c.icon"></i></td-->
+                    </ng-container>
+                    <!--td *ngIf="options['delete'] != undefined" (click)="delete(obj.id)"><i [class]="options['delete'].icon"></i></td-->
+                </tr>
+                <tr *ngIf="arrObjects.length == 0">
+                    <td><i class="mdi mdi-alert"></i> No se encontraron resultados...</td>
+                </tr>
             </ng-container>
-        </tr>
-        <tr *ngFor="let obj of arrObjects">
-            <ng-container *ngFor="let item of options['arrAttr']">
-                <td *ngIf="item.type == 'Date'">{{obj[item.attr] | date:'dd-MM-yyyy'}}</td>
-                <td *ngIf="item.type != 'Date'">{{obj[item.attr]}}</td>
-            </ng-container>
-            <!--td *ngIf="options['btnDetails']" (click)="openModalDetalle(obj)"><i class="mdi mdi-eye"></i></td-->
-            <ng-container *ngIf="options['buttons'] != undefined">
-                <td *ngFor="let c of options['buttons']">
-                    <button class="btn btn-sm btn-primary" (click)="evenEmit(c.title, obj)">{{c.title}}</button>
-                </td>
-                <!--td *ngFor="let c of options['buttons']"><i [class]="c.icon"></i></td-->
-            </ng-container>
-            <!--td *ngIf="options['delete'] != undefined" (click)="delete(obj.id)"><i [class]="options['delete'].icon"></i></td-->
-        </tr>
-        <tr *ngIf="arrObjects.length == 0">
-            <td><i class="mdi mdi-alert"></i> No se encontraron resultados...</td>
-        </tr>
     </tbody>
 </table>
+<div *ngIf="showSpinner" class="text-center">
+    <fa-icon [icon]="faSpinner" [spin]="true" size="3x"></fa-icon>
+    <p>Cargando...</p>  
+</div>
 
 <nav aria-label="Page navigation example" *ngIf="arrObjects.length != 0">
     <ul class="pagination pagination-sm">
@@ -47,5 +53,4 @@
 
 
 
-<!--<app-modal-detalle-grilla [input]="arrViewDetails"></app-modal-detalle-grilla>
-<app-spinner></app-spinner>-->
+<!--<app-modal-detalle-grilla [input]="arrViewDetails"></app-modal-detalle-grilla>-->

@@ -5,6 +5,7 @@ import { AuthGuardService as AuthGuard } from 'src/app/services/auth/auth-guard.
 import { PagesAdminComponent } from './pages-admin.component';
 import { LoginComponent } from './login/login.component';
 import { GrillaSolicitudesComponent } from './grilla-solicitudes/grilla-solicitudes.component';
+import { SolicitudComponent } from './solicitud/solicitud.component';
 
 
 const pagesRoutes: Routes = [
@@ -14,7 +15,8 @@ const pagesRoutes: Routes = [
         children: [
             { path: '',                             redirectTo: '/login',                   pathMatch: 'full'                            },
             { path: 'login',                        component: LoginComponent,                                          data: { titulo: 'Login' }        },
-            { path: 'grilla-solicitudes',           component: GrillaSolicitudesComponent,  canActivate: [AuthGuard],   data: { titulo: 'Grilla de solicitudes' }        }
+            { path: 'grilla-solicitudes',           component: GrillaSolicitudesComponent,  canActivate: [AuthGuard],   data: { titulo: 'Grilla de solicitudes' }},
+            { path: 'solicitud/:id',                component: SolicitudComponent,   canActivate: [AuthGuard],          data: { titulo: 'Datos de la solicitud' }}
         ]
     }
 ];
