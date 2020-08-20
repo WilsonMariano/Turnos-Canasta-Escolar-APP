@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { FxGlobalsService } from 'src/app/services/fx-globals.service';
 declare var $;
 
 @Component({
@@ -41,7 +42,9 @@ export class GrillaSolicitudesComponent implements OnInit {
     'reload': null
   }
 
-  constructor(private _router: Router) { }
+  constructor(
+    private _router: Router,
+    private _fx: FxGlobalsService) { }
 
   ngOnInit() {
   }
@@ -55,7 +58,8 @@ export class GrillaSolicitudesComponent implements OnInit {
         $("#modalSolicitud").modal("show");
       break;
       case 'Ver solicitud':
-        this._router.navigate(['admin/solicitud', event.obj.idTitular]);
+        this._router.navigate(['admin/solicitud', event.obj.idTitular, event.obj.id]);
+
       break;
     }
   }
@@ -63,6 +67,7 @@ export class GrillaSolicitudesComponent implements OnInit {
   public editSuccess(result) {
     if (result) {
       $("#modalSolicitud").modal("hide");
+      this._fx.showToast('Solicitud editada correctamente!', 'success');
       this.reloadGrid.next();
     }
   }

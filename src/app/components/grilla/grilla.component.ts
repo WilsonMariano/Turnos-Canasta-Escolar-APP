@@ -90,7 +90,7 @@ export class GrillaComponent implements OnInit, OnDestroy {
     public getObjects() {
     this.showSpinner = true;
 
-    this._http.getWithPaged(this.options['entity'], this.rowsWithPage, this.numPage-1, this.filterParams).subscribe(
+    this._http.getWithPaged(this.options['entity'], this.rowsWithPage, this.numPage-1, this.filterParams, false).subscribe(
       data => {
 
 

@@ -4,6 +4,23 @@
             <h2 class="mt-5">Solicitud</h2>
             <hr>
         </div>
+    </div>
+    <div class="card" *ngIf="solicitud">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <b>Estado:</b> {{solicitud.nombreEstado}}
+                </div>
+                <div class="col-md-4">
+                    <b>F. entrega:</b> {{solicitud.fechaEntrega | date:'dd-MM-yyyy' +' '+ solicitud.horaEntrega}}
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-secondary float-right" (click)="abrirModalSolicitud()">Cambiar estado</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <div class="row mt-4">
         <div class="col-md-4">
             <div class="card" *ngIf="titular">
                 <div class="card-header text-center titular">
@@ -36,5 +53,14 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12 mt-4">
+            <div class="card" *ngIf="solicitud">
+                <div class="card-body">
+                    <b>Observaciones: </b> {{solicitud.observaciones}}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<app-modal-solicitud [solicitud]="solicitud" (success)="editSuccess($event)"></app-modal-solicitud>

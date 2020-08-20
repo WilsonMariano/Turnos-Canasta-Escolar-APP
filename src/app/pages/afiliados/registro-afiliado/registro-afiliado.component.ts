@@ -135,7 +135,7 @@ export class RegistroAfiliadoComponent implements OnInit {
     let exists = await this._httpEmpresa.getOne(cuit).toPromise();
     
     if(exists) {
-      this._fx.alert("Empresa con delegado", "Los productos serán entregados por el delegado de tu empresa", "warning");
+      this._fx.showAlert("Empresa con delegado", "Los productos serán entregados por el delegado de tu empresa", "warning", 500);
     }
     return exists;
   }

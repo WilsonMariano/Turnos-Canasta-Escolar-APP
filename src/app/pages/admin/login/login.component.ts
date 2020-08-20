@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', data);
           this._router.navigate(['/admin/grilla-solicitudes']);
         },
-        err => this._fx.alert("Usuario inválido", "Los datos ingresados son incorrectos", "error")
+        err => this._fx.showAlert("Usuario inválido", "Los datos ingresados son incorrectos", "error", 500)
       );
   }
 

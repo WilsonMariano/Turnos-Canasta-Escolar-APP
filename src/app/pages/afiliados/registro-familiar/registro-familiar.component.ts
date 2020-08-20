@@ -53,7 +53,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
         if (this._state.buscarFamiliar(this.forma.getRawValue())) {
 
-          this._fx.alert("No se pudo agregar al familiar", "El dni ingresado ya se ha registrado anteriormente", "warning");
+          this._fx.showAlert("No se pudo agregar al familiar", "El dni ingresado ya se ha registrado anteriormente", "warning", 500);
 
         } else {
           this._state.guardarFamiliar(this.forma.getRawValue());
@@ -75,7 +75,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       .then(() => {
         this._state.editarFamiliar(this.edicion, this.forma.getRawValue());
 
-        this._fx.alert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
+        this._fx.showAlert("Operación exitosa", "El familiar se ha editado exitosamente", "success");
         this._router.navigate(['afiliados/listado-carga']);
       })
       .catch(() => { });

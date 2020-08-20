@@ -13,10 +13,10 @@ const pagesRoutes: Routes = [
         path: 'admin',
         component: PagesAdminComponent,
         children: [
-            { path: '',                             redirectTo: '/login',                   pathMatch: 'full'                            },
-            { path: 'login',                        component: LoginComponent,                                          data: { titulo: 'Login' }        },
-            { path: 'grilla-solicitudes',           component: GrillaSolicitudesComponent,  canActivate: [AuthGuard],   data: { titulo: 'Grilla de solicitudes' }},
-            { path: 'solicitud/:id',                component: SolicitudComponent,   canActivate: [AuthGuard],          data: { titulo: 'Datos de la solicitud' }}
+            { path: '',                                     redirectTo: '/login',                   pathMatch: 'full'                            },
+            { path: 'login',                                component: LoginComponent,                                          data: { titulo: 'Login' }        },
+            { path: 'grilla-solicitudes',                   component: GrillaSolicitudesComponent,  canActivate: [AuthGuard],   data: { titulo: 'Grilla de solicitudes' }},
+            { path: 'solicitud/:idTitular/:idSolicitud',    component: SolicitudComponent,          canActivate: [AuthGuard],   data: { titulo: 'Datos de la solicitud' }}
         ]
     }
 ];
