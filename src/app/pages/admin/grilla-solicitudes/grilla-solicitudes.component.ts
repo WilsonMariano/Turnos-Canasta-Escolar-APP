@@ -55,7 +55,7 @@ export class GrillaSolicitudesComponent implements OnInit {
     switch (event.control) {
       case 'Cambiar estado':
         this.objSolicitud = event.obj;
-        $("#modalSolicitud").modal("show");
+        $("#modalSolicitud").modal({backdrop: 'static', keyboard: false});
       break;
       case 'Ver solicitud':
         this._router.navigate(['admin/solicitud', event.obj.idTitular, event.obj.id]);

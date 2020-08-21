@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { finalize } from 'rxjs/operators';
@@ -65,18 +65,18 @@ export class GenericService {
     }
     // Fin de generación de parámetros
     
-
     return this._http.get( `${environment.apiUrl}/generic/paged`, 
       { params }
     ).pipe(finalize(() => this._fx.hideSpinner(500)));
   }  
 
   public putOne(entity: String, obj): Observable<any> {
-
+    
     this._fx.showSpinner();
 
     let params = new HttpParams()
-      .set('t', entity.toString());
+      .set('t', entity.toString())
+      .set('token', localStorage.getItem('token').toString());
 
     return this._http.put(`${environment.apiUrl}/generic/put`, 
       obj,

@@ -61,7 +61,7 @@ export class SolicitudComponent implements OnInit, OnDestroy {
       );
   }
 
-  public abrirModalSolicitud = () => $("#modalSolicitud").modal("show");
+  public abrirModalSolicitud = () => $("#modalSolicitud").modal({backdrop: 'static', keyboard: false});
 
   public editSuccess(result) {
     if(result) {

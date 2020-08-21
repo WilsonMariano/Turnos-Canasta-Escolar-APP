@@ -11,6 +11,8 @@ import { AlertComponent } from './alert/alert.component';
 import { GrillaComponent } from './grilla/grilla.component';
 import { ModalSolicitudComponent } from './modal-solicitud/modal-solicitud.component';
 import { LoadingComponent } from './loading/loading.component';
+import { NavAdminComponent } from './nav-admin/nav-admin.component';
+
 
 
 
@@ -21,7 +23,8 @@ import { LoadingComponent } from './loading/loading.component';
     AlertComponent,
     GrillaComponent,
     ModalSolicitudComponent,
-    LoadingComponent
+    LoadingComponent,
+    NavAdminComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { LoadingComponent } from './loading/loading.component';
     AlertComponent,
     GrillaComponent,
     ModalSolicitudComponent,
-    LoadingComponent
+    LoadingComponent,
+    NavAdminComponent
   ],
   providers: [
     NgxSpinnerService

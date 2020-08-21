@@ -17,15 +17,17 @@ export class ConsultarTramiteComponent implements OnInit {
 
   constructor(private _http: CronogramaService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public consultar() {
-    this._http.getOne(this.cuil)
-      .subscribe( 
-        data => {this.resultado = data; console.log(data)},
-        err => this.resultado = false
-      )
-  }
+    if(this.cuil != null) {
+      this._http.getOne(this.cuil)
+        .subscribe( 
+          data => 
+            setTimeout(() => this.resultado = data, 500),
+          err => this.resultado = false
+        )
+    }
+    } 
 
 }

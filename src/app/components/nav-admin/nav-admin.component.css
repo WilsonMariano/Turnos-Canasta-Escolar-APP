@@ -1,0 +1,12 @@
+.nav.nav-admin {
+    padding: 10px;
+    background: #6c9ebe;
+}
+
+.nav.nav-admin li a {
+    color: #fff;
+}
+
+.nav.nav-admin li a:hover {
+    color: #005387;
+}

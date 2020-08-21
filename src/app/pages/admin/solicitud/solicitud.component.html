@@ -1,3 +1,4 @@
+<app-nav-admin></app-nav-admin>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -8,13 +9,16 @@
     <div class="card" *ngIf="solicitud">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <b>Estado:</b> {{solicitud.nombreEstado}}
                 </div>
-                <div class="col-md-4">
-                    <b>F. entrega:</b> {{solicitud.fechaEntrega | date:'dd-MM-yyyy' +' '+ solicitud.horaEntrega}}
+                <div class="col-md-3">
+                    <b>Punto:</b> {{solicitud.puntoEntrega}}
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <b>F. entrega:</b> {{(solicitud.fechaEntrega | date:'dd-MM-yyyy' +' '+ solicitud.horaEntrega) || 'sin asignar'}}
+                </div>
+                <div class="col-md-3">
                     <button class="btn btn-secondary float-right" (click)="abrirModalSolicitud()">Cambiar estado</button>
                 </div>
             </div>

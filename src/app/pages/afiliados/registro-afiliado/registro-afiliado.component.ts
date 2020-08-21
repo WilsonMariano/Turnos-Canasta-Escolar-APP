@@ -70,6 +70,7 @@ export class RegistroAfiliadoComponent implements OnInit {
         
         if(!tieneDelegado) {
           this._state.guardarTitular(this.forma.getRawValue());
+          this._fx.showToast("Titular agregado correctamente", "success");
 
           if(this._state.consultarFamiliares().length == 0) {
             this.router.navigate(['afiliados/registro-familiar']);
