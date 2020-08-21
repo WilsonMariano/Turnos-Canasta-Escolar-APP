@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: './diaDelNinoAPI'
+  apiUrl: 'http://www.secab-ddjj.com.ar/api_dia_del_nino'
 };

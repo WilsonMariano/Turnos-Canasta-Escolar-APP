@@ -7,9 +7,9 @@
             <tbody>
               <tr>
                 <td>{{titular.nombre +" "+ titular.apellido}}</td>
-                <td>{{'cuil ' + titular.cuil}}</td>
-                <td>{{'email ' + titular.email}}</td>
-                <td>{{'celular ' + titular.celular}}</td>
+                <td><span class="badge badge-info">Cuil</span> {{titular.cuil}}</td>
+                <td><span class="badge badge-info">Email</span> {{titular.email}}</td>
+                <td><span class="badge badge-info">Celular</span> {{titular.celular}}</td>
                 <td class="text-right"><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')"></fa-icon></td>
               </tr>
             </tbody>
@@ -23,8 +23,8 @@
                 <tbody>
                   <tr *ngFor="let familiar of familiares">
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
-                    <td>{{familiar.dni}}</td>
-                    <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
+                    <td><span class="badge badge-info">Dni</span> {{familiar.dni}}</td>
+                    <td><span class="badge badge-info">Estudios</span> {{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
                     <td class="text-right">
                       <fa-icon [icon]="faTrash" class="mr-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
                       <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>

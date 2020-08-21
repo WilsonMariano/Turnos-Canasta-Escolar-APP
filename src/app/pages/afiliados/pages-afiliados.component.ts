@@ -6,7 +6,7 @@ import { RoutesService } from 'src/app/services/shared/routes.service';
 @Component({
   selector: 'app-pages-afiliados',
   templateUrl: './pages-afiliados.component.html',
-  styles: []
+  styleUrls: ['./pages-afiliados.component.css']
 })
 export class PagesAfiliadosComponent implements OnInit {
 
