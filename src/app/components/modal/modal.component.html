@@ -12,21 +12,15 @@
             <thead>
               <tr>
                 <th>Nombre</th>
+                <th>DNI</th>
                 <th>Edad</th>
-                <th>Útiles</th>
-                <th>Juguete</th>
+                <th>Nacimiento</th>
               </tr>
               <tr *ngFor="let familiar of familiares">
                 <td>{{familiar.nombre +' '+ familiar.apellido}}</td>
+                <td>{{familiar.dni}}</td>
                 <td>{{familiar.edad}}</td>
-                <td>
-                  <span class="badge badge-pill badge-success"  *ngIf="familiar.edad >= 4 && familiar.edad <= 18">Si</span>
-                  <span class="badge badge-pill badge-danger"   *ngIf="!(familiar.edad >= 4 && familiar.edad <= 18)">No</span>
-              </td>
-                <td>
-                  <span class="badge badge-pill badge-success"  *ngIf="familiar.edad >= 0 && familiar.edad <= 12">Si</span>
-                  <span class="badge badge-pill badge-danger"   *ngIf="!(familiar.edad >= 0 && familiar.edad <= 12)">No</span>
-                </td>
+                <td>{{familiar.fechaNacimiento}}</td>
               </tr>
             </thead>
           </table>
