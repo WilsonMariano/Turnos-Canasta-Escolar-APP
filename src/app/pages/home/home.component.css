@@ -6,26 +6,15 @@
     background-color: rgba(0,83,135,0.05);
 }
 
-@media (max-width: 640px) {
-    .carousel-caption {
-        width: 100%;
-    }
+@media (max-width: 1000px) {
 
-    .carousel-caption .texto {
-        display: none !important;
+    .carousel-caption {
+        width: 100% !important;
     }
 
     .img-carousel {
         height: 400px !important;
     }
-    
-   /* h5 {
-        font-size: 2rem !important;
-        color: #1c5198;
-    }*/
-
-
-    
 }
 
 div.card-body {

@@ -3,6 +3,7 @@ import { StateService } from '../../services/state.service';
 import { Router } from '@angular/router';
 import { FxGlobalsService } from 'src/app/services/fx-globals.service';
 import { SolicitudService } from 'src/app/services/http/solicitud.service';
+import { DataService } from 'src/app/services/data.service';
 declare var $;
 
 @Component({
@@ -20,7 +21,8 @@ export class ModalComponent implements OnChanges {
     private _state: StateService,
     private _router: Router,
     private _fx: FxGlobalsService,
-    private _http: SolicitudService
+    private _http: SolicitudService,
+    public _data: DataService
   ) { }
 
   ngOnChanges() {

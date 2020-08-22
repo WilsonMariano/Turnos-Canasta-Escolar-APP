@@ -41,6 +41,10 @@ export class FxGlobalsService {
   }
 
   public showToast(text: string, method: string) {
+
+    toastr.options = {
+      "positionClass": "toast-right-center"
+    };
     toastr.success(text);
   }
 

@@ -8,19 +8,21 @@
           </button>
         </div>
         <div class="modal-body">
-          <table class="table">
+          <h4>Datos de los hijos</h4>
+          <hr>
+          <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Nombre</th>
                 <th>DNI</th>
                 <th>Edad</th>
-                <th>Nacimiento</th>
+                <th>Educación</th>
               </tr>
               <tr *ngFor="let familiar of familiares">
                 <td>{{familiar.nombre +' '+ familiar.apellido}}</td>
                 <td>{{familiar.dni}}</td>
                 <td>{{familiar.edad}}</td>
-                <td>{{familiar.fechaNacimiento}}</td>
+                <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion).valor}}</td>
               </tr>
             </thead>
           </table>
