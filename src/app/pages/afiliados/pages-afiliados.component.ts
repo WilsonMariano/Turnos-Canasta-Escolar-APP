@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { RoutesService } from 'src/app/services/shared/routes.service';
+import { DataService } from 'src/app/services/data.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class PagesAfiliadosComponent implements OnInit {
   public alert = true;
 
   constructor(
+    private _data: DataService,
     private _router: Router,
     private _routes: RoutesService) { }
 

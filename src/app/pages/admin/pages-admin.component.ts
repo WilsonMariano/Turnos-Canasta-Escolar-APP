@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-pages-admin',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagesAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(_data: DataService) { }
 
   ngOnInit() {
   }
