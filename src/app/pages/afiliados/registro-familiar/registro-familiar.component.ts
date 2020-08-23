@@ -109,8 +109,5 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
   public navigateTo(url: string) {
     this._router.navigate([url]);
   }
-
-  public validarCampoEducacion() {
-    console.log("change");
-  }
+  
 }

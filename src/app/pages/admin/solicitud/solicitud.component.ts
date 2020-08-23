@@ -43,21 +43,21 @@ export class SolicitudComponent implements OnInit, OnDestroy {
   private traerTitular(id: number) {
     this._httpGeneric.getOne('Titulares', id)
       .subscribe(
-        data => {this.titular = data; console.log(data)}
+        data => this.titular = data
       );
   }
 
   private traerFamiliares(idTitular: number) {
     this._httpFamiliares.getAll(idTitular)
       .subscribe(
-        data => {this.familiares = data; console.log(data)}
+        data => this.familiares = data
       );
   }
 
   private traerSolicitud(idSolicitud: number) {
     this._httpGeneric.getOne('vwSolicitudes', idSolicitud)
       .subscribe(
-        data => { this.solicitud = data; console.log(data) }
+        data => this.solicitud = data
       );
   }
 

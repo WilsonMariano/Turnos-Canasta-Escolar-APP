@@ -28,7 +28,6 @@ export class JumbotronComponent implements OnInit {
   }
 
   private cargarTitulos() {
-    
     this._routes.pages.map(page => {
       if(page.url == this._router.url){
         this.title = page.title

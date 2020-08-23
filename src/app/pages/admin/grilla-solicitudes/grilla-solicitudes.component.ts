@@ -50,7 +50,6 @@ export class GrillaSolicitudesComponent implements OnInit {
   }
 
   public handleEvents(event) {
-    console.log(event);
 
     switch (event.control) {
       case 'Cambiar estado':

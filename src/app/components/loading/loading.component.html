@@ -1,1 +1,8 @@
-<ngx-spinner bdColor = "rgb(0,83,135)" size = "medium" color = "#fff" type = "square-jelly-box" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+<ngx-spinner 
+    [bdColor] = "bdColor"
+    [size] = "size"
+    [color] = "color"
+    [type] = "type"
+    [fullScreen] = "fullScreen">
+    <p style="color: white">{{text}}</p>
+</ngx-spinner>

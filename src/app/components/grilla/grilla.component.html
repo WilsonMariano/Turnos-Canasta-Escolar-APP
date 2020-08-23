@@ -1,7 +1,7 @@
 <p class="text-muted mt-3">
-
-    <small>Mostrando <b>1-{{rowsWithPage}}</b> de <b>{{totalResults}}</b> elementos</small></p>
-
+    <small>Mostrando <b>1-{{rowsWithPage}}</b> de <b>{{totalResults}}</b> elementos</small>
+</p>
+<!-- Tabla -->
 <table class="table table-borderless table-striped table-responsive table-sm mt-3">
     <thead>
         <tr>
@@ -22,14 +22,11 @@
                         <td *ngIf="item.type == 'Date'">{{obj[item.attr] | date:'dd-MM-yyyy'}}</td>
                         <td *ngIf="item.type != 'Date'">{{obj[item.attr]}}</td>
                     </ng-container>
-                    <!--td *ngIf="options['btnDetails']" (click)="openModalDetalle(obj)"><i class="mdi mdi-eye"></i></td-->
                     <ng-container *ngIf="options['buttons'] != undefined">
                         <td *ngFor="let c of options['buttons']">
                             <button class="btn btn-sm btn-primary" (click)="evenEmit(c.title, obj)">{{c.title}}</button>
                         </td>
-                        <!--td *ngFor="let c of options['buttons']"><i [class]="c.icon"></i></td-->
                     </ng-container>
-                    <!--td *ngIf="options['delete'] != undefined" (click)="delete(obj.id)"><i [class]="options['delete'].icon"></i></td-->
                 </tr>
                 <tr *ngIf="arrObjects.length == 0">
                     <td><i class="mdi mdi-alert"></i> No se encontraron resultados...</td>
@@ -37,11 +34,14 @@
             </ng-container>
     </tbody>
 </table>
+
+<!-- Spinner -->
 <div *ngIf="showSpinner" class="text-center">
     <fa-icon [icon]="faSpinner" [spin]="true" size="3x"></fa-icon>
     <p>Cargando...</p>  
 </div>
 
+<!-- Paginado -->
 <nav aria-label="Page navigation example" *ngIf="arrObjects.length != 0">
     <ul class="pagination pagination-sm">
         <li class="page-item"><button class="page-link" (click)="paginate('prev')" [disabled]="numPage == arrPaginate[0]">Anterior</button></li>
@@ -50,7 +50,3 @@
     </ul>
 </nav>
 
-
-
-
-<!--<app-modal-detalle-grilla [input]="arrViewDetails"></app-modal-detalle-grilla>-->

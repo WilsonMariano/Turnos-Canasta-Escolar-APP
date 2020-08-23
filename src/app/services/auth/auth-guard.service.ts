@@ -13,9 +13,6 @@ export class AuthGuardService implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-
-    console.log(this._auth.isLogued());
-
     if(!this._auth.isLogued()) {
       alert("No se encuentra logueado");
       this.router.navigate(['admin/login']);

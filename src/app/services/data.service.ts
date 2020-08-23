@@ -19,7 +19,7 @@ export class DataService {
     private traerPuntosEntrega() {
       this._httpGeneric.getAll('LugaresEntrega')
         .subscribe(
-          data => {this.puntosEntrega = this.lnglatTransform(data); console.log(data)},
+          data => this.puntosEntrega = this.lnglatTransform(data),
           err => console.error(err)
         );
     }
@@ -31,7 +31,7 @@ export class DataService {
           txt: 'NIVEL_EDUCACION'
         }])
         .subscribe(
-          data => {this.nivelesEducacion = data.data; console.log(data)},
+          data => this.nivelesEducacion = data.data,
           err => console.error(err)
         );
     }
@@ -43,7 +43,7 @@ export class DataService {
           txt: 'ESTADO_SOLICITUD'
         }])
         .subscribe(
-          data => {this.estadosSolicitud = data.data; console.log(data)},
+          data => this.estadosSolicitud = data.data,
           err => console.error(err)
         );
     }

@@ -83,39 +83,36 @@ export class RegistroAfiliadoComponent implements OnInit {
       .catch(() => {});
   }
 
-
-  /*************MEJORAR FUNCIÓN******************/
   public validarCuit(control: FormControl) {
 
-    let cuit = control.value;
-
-    let error = {
-      cuitInvalid: true
-    };
+    const cuit = control.value;
+    const error = { cuitInvalid: true };
 
     //Compruebo que tenga 11 digitos
     if(cuit == undefined || !/[0-9]{11}/.test(cuit.toString()))
       return error;
 
-    let cadena: string = cuit.toString();
-    let coeficiente: string = "5432765432"
-    let suma = 0;
+    const cuitStr = cuit.toString();
+    const verificador = parseInt(cuitStr[10]);
+    const coeficiente = "54327654320";
 
-    for(let i = 0; i < cadena.length-1; i++) {
-      suma += parseInt(cadena[i]) * parseInt(coeficiente[i]);
-    }
-    
-    let resto = suma % 11;
+    //  Mutiplico cada posicion del cuit por la misma posicion del coeficiente
+    const arrMultiplicado = Array.from(cuitStr).map(
+        (element: number, i) => element * parseInt(coeficiente[i])
+    );
 
-    if(resto == 0 && cadena[cadena.length-1] == "0")
-      return null;
+    //  Suma todos los elementos del array
+    const suma = arrMultiplicado.reduce(
+        (acumulator, currentValue) => acumulator + currentValue
+    );
     
-    if(parseInt(cadena[cadena.length-1]) == 11 - resto) {
+    const resto = suma % 11;
+
+    if(verificador == (11 - resto) || resto === verificador) {
       return null;
     } else {
       return error;
     }
-
   }
 
   private asyncValidarCuilRegistrado(control: AbstractControl): Observable<any> {

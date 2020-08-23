@@ -34,7 +34,6 @@ export class ElegirPuntoEntregaComponent implements OnInit {
   }
 
   public guardarPuntoEntrega(puntoEntrega) {
-    console.log(puntoEntrega);
     this._state.guardarPuntoEntrega(puntoEntrega);
     this.setMarker(puntoEntrega);
   }

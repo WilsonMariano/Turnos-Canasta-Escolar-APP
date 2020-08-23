@@ -30,26 +30,6 @@ export class ModalComponent implements OnChanges {
     this.familiares = this._state.consultarFamiliares();
   }
 
-  public calcularCantUtiles() {
-    let sum = 0;
-    this.familiares.map(fam => {
-      if(fam.edad >= 4 && fam.edad <= 18) {
-        sum++;
-      }
-    });
-    return sum;
-  }
-
-  public calcularCantJuguetes() {
-    let sum = 0;
-    this.familiares.map(fam => {
-      if(fam.edad >= 0 && fam.edad <= 12) {
-        sum++;
-      }
-    });
-    return sum;
-  }
-
   public navigateTo(url: string) {
     this._router.navigate([url]);
   }

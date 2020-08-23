@@ -22,6 +22,9 @@ export class GrillaComponent implements OnInit, OnDestroy {
     'filterParams':   objeto con parametros para filtrar la tabla, por ejemplo id
       'col'           columna de la tabla por la que se filtrará
       'txt'           valor del campo por el que se realizará el filtrado
+  @reload             observable de entrada que se emite cuando el padre desea recargar la tabla
+  @events             evento de salida que se ejecuta cada vez que se emite un evento en algun boton de la grilla
+  @subscription       referencia a la subscripcion del observable reload, para luego desuscribirse en el onDestroy
   @arrObjects:        arreglo de objetos que se bindeara con la tabla
   @arrPaginate:       arreglo de enteros con los valores del paginado, lo genera el método 'getControlsPaginate'
   @filterParams:      objeto de filtros 
@@ -30,7 +33,9 @@ export class GrillaComponent implements OnInit, OnDestroy {
   @rowsWithPage:      atributo que establece la cantidad de filas que mostrara la tabla
   @numPage:           pagina actual que muestra la tabla (paginado)
   @totalResults:      cantidad de registros totales existentes de la db
-  @objectViewDetails: contendra un objeto a visualizar en el modal de detalle grilla
+  @arrViewDetails:    contendra un objeto a visualizar en el modal de detalle grilla
+  @faSpinner          icono de fontawesome para el spinner de la tabla
+  @showspinner        indica si se muestra el spinner en la tabla
    */
 
   @Input() options = [];
@@ -48,17 +53,12 @@ export class GrillaComponent implements OnInit, OnDestroy {
   public rowsWithPage = 20;
   public numPage = 1;
   public totalResults = 0;
-
   public arrViewDetails = [];
-
   public faSpinner = faSpinner;
   public showSpinner = false;
 
 
-
   constructor(private _http: GenericService) { }
-
-
 
   ngOnInit() {
 
@@ -80,7 +80,6 @@ export class GrillaComponent implements OnInit, OnDestroy {
     }
     
     
-    
     /**********************************************************************************************************************************
      Método que trae los objetos de la base de datos.
      Es llamado cuando se abre la vista para traer los objetos iniciales.
@@ -92,10 +91,6 @@ export class GrillaComponent implements OnInit, OnDestroy {
 
     this._http.getWithPaged(this.options['entity'], this.rowsWithPage, this.numPage-1, this.filterParams, false).subscribe(
       data => {
-
-
-        console.log(data);
-
         this.arrObjects = data.data;
         this.totalResults = data.total_rows;
         this.genControlsPaginate( data.total_pages );
@@ -105,12 +100,10 @@ export class GrillaComponent implements OnInit, OnDestroy {
     );
   }
 
-
-
+  
   /***********************************************************************************************************************************/
   /**************************************************** COMIENZO METODOS DE PAGINADO **************************************************/
   /***********************************************************************************************************************************/
-
 
 
   // Genera array con la cantidad de páginas
@@ -120,18 +113,15 @@ export class GrillaComponent implements OnInit, OnDestroy {
     this.arrPaginate = [];
 
     for( let i = 0; i < quantPages; i++ ) {
-
       this.arrPaginate.push(i+1);
     }
   }
-
 
 
   // Método que realiza el paginado
   public paginate( page: any ) {
 
     switch( page ) {
-
       case 'prev':
         if( this.numPage -1 >= this.arrPaginate[0] )
           this.numPage -= 1;
@@ -149,17 +139,14 @@ export class GrillaComponent implements OnInit, OnDestroy {
   }
 
 
-
   /***********************************************************************************************************************************/
   /********************************************************* FIN METODOS DE PAGINADO**************************************************/
   /***********************************************************************************************************************************/
 
 
-
   /***********************************************************************************************************************************/
   /********************************************************* METODOS DE FILTRADO *****************************************************/
   /***********************************************************************************************************************************/
-
 
   
   // Se ejecuta cada vez que se escribe en un input
@@ -170,7 +157,7 @@ export class GrillaComponent implements OnInit, OnDestroy {
 
     // Si se ingresa algo en un input
     if(text != "") {
-      
+    
       // Deshabilito todos los demas
       this.options['arrAttr'].forEach(control => {
   
@@ -207,7 +194,6 @@ export class GrillaComponent implements OnInit, OnDestroy {
   }
 
 
-
   /***********************************************************************************************************************************/
   /***************************************************** FIN METODOS DE FILTRADO *****************************************************/
   /***********************************************************************************************************************************/
@@ -218,28 +204,5 @@ export class GrillaComponent implements OnInit, OnDestroy {
       obj
     });
   }
-
-
-  /*
-  public delete( id: Number ): void {
-    this._fxGlobales.showQuestionAlert("Confirmación", "Está seguro de confirmar la operación?", "warning").then(
-      // Operación exitosa
-      () => {
-        this._http.deleteEntity(id, this.options['delete'].entityUrl).subscribe(
-
-          data => {
-            console.log(data),
-            this.getObjects();
-          }
-        )
-      },
-      () => {}
-    );
-  }
-  public openModalDetalle( obj ): void {
-    this.arrViewDetails['obj'] = obj;
-    this.arrViewDetails['attr'] = this.options['btnDetails']['attr'];
-    $("#modalDetalleGrilla").modal("show");
-  }*/
-
+  
 }

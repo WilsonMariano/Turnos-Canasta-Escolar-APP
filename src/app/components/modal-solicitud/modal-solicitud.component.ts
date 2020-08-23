@@ -46,7 +46,6 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
   }
 
   public submit() {
-    console.log(this.forma.getRawValue());
     this._http.putOne('Cronograma', this.forma.getRawValue())
       .subscribe(
         data => this.success.emit(true)

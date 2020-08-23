@@ -9,6 +9,7 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 export class AlertComponent implements OnInit {
 
   public faExclamation = faExclamationTriangle;
+  public text = "Recordá revisar que la información sea correcta, una vez enviada no podrá ser modificada.";
 
   constructor() { }
 
