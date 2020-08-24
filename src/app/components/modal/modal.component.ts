@@ -44,7 +44,7 @@ export class ModalComponent implements OnChanges {
         data => {
           if(data) {
             $("#modal").modal('hide');
-            this._fx.showAlert("Solicitud enviada", "La solicitud se efectuó correctamente, deberas esperar a que la misma sea validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success", 500);
+            this._fx.showAlert("Solicitud enviada", "La solicitud se efectuó correctamente, en un lapso de 48 hs. la misma será validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success", 500);
             setTimeout(() => this.navigateTo('home'), 2000);
             this._state.clearStorage();
           }

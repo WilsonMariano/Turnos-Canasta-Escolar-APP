@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GenericService } from 'src/app/services/http/generic.service';
 
 @Component({
@@ -22,8 +22,8 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
     this.forma = new FormGroup({
       'id': new FormControl(''),
       'estado': new FormControl(),
-      'fechaEntrega': new FormControl(''),
-      'horaEntrega': new FormControl(''),
+      'fechaEntrega': new FormControl('', Validators.required),
+      'horaEntrega': new FormControl('', Validators.required),
       'observaciones': new FormControl(''),
       'idTitular': new FormControl(''),
       'idPuntoEntrega': new FormControl('')

@@ -41,16 +41,17 @@
     <div class="alert alert-success" role="alert">
       <h4 class="alert-heading">Estado: {{resultado.estadoDescripcion}}</h4>
       <p class="mb-2">Tu solicitud fue aprobada, deberás pasar a retirar los juguetes/útiles el día
-        <b>{{resultado.fechaEntrega}}</b>, a las <b>{{resultado.horaEntrega}} hs.</b> por
+        <b>{{resultado.fechaEntrega | date:'dd-MM-yyyy'}}</b>, a las <b>{{resultado.horaEntrega}} hs.</b> por
         <b>{{resultado.nombrePunto}}</b> sito en <b>{{resultado.domicilioPunto}}.</b></p>
       <p class="mb-0">
-        <fa-icon [icon]="faCalendar"></fa-icon>&nbsp;{{resultado.fechaEntrega}}, {{resultado.horaEntrega}} hs.
+        <fa-icon [icon]="faCalendar"></fa-icon>&nbsp;{{resultado.fechaEntrega | date:'dd-MM-yyyy'}}, {{resultado.horaEntrega}} hs.
       </p>
       <p class="mb-2">
         <fa-icon [icon]="faMapMarker"></fa-icon>&nbsp;{{resultado.domicilioPunto}}
       </p>
-      <p class="mb-0">Si por alguna razón no podes asistir en la fecha y hora indicadas, comunicate con el sindicato al
-        4293-2851 / 4294-0716</p>
+      <p class="mb-0">Recordá que no hace falta que venga el titular, puede venir otra persona siempre que traiga carnet de afiliado
+        (fotocopia o foto en celular) y recibo de sueldo original. Evitar asistir con los niños, ya que no habrá elección de juguete. 
+      </p>
       <hr>
       <p class="mb-0"><b>Observaciones: </b>{{resultado.observaciones}}</p>
     </div>

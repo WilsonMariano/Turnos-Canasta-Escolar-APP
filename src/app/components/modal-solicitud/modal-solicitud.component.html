@@ -34,12 +34,18 @@
               <div class="form-group">
                 <label for="fecha">Fecha</label>
                 <input type="date" class="form-control" id="fecha" formControlName="fechaEntrega">
+                <small class="form-invalid"
+                *ngIf="forma.controls['fechaEntrega'].errors?.required && forma.get('fechaEntrega').touched">*El campo es
+                requerido</small>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="hora">Hora</label>
                 <input type="time" class="form-control" id="hora" formControlName="horaEntrega">
+                <small class="form-invalid"
+                *ngIf="forma.controls['horaEntrega'].errors?.required && forma.get('horaEntrega').touched">*El campo es
+                requerido</small>
               </div>
             </div>
             <div class="col-md-12">
@@ -52,7 +58,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-secondary">Confirmar</button>
+          <button type="submit" class="btn btn-secondary" [disabled]="forma.invalid">Confirmar</button>
         </div>
       </form>
     </div>
