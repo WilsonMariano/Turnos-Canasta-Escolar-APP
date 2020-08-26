@@ -51,7 +51,7 @@ export class ModalComponent implements OnChanges {
         },
         err => {
           $("#modal").modal('hide');
-          this._fx.showAlert("Error", "Se produjo un error al procesar la solicitud, por favor intente más tarde.", "error", 500);
+          this._fx.showAlert("Error", `Se produjo un error al procesar la solicitud. Motivo: ${err.error}`, "error", 500);
         }
       )
     }
