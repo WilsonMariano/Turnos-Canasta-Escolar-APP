@@ -23,7 +23,7 @@ export class SolicitudComponent implements OnInit, OnDestroy {
     private _httpGeneric: GenericService,
     private _httpFamiliares: FamiliaresService,
     private _fx: FxGlobalsService,
-    private _auth: AuthService) { }
+    public _auth: AuthService) { }
 
   ngOnInit() {
     this.traerDatos();
