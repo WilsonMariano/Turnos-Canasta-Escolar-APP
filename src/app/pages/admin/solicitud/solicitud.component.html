@@ -18,7 +18,7 @@
                 <div class="col-md-3">
                     <b>F. entrega:</b> {{(solicitud.fechaEntrega | date:'dd-MM-yyyy' +' '+ solicitud.horaEntrega) || 'sin asignar'}}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3" *ngIf="_auth.getData().role == 'admin'">
                     <button class="btn btn-secondary float-right" (click)="abrirModalSolicitud()">Cambiar estado</button>
                 </div>
             </div>

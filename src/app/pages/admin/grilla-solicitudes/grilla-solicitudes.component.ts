@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { FxGlobalsService } from 'src/app/services/fx-globals.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { GenericService } from 'src/app/services/http/generic.service';
 declare var $;
 
 @Component({
@@ -11,9 +13,14 @@ declare var $;
 })
 export class GrillaSolicitudesComponent implements OnInit {
 
+  constructor(
+    private _router: Router,
+    private _fx: FxGlobalsService,
+    private _auth: AuthService,
+    private _http: GenericService) { }
+
+
   public reloadGrid = new Subject<boolean>();
-
-
   public objSolicitud = null;
 
   public arrAttr = [
@@ -27,26 +34,28 @@ export class GrillaSolicitudesComponent implements OnInit {
     { 'attr': 'nombreEstado', 'type': 'String' }
   ];
 
-
   public arrControls = ['id', 'Fecha alta', 'Afiliado', 'CUIL', 'Apellido', 'Nombre', 'Lugar entrega', 'Estado'];
 
+  private filterParams = {
+    'col': 'idPuntoEntrega',
+    'txt': this._auth.getData().idPuntoEntrega
+  }
 
   public options = {
     'entity': 'vwSolicitudes',
     'arrAttr': this.arrAttr,
     'arrControls': this.arrControls,
     'buttons': [
-      { 'url': 'admin/cambiar-estado', 'title': 'Cambiar estado' },
-      { 'url': 'admin/grilla-familiares', 'title': 'Ver solicitud' }
+      { 'title': 'Ver solicitud' }
     ],
+    'filterParams':  this.filterParams,
     'reload': null
   }
 
-  constructor(
-    private _router: Router,
-    private _fx: FxGlobalsService) { }
 
   ngOnInit() {
+    this._auth.getData().role == 'admin' && this.options.buttons.push({ 'title': 'Cambiar estado' });
+    this._auth.getData().role == 'usuario' && this.options.buttons.push({ 'title': 'Entregado' });
   }
 
   public handleEvents(event) {
@@ -58,10 +67,36 @@ export class GrillaSolicitudesComponent implements OnInit {
       break;
       case 'Ver solicitud':
         this._router.navigate(['admin/solicitud', event.obj.idTitular, event.obj.id]);
-
+      break;
+      case 'Entregado': 
+        this.cambiarEstadoEntregado(event.obj);
       break;
     }
   }
+
+  private cambiarEstadoEntregado(obj) {
+    
+    this._fx.alertConfirm("Confirmación", "¿Desea marcar la solicitud como entregada?", "warning")
+      .then(() => {
+        let solicitud = {
+          id:  obj.id,
+          idTitular: obj.idTitular,
+          idPuntoEntrega: obj.idPuntoEntrega,
+          fechaEntrega: obj.fechaEntrega,
+          horaEntrega: obj.horaEntrega,
+          observaciones: obj.observaciones,
+          estado: 'ESTADO_SOLICITUD_4'
+        }
+    
+        this._http.putOne('Cronograma', solicitud)
+          .subscribe(
+            data => this.reloadGrid.next()
+          );
+      })
+      .catch(() => {});
+  }
+
+
 
   public editSuccess(result) {
     if (result) {

@@ -4,6 +4,7 @@ import { GenericService } from 'src/app/services/http/generic.service';
 import { FamiliaresService } from 'src/app/services/http/familiares.service';
 import { first } from 'rxjs/operators';
 import { FxGlobalsService } from 'src/app/services/fx-globals.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 declare var $;
 
 @Component({
@@ -21,7 +22,8 @@ export class SolicitudComponent implements OnInit, OnDestroy {
     private _activatedRoute: ActivatedRoute,
     private _httpGeneric: GenericService,
     private _httpFamiliares: FamiliaresService,
-    private _fx: FxGlobalsService) { }
+    private _fx: FxGlobalsService,
+    private _auth: AuthService) { }
 
   ngOnInit() {
     this.traerDatos();

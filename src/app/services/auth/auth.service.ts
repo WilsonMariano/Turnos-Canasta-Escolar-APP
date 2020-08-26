@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
   })
   export class AuthService {
 
-    constructor( private helper : JwtHelperService, private router: Router ) { }
+    constructor( 
+      private helper : JwtHelperService, 
+      private router: Router 
+    ) { }
 
 
     public logOut() {
