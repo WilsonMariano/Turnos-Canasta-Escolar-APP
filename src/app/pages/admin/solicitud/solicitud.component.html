@@ -51,9 +51,11 @@
                     <p><span class="badge badge-info">DNI</span> {{familiar.dni}}</p>
                     <p><span class="badge badge-info">Nombre</span> {{familiar.apellido +' '+ familiar.nombre}}</p>
                     <p><span class="badge badge-info">Nacimiento</span> {{familiar.fechaNacimiento | date:'dd-MM-yyyy'}}</p>
+                    <p><span class="badge badge-info">Sexo</span> {{familiar.sexo == 'f'? 'Femenino' : 'Masculino'}}</p>
                     <p><span class="badge badge-info">Edad</span> {{familiar.edad}} años</p>
                     <p><span class="badge badge-info">Educación</span> {{familiar.nivelEducacion}}</p>
-                    <p><span class="badge badge-info">Sexo</span> {{familiar.sexo == 'f'? 'Femenino' : 'Masculino'}}</p>
+                    <p><span class="badge badge-info">Guardapolvo</span> {{familiar.usaGuardapolvo}}</p>
+                    <p><span class="badge badge-info">Talle</span> {{familiar.talleGuardapolvo}}</p>
                 </div>
             </div>
         </div>

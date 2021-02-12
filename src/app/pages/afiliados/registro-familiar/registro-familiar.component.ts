@@ -33,7 +33,9 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       'sexo': new FormControl('', Validators.required),
       'fechaNacimiento': new FormControl('', [Validators.required, this.validarFechaNacimiento]),
       'edad': new FormControl({ value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
-      'nivelEducacion': new FormControl('', Validators.required)
+      'nivelEducacion': new FormControl('', Validators.required),
+      'usaGuardapolvo': new FormControl(false),
+      'talleGuardapolvo': new FormControl({value: '', disabled: true}, Validators.required)
     });
 
     // Verifico si se recibe un familiar a editar
@@ -106,8 +108,37 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     }
   }
 
+  public changeUsaGuardapolvo() {
+    const value = <boolean>this.forma.get('usaGuardapolvo').value;
+    const control = this.forma.get('talleGuardapolvo');
+
+    if(value) {
+      control.enable();
+    } else {
+      control.disable();
+      control.setValue('');
+    }
+  }
+
+  // TODO MEJORAR
+  public changeNivelEducacion() {
+    const value = this.forma.get('nivelEducacion').value;
+    const talleGuardapolvoControl =  this.forma.get('talleGuardapolvo');
+    const usaGuardapolvoControl = this.forma.get('usaGuardapolvo');
+
+    // Si es distinto a Preescolar, Primaria o Secundaria, deshabilito el guardapolvo MEJORAR!!!
+    if(value !== 'NIVEL_EDUCACION_2' && value !== 'NIVEL_EDUCACION_3' && value != 'NIVEL_EDUCACION_4' && value != 'NIVEL_EDUCACION_5') {
+      talleGuardapolvoControl.disable();
+      talleGuardapolvoControl.setValue('');
+      usaGuardapolvoControl.disable();
+      usaGuardapolvoControl.setValue('');
+    } else {
+      usaGuardapolvoControl.enable();
+    }
+  }
+
   public navigateTo(url: string) {
     this._router.navigate([url]);
   }
-  
+
 }

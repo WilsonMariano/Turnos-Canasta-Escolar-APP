@@ -45,7 +45,7 @@
                         requerido</small>
                 </div>
             </div>
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-6 col-sm-12">
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
                     <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento" (blur)="calcularEdad()">
@@ -57,7 +57,7 @@
                         
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-2 col-sm-12">
                 <div class="form-group">
                     <label for="edad">Edad</label>
                     <input type="number" class="form-control" id="edad" formControlName="edad" placeholder="Edad">
@@ -71,8 +71,8 @@
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="form-group">
-                    <label for="nivelEducacion">Nivel educación</label>
-                    <select class="form-control" formControlName="nivelEducacion" id="nivelEducacion">
+                    <label for="nivelEducacion">Nivel educativo</label>
+                    <select class="form-control" formControlName="nivelEducacion" id="nivelEducacion" (change)="changeNivelEducacion()">
                         <option value="">Seleccione una opción</option>
                         <option [value]="nivel.clave" *ngFor="let nivel of _data.nivelesEducacion">{{nivel.valor}}</option>
                     </select>
@@ -81,7 +81,33 @@
                         es requerido</small>
                 </div>
             </div>
-            
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="usaGuardapolvo">¿Usa guardapolvo?</label>
+                    <div class="form-check form-switch">
+                        <input 
+                        class="form-check-input" 
+                        type="checkbox" 
+                        id="usaGuardapolvo" 
+                        formControlName="usaGuardapolvo"
+                        (change)="changeUsaGuardapolvo()">
+                        <label class="form-check-label" for="usaGuardapolvo">Si</label>
+                      </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group">
+                    <label for="talleGuardapolvo">Talle</label>
+                    <select class="form-control" formControlName="talleGuardapolvo" id="talleGuardapolvo">
+                        <option value="">Seleccione una opción</option>
+                        <option [value]="talle.clave" *ngFor="let talle of _data.tallesGuardapolvo">{{talle.valor}}</option>
+                    </select>
+                    <small class="form-invalid"
+                        *ngIf="forma.controls['talleGuardapolvo'].errors?.required && forma.get('talleGuardapolvo').touched">*El campo
+                        es requerido</small>
+                </div>
+            </div>
+           
             <div class="col-md-12">
                 <button class="btn btn-secondary float-right" type="submit" [disabled]="forma.invalid" [hidden]="edicion">Continuar</button>
                 <button class="btn btn-secondary float-right" type="button" [disabled]="forma.invalid" [hidden]="!edicion" (click)="editar()">Continuar</button>

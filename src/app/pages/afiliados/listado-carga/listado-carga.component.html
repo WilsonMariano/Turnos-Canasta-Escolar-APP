@@ -25,6 +25,8 @@
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
                     <td><span class="badge badge-info">Dni</span> {{familiar.dni}}</td>
                     <td><span class="badge badge-info">Estudios</span> {{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
+                    <td><span class="badge badge-info">Guardapolvo</span> {{familiar.usaGuardapolvo ? 'Si' : 'No'}}</td>
+                    <td *ngIf="familiar.usaGuardapolvo"><span class="badge badge-info">Talle</span> {{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
                     <td class="text-right">
                       <fa-icon [icon]="faTrash" class="mr-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
                       <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>

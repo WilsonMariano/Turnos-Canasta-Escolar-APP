@@ -9,11 +9,13 @@ export class DataService {
   public nivelesEducacion = [];
   public puntosEntrega = [];
   public estadosSolicitud = [];
+  public tallesGuardapolvo = [];
 
   constructor(private _httpGeneric: GenericService) {
     this.traerNivelesEducacion();
     this.traerPuntosEntrega();
     this.traerEstadosSolicitud();
+    this.traerTallesGuardapolvos();
   }
 
     private traerPuntosEntrega() {
@@ -48,6 +50,18 @@ export class DataService {
         );
     }
 
+    private traerTallesGuardapolvos() {
+      this._httpGeneric.getWithPaged('Diccionario', 100, 0, [
+        {
+          col: 'clave', 
+          txt: 'TALLE_GUARDAPOLVO'
+        }])
+        .subscribe(
+          data => this.tallesGuardapolvo = data.data,
+          err => console.error(err)
+        );
+    }
+
     private lnglatTransform(arr) {
 
       arr.map(punto => {
@@ -63,5 +77,9 @@ export class DataService {
 
     public obtenerNivelEducacion(clave) {
       return this.nivelesEducacion.find(element => element.clave == clave);
+    }
+
+    public obtenerTalleGuardapolvo(clave) {
+      return this.tallesGuardapolvo.find(element => element.clave == clave) || {valor: '-'};
     }
 }
