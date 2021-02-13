@@ -1,3 +1,4 @@
+import { ExportarListadosComponent } from './exportar-listados/exportar-listados.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardService as AuthGuard } from 'src/app/services/auth/auth-guard.service';
 
@@ -16,7 +17,8 @@ const pagesRoutes: Routes = [
             { path: '',                                     redirectTo: '/login',                   pathMatch: 'full'                            },
             { path: 'login',                                component: LoginComponent,                                          data: { titulo: 'Login' }        },
             { path: 'grilla-solicitudes',                   component: GrillaSolicitudesComponent,  canActivate: [AuthGuard],   data: { titulo: 'Grilla de solicitudes' }},
-            { path: 'solicitud/:idTitular/:idSolicitud',    component: SolicitudComponent,          canActivate: [AuthGuard],   data: { titulo: 'Datos de la solicitud' }}
+            { path: 'solicitud/:idTitular/:idSolicitud',    component: SolicitudComponent,          canActivate: [AuthGuard],   data: { titulo: 'Datos de la solicitud' }},
+            { path: 'exportar-listados',                    component: ExportarListadosComponent,   canActivate: [AuthGuard],   data: { titulo: 'Exporar listados' }}
         ]
     }
 ];

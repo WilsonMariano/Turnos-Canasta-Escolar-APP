@@ -20,6 +20,7 @@ import { PagesAdminComponent } from './admin/pages-admin.component';
 import { LoginComponent } from './admin/login/login.component';
 import { GrillaSolicitudesComponent } from './admin/grilla-solicitudes/grilla-solicitudes.component';
 import { SolicitudComponent } from './admin/solicitud/solicitud.component';
+import { ExportarListadosComponent } from './admin/exportar-listados/exportar-listados.component';
 
 
 
@@ -35,7 +36,8 @@ import { SolicitudComponent } from './admin/solicitud/solicitud.component';
     PagesAdminComponent,
     LoginComponent,
     GrillaSolicitudesComponent,
-    SolicitudComponent
+    SolicitudComponent,
+    ExportarListadosComponent
   ],
   imports: [
     CommonModule,
