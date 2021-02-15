@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   }
 
   login(emailCtrl, passwordCtrl) {
-    let email = emailCtrl.control.value;
-    let password = passwordCtrl.control.value;
+    const email = emailCtrl.control.value;
+    const password = passwordCtrl.control.value;
 
     this._http.login(email, password)
       .subscribe(

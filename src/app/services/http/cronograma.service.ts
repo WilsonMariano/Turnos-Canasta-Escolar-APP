@@ -1,3 +1,4 @@
+import { IsolicitudListado } from './../../pages/admin/exportar-listados/model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,10 +18,28 @@ export class CronogramaService {
   public getOne(cuil: number): Observable<any> {
     this._fx.showSpinner();
 
-    let params = new HttpParams()
+    const params = new HttpParams()
       .set('cuil', cuil.toString());
 
     return this._http.get(`${environment.apiUrl}/cronograma/one`, 
+      { params }
+    ).pipe(
+      finalize(() => this._fx.hideSpinner(500))
+    );
+  }
+
+  public getAllByFecha(solicitud: IsolicitudListado): Observable<any> {
+    this._fx.showSpinner();
+
+    let params = new HttpParams()
+    .set('fechaDesde', solicitud.fechaDesde)
+    .set('fechaHasta', solicitud.fechaHasta);
+
+      solicitud.puntoEntrega !== ''
+      ? params = params.append('idPuntoEntrega', solicitud.puntoEntrega.toString())
+      : params = params;
+
+    return this._http.get(`${environment.apiUrl}/cronograma/all-by-fecha`, 
       { params }
     ).pipe(
       finalize(() => this._fx.hideSpinner(500))

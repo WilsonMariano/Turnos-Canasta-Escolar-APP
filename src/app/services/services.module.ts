@@ -1,3 +1,4 @@
+import { ExportsDataService } from './exports-data.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmpresasDelegadosService } from './http/empresas-delegados.service';
@@ -28,7 +29,8 @@ import { FamiliaresService } from './http/familiares.service';
     FamiliaresService,
     DataService,
     FxGlobalsService,
-    StateService
+    StateService,
+    ExportsDataService
   ]
 })
 export class ServicesModule { }

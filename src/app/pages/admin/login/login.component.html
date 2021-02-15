@@ -5,17 +5,17 @@
                 <div class="card-body">
                     <h3 class="text-center">INGRESAR</h3>
                     <hr>
-             
+                    <form>
                         <div class="form-group">
                             <label for="">Usuario</label>
-                            <input type="email" class="form-control" ngModel #email="ngModel">
+                            <input type="email" class="form-control" ngModel #email="ngModel" name="email" [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="form-group">
                             <label for="">Contraseña</label>
-                            <input type="password" class="form-control" ngModel #password="ngModel">
+                            <input type="password" class="form-control" ngModel #password="ngModel" name="password" [ngModelOptions]="{standalone: true}">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block mt-4" (click)="login(email, password)">Acceder</button>
-                    
+                    </form>
                 </div>
             </div>
         </div>
