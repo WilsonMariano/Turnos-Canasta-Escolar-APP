@@ -41,7 +41,10 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     // Verifico si se recibe un familiar a editar
     this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
 
-    this.edicion && this.forma.setValue(this.edicion);
+    if(this.edicion) {
+      this.forma.setValue(this.edicion);
+      this.changeUsaGuardapolvo();
+    } 
   }
 
   ngOnDestroy() {
@@ -139,6 +142,11 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
   public navigateTo(url: string) {
     this._router.navigate([url]);
+  }
+
+  public changeToggle(event) {
+    this.forma.get('usaGuardapolvo').setValue(event);
+    this.changeUsaGuardapolvo();
   }
 
 }

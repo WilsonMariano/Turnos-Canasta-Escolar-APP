@@ -12,6 +12,7 @@ import { GrillaComponent } from './grilla/grilla.component';
 import { ModalSolicitudComponent } from './modal-solicitud/modal-solicitud.component';
 import { LoadingComponent } from './loading/loading.component';
 import { NavAdminComponent } from './nav-admin/nav-admin.component';
+import { ToggleComponent } from './toggle/toggle.component';
 
 
 
@@ -24,7 +25,8 @@ import { NavAdminComponent } from './nav-admin/nav-admin.component';
     GrillaComponent,
     ModalSolicitudComponent,
     LoadingComponent,
-    NavAdminComponent
+    NavAdminComponent,
+    ToggleComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { NavAdminComponent } from './nav-admin/nav-admin.component';
     NgxSpinnerModule
   ], 
   exports: [
+    ToggleComponent,
     JumbotronComponent,
     ModalComponent,
     AlertComponent,

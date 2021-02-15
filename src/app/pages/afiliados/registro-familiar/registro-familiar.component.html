@@ -5,7 +5,7 @@
                 <h3>Completá con los datos de tu hijo/a</h3>
                 <hr />
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
                     <label for="dni">DNI</label>
                     <input type="number" class="form-control" id="dni" formControlName="dni" placeholder="DNI">
@@ -14,7 +14,7 @@
                         requerido</small>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
                     <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder="Apellido">
@@ -23,7 +23,7 @@
                         requerido</small>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
@@ -32,7 +32,7 @@
                         requerido</small>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
                     <label for="sexo">Sexo</label>
                     <select class="form-control" formControlName="sexo" id="sexo">
@@ -45,7 +45,7 @@
                         requerido</small>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-xs-12">
                 <div class="form-group">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
                     <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento" (blur)="calcularEdad()">
@@ -57,7 +57,7 @@
                         
                 </div>
             </div>
-            <div class="col-md-2 col-sm-12">
+            <div class="col-md-2 col-xs-12">
                 <div class="form-group">
                     <label for="edad">Edad</label>
                     <input type="number" class="form-control" id="edad" formControlName="edad" placeholder="Edad">
@@ -69,7 +69,7 @@
                         
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12">
+            <div class="col-md-6 col-xs-12">
                 <div class="form-group">
                     <label for="nivelEducacion">Nivel educativo</label>
                     <select class="form-control" formControlName="nivelEducacion" id="nivelEducacion" (change)="changeNivelEducacion()">
@@ -81,21 +81,13 @@
                         es requerido</small>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-2 col-xs-12">
                 <div class="form-group">
-                    <label for="usaGuardapolvo">¿Usa guardapolvo?</label>
-                    <div class="form-check form-switch">
-                        <input 
-                        class="form-check-input" 
-                        type="checkbox" 
-                        id="usaGuardapolvo" 
-                        formControlName="usaGuardapolvo"
-                        (change)="changeUsaGuardapolvo()">
-                        <label class="form-check-label" for="usaGuardapolvo">Si</label>
-                      </div>
+                    <label for="usaGuardapolvo">¿Guardapolvo?</label>
+                    <app-toggle (changeValue)="changeToggle($event)" [checked]="forma.get('usaGuardapolvo').value"></app-toggle>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-md-4 col-xs-12">
                 <div class="form-group">
                     <label for="talleGuardapolvo">Talle</label>
                     <select class="form-control" formControlName="talleGuardapolvo" id="talleGuardapolvo">
