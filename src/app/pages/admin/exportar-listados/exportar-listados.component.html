@@ -1,0 +1,49 @@
+<form [formGroup]="forma" (ngSubmit)="submit()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mt-5">Exportar cronograma</h2>
+                <small class="text-muted">Solo solicitudes aprobadas</small>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fechaDesde">Fecha desde</label>
+                    <input type="date" class="form-control" id="fechaDesde" formControlName="fechaDesde">
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['fechaDesde'].errors?.required && forma.get('fechaDesde').touched">*El campo es
+                    requerido</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="fechaHasta">Fecha hasta</label>
+                    <input type="date" class="form-control" id="fechaHasta" formControlName="fechaHasta" [min]="forma.get('fechaDesde').value">
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['fechaHasta'].errors?.required && forma.get('fechaHasta').touched">*El campo es
+                    requerido</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="puntosEntrega">Punto de entrega</label>
+                    <select type="date" class="form-control" id="puntosEntrega" formControlName="puntoEntrega">
+                        <option value="">Todos</option>
+                        <option *ngFor="let punto of _data.puntosEntrega" [value]="punto.id">{{punto.nombre}}</option>
+                    </select>
+                    <small class="form-invalid"
+                    *ngIf="forma.controls['puntoEntrega'].errors?.required && forma.get('puntoEntrega').touched">*El campo es
+                    requerido</small>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex justify-content-center align-items-end">
+                <button type="submit" class="btn btn-primary btn-block mb-3" [disabled]="forma.invalid">
+                    <fa-icon [icon]="faFileDownload" class="mr-1"></fa-icon>
+                    Descargar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
