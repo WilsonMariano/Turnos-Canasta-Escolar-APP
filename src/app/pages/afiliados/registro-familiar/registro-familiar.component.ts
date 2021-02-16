@@ -4,8 +4,7 @@ import { StateService } from '../../../services/state.service';
 import { FxGlobalsService } from '../../../services/fx-globals.service';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-declare var moment;
-
+declare const moment;
 
 @Component({
   selector: 'app-registro-familiar',
@@ -27,11 +26,13 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.forma = new FormGroup({
+      'id': new FormControl(''),
+      'idTitular': new FormControl(''),
       'dni': new FormControl('', Validators.required),
       'apellido': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),
       'sexo': new FormControl('', Validators.required),
-      'fechaNacimiento': new FormControl('', [Validators.required, this.validarFechaNacimiento]),
+      'fechaNacimiento': new FormControl('', Validators.required),
       'edad': new FormControl({ value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
       'nivelEducacion': new FormControl('', Validators.required),
       'usaGuardapolvo': new FormControl(false),
@@ -93,21 +94,6 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     if (fecha != '') {
       let edad = moment().diff(fecha, 'years');
       this.forma.controls.edad.setValue(edad);
-    }
-  }
-
-  public validarFechaNacimiento(control: FormControl) {
-
-    let fechaIngresada = control.value;
-
-    let edad = moment().diff(fechaIngresada, 'years');
-
-    if (edad > 18 || edad < 0) {
-      return {
-        fechaInvalida: true
-      }
-    } else {
-      return null;
     }
   }
 

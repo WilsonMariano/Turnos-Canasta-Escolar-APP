@@ -41,7 +41,7 @@ export class ExportarListadosComponent implements OnInit {
     const solicitud: IsolicitudListado = this.forma.getRawValue();
     this._http.getAllByFecha(solicitud).subscribe(
       data => this._exportsData.exportAsExcelFile(data, 'listado'), 
-      err => this._fx.showAlert("Atención", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
+      err => this._fx.showAlert("Importante", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
     );
   }
 

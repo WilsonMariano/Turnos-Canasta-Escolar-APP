@@ -1,18 +1,34 @@
-import { Injectable } from '@angular/core';
+import { DataService } from './data.service';
+import { Injectable, OnInit } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StateService {
+export class StateService implements OnInit {
 
   private state;
+  private operationType;
 
-  constructor() {
+  constructor(private _data: DataService) {
     this.loadStorage();
-   }
+  }
+
+  ngOnInit(): void {
+    // this.loadStorage();
+  }
 
   public consultarState() {
     return this.state;
+  }
+
+  public setOperationType(tipo) {
+    this.operationType = tipo;
+    this.saveStorage();
+    
+  }
+
+  public consultarOperationType() {
+    return this.operationType;
   }
 
   public guardarTitular(titular) {
@@ -65,15 +81,36 @@ export class StateService {
     return this.state.puntoEntrega;
   }
 
+  public guardarSolicitud(solicitud) {
+    this.operationType = 'edicion';
+    this.clearStorage();
+    this.guardarTitular(solicitud.titular);
+    this.guardarPuntoEntrega(this._data.lnglatTransform([solicitud.puntoEntrega])[0]);
+    solicitud.familiares.map(e => this.guardarFamiliar(e));
+  }
+
   private loadStorage() {
     this.state = JSON.parse(localStorage.getItem('state')) || this.stateInit();
+    this.usaGuardapolvoParser();
+    this.operationType = localStorage.getItem('operationType') || 'alta';
+  }
+
+  public usaGuardapolvoParser() {
+    this.state.familiares = this.state.familiares.map(e => {
+      return {
+        ...e,
+        usaGuardapolvo: e.usaGuardapolvo === '1' || e.usaGuardapolvo === true ? true : false
+      }
+    });
   }
 
   private saveStorage() {
     localStorage.setItem('state', JSON.stringify(this.state));
+    localStorage.setItem('operationType', this.operationType);
   }
 
   public clearStorage() {
+    this.state = this.stateInit();
     localStorage.clear();
   }
 

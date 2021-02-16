@@ -13,6 +13,7 @@ import { ModalSolicitudComponent } from './modal-solicitud/modal-solicitud.compo
 import { LoadingComponent } from './loading/loading.component';
 import { NavAdminComponent } from './nav-admin/nav-admin.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { ModalBuscarSolicitudComponent } from './modal-buscar-solicitud/modal-buscar-solicitud.component';
 
 
 
@@ -26,7 +27,8 @@ import { ToggleComponent } from './toggle/toggle.component';
     ModalSolicitudComponent,
     LoadingComponent,
     NavAdminComponent,
-    ToggleComponent
+    ToggleComponent,
+    ModalBuscarSolicitudComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { ToggleComponent } from './toggle/toggle.component';
     GrillaComponent,
     ModalSolicitudComponent,
     LoadingComponent,
-    NavAdminComponent
+    NavAdminComponent,
+    ModalBuscarSolicitudComponent
   ],
   providers: [
     NgxSpinnerService

@@ -66,7 +66,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-4 col-sm-12 mt-6">
-          <div class="card card-link" (click)="navigateTo('afiliados/registro-afiliado')">
+          <div class="card card-link" (click)="handleOperation('alta')">
             <img src="../assets/img/banner1.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Registro de grupo familiar</h5>
@@ -75,7 +75,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
-          <div class="card card-link mt-6" (click)="navigateTo('afiliados/consultar-tramite')">
+          <div class="card card-link mt-6" (click)="handleOperation('consultar')">
             <img src="../assets/img/banner2.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Consultar estado del trámite</h5>
@@ -84,5 +84,18 @@
           </div>
         </div>
       </div>
+      <div class="row justify-content-md-center">
+        <div class="col-md-4 col-sm-12 mt-6">
+          <div class="card card-link" (click)="handleOperation('editar')">
+            <img src="../assets/img/banner3.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Edición de datos</h5>
+              <p class="card-text">Ingresá a esta opción si te olvidaste de ingresar algún dato o tu solicitud fue rechazada y necesitas modificarla.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+  <app-modal-buscar-solicitud (success)="buscarSolicitud($event)"></app-modal-buscar-solicitud>
+  <app-loading></app-loading>

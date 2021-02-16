@@ -10,17 +10,17 @@
         <div class="modal-body" *ngIf="open">
           <h4>Datos de los hijos</h4>
           <hr>
-          <table class="table table-bordered">
+          <table class="table table-bordered table-responsive-sm">
             <thead>
               <tr>
                 <th>Nombre</th>
                 <th>DNI</th>
                 <th>Edad</th>
                 <th>Educación</th>
-                <th>Talle guardapolvo</th>
+                <th>Talle</th>
               </tr>
               <tr *ngFor="let familiar of familiares">
-                <td>{{familiar.nombre +' '+ familiar.apellido}}</td>
+                <td>{{familiar.nombre}}</td>
                 <td>{{familiar.dni}}</td>
                 <td>{{familiar.edad}}</td>
                 <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion).valor}}</td>

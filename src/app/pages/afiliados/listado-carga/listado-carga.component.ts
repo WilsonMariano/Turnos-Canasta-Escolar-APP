@@ -1,3 +1,4 @@
+import { Familiar } from './../../../models/familiar.model';
 import { Component, OnInit } from '@angular/core';
 import { faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { StateService } from '../../../services/state.service';
@@ -12,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ListadoCargaComponent implements OnInit {
 
   public titular = null;
-  public familiares = [];
+  public familiares: Familiar[];
 
   public faEdit = faPencilAlt;
   public faTrash = faTrashAlt;
@@ -24,7 +25,8 @@ export class ListadoCargaComponent implements OnInit {
    ) { }
 
   ngOnInit() {
-    this.titular = this._state.consultarTitular();
+    this.titular = this._state.consultarTitular()
+    this._state.usaGuardapolvoParser();
     this.familiares = this._state.consultarFamiliares();
   }
 

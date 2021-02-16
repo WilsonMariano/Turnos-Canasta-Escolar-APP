@@ -84,7 +84,10 @@
             <div class="col-md-2 col-xs-12">
                 <div class="form-group">
                     <label for="usaGuardapolvo">¿Guardapolvo?</label>
-                    <app-toggle (changeValue)="changeToggle($event)" [checked]="forma.get('usaGuardapolvo').value"></app-toggle>
+                    <app-toggle 
+                    (changeValue)="changeToggle($event)" 
+                    [checked]="forma.get('usaGuardapolvo').value"
+                    [disabled]="forma.get('usaGuardapolvo').disabled"></app-toggle>
                 </div>
             </div>
             <div class="col-md-4 col-xs-12">

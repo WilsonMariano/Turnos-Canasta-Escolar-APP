@@ -36,15 +36,21 @@ export class ModalComponent implements OnChanges {
 
   public confirmarSolicitud() {
 
-    let solicitud = this._state.consultarState();
+    const solicitud = this._state.consultarState();
+    const tipoOperacion = this._state.consultarOperationType();
 
     if(this.validarSolicitud(solicitud)) {
-      this._http.insert(solicitud)
-      .subscribe(
+      const methodHttp = (tipoOperacion === 'alta' 
+        ? this._http.insert.bind(this._http)
+        : this._http.edit.bind(this._http));
+
+      methodHttp(solicitud).subscribe(
         data => {
           if(data) {
             $("#modal").modal('hide');
-            this._fx.showAlert("Solicitud enviada", "La solicitud se efectuó correctamente, en un lapso de 48 hs. la misma será validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success", 500);
+            tipoOperacion === 'alta'
+              ? this._fx.showAlert("Solicitud enviada", "La solicitud se efectuó correctamente, en un lapso de 48 hs. la misma será validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success", 500)
+              : this._fx.showAlert("Solicitud editada", "La solicitud se editó correctamente, en un lapso de 48 hs. la misma será validada. Consultá el estado de tu trámite en la página principal, opción 'Consultar solicitud'.", "success", 500);
             setTimeout(() => this.navigateTo('home'), 2000);
             this._state.clearStorage();
           }

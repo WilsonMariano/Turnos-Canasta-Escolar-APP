@@ -3,14 +3,21 @@
       <div class="col-md-12 mt-5">
         <h3>Datos del Titular </h3>
         <hr/>
-        <table class="table table-borderless table-responsive-sm">
+        <table class="table table-bordered table-striped table-responsive-sm">
+          <thead>
+            <th>Nombre</th>
+            <th>CUIL</th>
+            <th>Email</th>
+            <th>Celular</th>
+            <th>Opciones</th>
+          </thead>
             <tbody>
               <tr>
                 <td>{{titular.nombre +" "+ titular.apellido}}</td>
-                <td><span class="badge badge-info">Cuil</span> {{titular.cuil}}</td>
-                <td><span class="badge badge-info">Email</span> {{titular.email}}</td>
-                <td><span class="badge badge-info">Celular</span> {{titular.celular}}</td>
-                <td class="text-right"><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')"></fa-icon></td>
+                <td>{{titular.cuil}}</td>
+                <td>{{titular.email}}</td>
+                <td>{{titular.celular}}</td>
+                <td><fa-icon [icon]="faEdit" class="fa-button" (click)="navigateTo('afiliados/registro-afiliado')" style="color: #005387"></fa-icon></td>
               </tr>
             </tbody>
           </table>
@@ -19,18 +26,25 @@
             <h3>Familiares cargados</h3>
             <hr/>
             <span class="form-invalid" *ngIf="familiares.length == 0">Sin familiares cargados...</span>
-            <table class="table table-responsive-sm">
+            <table class="table table-bordered table-striped table-responsive-sm">
+              <thead>
+                <th>Nombre</th>
+                <th>DNI</th>
+                <th>Estudios</th>
+                <th>Guardapolvo</th>
+                <th>Talle</th>
+                <th colspan="2">Opciones</th>
+              </thead>
                 <tbody>
                   <tr *ngFor="let familiar of familiares">
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
-                    <td><span class="badge badge-info">Dni</span> {{familiar.dni}}</td>
-                    <td><span class="badge badge-info">Estudios</span> {{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
-                    <td><span class="badge badge-info">Guardapolvo</span> {{familiar.usaGuardapolvo ? 'Si' : 'No'}}</td>
-                    <td *ngIf="familiar.usaGuardapolvo"><span class="badge badge-info">Talle</span> {{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
-                    <td class="text-right">
-                      <fa-icon [icon]="faTrash" class="mr-3 fa-button" (click)="borrarFamiliar(familiar)"></fa-icon>
-                      <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)"></fa-icon>
-                    </td>
+                    <td>{{familiar.dni}}</td>
+                    <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
+                    <td>{{familiar.usaGuardapolvo ? 'Si' : 'No'}}</td>
+                    <td>{{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
+                    <td>
+                      <fa-icon [icon]="faTrash" class="mr-5 fa-button" (click)="borrarFamiliar(familiar)" style="color:red"></fa-icon>
+                      <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)" style="color: #005387"></fa-icon></td>
                   </tr>
                 </tbody>
               </table>

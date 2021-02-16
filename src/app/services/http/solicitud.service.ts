@@ -24,4 +24,21 @@ export class SolicitudService {
       finalize(() => this._fx.hideSpinner(500))
     );
   }
+
+  public edit(solicitud: []): Observable<any> {
+    this._fx.showSpinner();
+
+    return this._http.put(
+      `${environment.apiUrl}/solicitudes/edit`,
+      solicitud
+    ).pipe(
+      finalize(() => this._fx.hideSpinner(500))
+    );
+  }
+
+  public getOneByCuil(cuil: number): Observable<any> {
+    this._fx.showSpinner();
+    return this._http.get(`${environment.apiUrl}/solicitudes/one/${cuil}`
+    ).pipe(finalize(() => this._fx.hideSpinner(500)));
+  }
 }

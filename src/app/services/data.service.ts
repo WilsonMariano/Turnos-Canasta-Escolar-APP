@@ -62,7 +62,7 @@ export class DataService {
         );
     }
 
-    private lnglatTransform(arr) {
+    public lnglatTransform(arr) {
 
       arr.map(punto => {
         let x = (<string>punto['lnglat']).split(',');
