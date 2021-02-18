@@ -9,7 +9,7 @@
           <img src="../assets/img/carousel/1.jpg" class="d-block w-100 img-carousel" alt="">
           <div class="carousel-caption">
             <div class="texto">
-              <h5>Canasta Escolar 2021</h5>
+              <h5>Canasta Escolar</h5>
               <p>Si bien este año no podremos realizar la fiesta familiar que tanto disfrutamos, nos aseguraremos de que los chicos tengan el juguete que tanto merecen cumpliendo con todas las medidas de seguridad que exige la cuarentena.
                 
               </p>
@@ -38,21 +38,29 @@
   </section>
   <section id="info">
     <div class="container mt-6">
-      <div class="row text-center">
-        <div class="col-md-4">
-          <fa-icon [icon]="faEdit" size="5x" class="color-primary"></fa-icon>
+      <div class="row justify-content-md-center text-center">
+        <div class="col-md-5">
+          <fa-icon [icon]="faUserPlus" size="5x" class="color-primary"></fa-icon>
           <h4 class="mt-3 color-primary">1. Registro de datos</h4>
           <p>Registrá tu información personal y la de tus hijos/as, además podrás elegir el punto de retiro más cercano a tu domicilio.
-             Tené en cuenta que el día de la entrega deberás acercar al sindicato los certificados de alumno regular</p>
+             Tené en cuenta que el día de la entrega deberás acercar al sindicato los certificados de alumno regular.</p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
           <fa-icon [icon]="faAddressCard" size="5x" class="color-primary"></fa-icon> 
           <h4 class="mt-3 color-primary">2. Consulta de estado</h4>
           <p>Una vez completados los datos del registro, debés esperar a que nuestro personal actualice y valide tus datos. Seguido a esto podrás
             consultar el estado de la solicitud y la fecha otorgada para el retiro.
           </p>
         </div>
-        <div class="col-md-4">
+      </div>
+      <div class="row justify-content-md-center mt-4 text-center">
+        <div class="col-md-5">
+          <fa-icon [icon]="faEdit" size="5x" class="color-primary"></fa-icon>
+          <h4 class="mt-3 color-primary">3. Modificación de datos</h4>
+          <p>En caso de que tu solicitud sea rechazada y te pidamos que modifiques tus datos, deberás ingresar en edición de solicitud para realizar los cambios y volverás al paso 2.
+          </p>
+        </div>
+        <div class="col-md-5">
           <fa-icon [icon]="faCar" size="5x" class="color-primary"></fa-icon>
           <h4 class="mt-3 color-primary">3. Ya podés retirar los kits!</h4>
           <p>Una vez que tu estado está completado, listo! Ya podrás pasar por el punto de retiro elegido para llevarte los kit escolares. Es muy importante que respetes la fecha que fue asignada.
@@ -62,7 +70,7 @@
     </div>
   </section>
   
-  <section id="cards">
+  <section id="cards mb-5">
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-4 col-sm-12 mt-6">
@@ -83,8 +91,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="row justify-content-md-center">
         <div class="col-md-4 col-sm-12 mt-6">
           <div class="card card-link" (click)="handleOperation('editar')">
             <img src="../assets/img/banner3.jpg" class="card-img-top" alt="...">

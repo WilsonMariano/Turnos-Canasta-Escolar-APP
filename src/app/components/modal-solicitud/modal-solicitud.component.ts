@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angu
 import { DataService } from 'src/app/services/data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GenericService } from 'src/app/services/http/generic.service';
+declare const moment;
 
 @Component({
   selector: 'app-modal-solicitud',
@@ -13,6 +14,7 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
   @Output() success = new EventEmitter();
 
   public forma: FormGroup;
+  public fechaHoy = moment().format('YYYY-MM-DD');
   
   constructor(
     public _data: DataService,
@@ -27,8 +29,9 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
       'observaciones': new FormControl(''),
       'idTitular': new FormControl(''),
       'idPuntoEntrega': new FormControl('')
-      
     });
+
+    console.log(this.fechaHoy);
   }
 
   ngOnChanges() {

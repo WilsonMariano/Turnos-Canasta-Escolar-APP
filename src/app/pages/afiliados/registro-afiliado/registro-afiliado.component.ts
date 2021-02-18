@@ -63,7 +63,8 @@ export class RegistroAfiliadoComponent implements OnInit {
       && this.forma.setValue(this._state.consultarTitular());
 
     this._state.consultarOperationType() === 'alta'
-      && this.forma.get('cuil').setAsyncValidators(this._validators.asyncValidarCuilRegistrado.bind(this._validators));
+      ? this.forma.get('cuil').setAsyncValidators(this._validators.asyncValidarCuilRegistrado.bind(this._validators))
+      : this.forma.get('cuil').disable();
 
     $('#numAfiliado').tooltip();
   }

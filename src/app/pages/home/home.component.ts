@@ -2,7 +2,7 @@ import { StateService } from './../../services/state.service';
 import { SolicitudService } from 'src/app/services/http/solicitud.service';
 import { FxGlobalsService } from './../../services/fx-globals.service';
 import { Component, OnInit } from '@angular/core';
-import { faEdit, faCarSide } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faCarSide, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-regular-svg-icons';
 import { Router } from '@angular/router';
 declare const $;
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   public faEdit =  faEdit;
   public faAddressCard = faAddressCard;
   public faCar = faCarSide;
+  public faUserPlus = faUserPlus;
 
   constructor(
     public _router: Router,

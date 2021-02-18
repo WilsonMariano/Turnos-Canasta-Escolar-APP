@@ -33,7 +33,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="fecha">Fecha</label>
-                <input type="date" class="form-control" id="fecha" formControlName="fechaEntrega">
+                <input type="date" class="form-control" id="fecha" formControlName="fechaEntrega" [min]="fechaHoy">
                 <small class="form-invalid"
                 *ngIf="forma.controls['fechaEntrega'].errors?.required && forma.get('fechaEntrega').touched">*El campo es
                 requerido</small>
