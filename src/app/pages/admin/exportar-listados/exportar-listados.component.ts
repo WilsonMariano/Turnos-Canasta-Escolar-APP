@@ -15,7 +15,8 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 })
 export class ExportarListadosComponent implements OnInit {
 
-  public forma: FormGroup;
+  public formaCronograma: FormGroup;
+  public formaListado: FormGroup;
   public faFileDownload = faFileDownload;
   constructor(
     private _auth: AuthService,
@@ -27,24 +28,39 @@ export class ExportarListadosComponent implements OnInit {
 
   ngOnInit() {
     const user = this._auth.getData();
-    this.forma = this.fb.group({
+    this.formaCronograma = this.fb.group({
       'fechaDesde': ['2021-01-01', Validators.required],
       'fechaHasta': ['2021-02-20', Validators.required],
-      'puntoEntrega': [user.idPuntoEntrega]
+      'puntoEntrega': [user.idPuntoEntrega],
+      'estado': ''
     });
 
-    user.role !== 'admin'
-      && this.forma.get('puntoEntrega').disable();
+    this.formaListado = this.fb.group({
+      'fechaDesde': ['2021-01-01', Validators.required],
+      'fechaHasta': ['2021-02-20', Validators.required],
+      'puntoEntrega': [user.idPuntoEntrega],
+      'estado': ''
+    });
+
+    if(user.role !== 'admin') {
+      this.formaCronograma.get('puntoEntrega').disable();
+      this.formaListado.get('puntoEntrega').disable();
+    }
   }
 
-  public submit(): void {
-    const solicitud: IsolicitudListado = this.forma.getRawValue();
-    this._http.getAllByFecha(solicitud).subscribe(
+  public exportarCronograma(): void {
+    const solicitud: IsolicitudListado = this.formaCronograma.getRawValue();
+    this._http.getAllByFechaRetiro(solicitud).subscribe(
       data => this._exportsData.exportAsExcelFile(data, 'listado'), 
       err => this._fx.showAlert("Importante", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
     );
   }
 
-
-
+  public exportarListado(): void {
+    const solicitud: IsolicitudListado = this.formaListado.getRawValue();
+    this._http.getAllByFechaAlta(solicitud).subscribe(
+      data => this._exportsData.exportAsExcelFile(data, 'listado'), 
+      err => this._fx.showAlert("Importante", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
+    );
+  }
 }

@@ -1,49 +1,132 @@
-<form [formGroup]="forma" (ngSubmit)="submit()">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2 class="mt-5">Exportar cronograma</h2>
-                <small class="text-muted">Solo solicitudes aprobadas</small>
-                <hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-5">
+            <h2>Descarga de listados</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingCronograma">
+                <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseCronograma" aria-expanded="true" aria-controls="collapseCronograma">
+                    Exportar Cronograma <small>(Por fecha de retiro)</small>
+                </button>
+                </h2>
+            </div>
+            <div id="collapseCronograma" class="collapse show" aria-labelledby="headingCronograma" data-parent="#accordionExample">
+                <div class="card-body">
+                    <form [formGroup]="formaCronograma" (ngSubmit)="exportarCronograma()">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fechaDesde">Fecha desde</label>
+                                    <input type="date" class="form-control" id="fechaDesde" formControlName="fechaDesde">
+                                    <small class="form-invalid"
+                                    *ngIf="formaCronograma.controls['fechaDesde'].errors?.required && formaCronograma.get('fechaDesde').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fechaHasta">Fecha hasta</label>
+                                    <input type="date" class="form-control" id="fechaHasta" formControlName="fechaHasta" [min]="formaCronograma.get('fechaDesde').value">
+                                    <small class="form-invalid"
+                                    *ngIf="formaCronograma.controls['fechaHasta'].errors?.required && formaCronograma.get('fechaHasta').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="puntosEntrega">Punto de entrega</label>
+                                    <select class="form-control" id="puntosEntrega" formControlName="puntoEntrega">
+                                        <option value="">Todos</option>
+                                        <option *ngFor="let punto of _data.puntosEntrega" [value]="punto.id">{{punto.nombre}}</option>
+                                    </select>
+                                    <small class="form-invalid"
+                                    *ngIf="formaCronograma.controls['puntoEntrega'].errors?.required && formaCronograma.get('puntoEntrega').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 d-flex">
+                                <button type="submit" class="btn btn-primary mb-3" [disabled]="formaCronograma.invalid">
+                                    <fa-icon [icon]="faFileDownload" class="mr-1"></fa-icon>
+                                    Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="fechaDesde">Fecha desde</label>
-                    <input type="date" class="form-control" id="fechaDesde" formControlName="fechaDesde">
-                    <small class="form-invalid"
-                    *ngIf="forma.controls['fechaDesde'].errors?.required && forma.get('fechaDesde').touched">*El campo es
-                    requerido</small>
-                </div>
+        <div class="card">
+            <div class="card-header" id="headingSolicitudes">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseSolicitudes" aria-expanded="false" aria-controls="collapseSolicitudes">
+                        Exportar Solicitudes <small>(Por fecha de registro)</small>
+                    </button>
+                </h2>
             </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="fechaHasta">Fecha hasta</label>
-                    <input type="date" class="form-control" id="fechaHasta" formControlName="fechaHasta" [min]="forma.get('fechaDesde').value">
-                    <small class="form-invalid"
-                    *ngIf="forma.controls['fechaHasta'].errors?.required && forma.get('fechaHasta').touched">*El campo es
-                    requerido</small>
+            <div id="collapseSolicitudes" class="collapse" aria-labelledby="headingSolicitudes" data-parent="#accordionExample">
+                <div class="card-body">
+                    <form [formGroup]="formaListado" (ngSubmit)="exportarListado()">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fechaDesde">Fecha desde</label>
+                                    <input type="date" class="form-control" id="fechaDesde" formControlName="fechaDesde">
+                                    <small class="form-invalid"
+                                    *ngIf="formaListado.controls['fechaDesde'].errors?.required && formaListado.get('fechaDesde').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="fechaHasta">Fecha hasta</label>
+                                    <input type="date" class="form-control" id="fechaHasta" formControlName="fechaHasta" [min]="formaListado.get('fechaDesde').value">
+                                    <small class="form-invalid"
+                                    *ngIf="formaListado.controls['fechaHasta'].errors?.required && formaListado.get('fechaHasta').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="puntosEntrega">Punto de entrega</label>
+                                    <select class="form-control" id="puntosEntrega" formControlName="puntoEntrega">
+                                        <option value="">Todos</option>
+                                        <option *ngFor="let punto of _data.puntosEntrega" [value]="punto.id">{{punto.nombre}}</option>
+                                    </select>
+                                    <small class="form-invalid"
+                                    *ngIf="formaListado.controls['puntoEntrega'].errors?.required && formaListado.get('puntoEntrega').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="estado">Estado</label>
+                                    <select class="form-control" id="estado" formControlName="estado">
+                                        <option value="">Todos</option>
+                                        <option *ngFor="let estado of _data.estadosSolicitud" [value]="estado.clave">{{estado.valor}}</option>
+                                    </select>
+                                    <small class="form-invalid"
+                                    *ngIf="formaListado.controls['estado'].errors?.required && formaListado.get('estado').touched">*El campo es
+                                    requerido</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 d-flex">
+                                <button type="submit" class="btn btn-primary mb-3" [disabled]="formaListado.invalid">
+                                    <fa-icon [icon]="faFileDownload" class="mr-1"></fa-icon>
+                                    Descargar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="puntosEntrega">Punto de entrega</label>
-                    <select type="date" class="form-control" id="puntosEntrega" formControlName="puntoEntrega">
-                        <option value="">Todos</option>
-                        <option *ngFor="let punto of _data.puntosEntrega" [value]="punto.id">{{punto.nombre}}</option>
-                    </select>
-                    <small class="form-invalid"
-                    *ngIf="forma.controls['puntoEntrega'].errors?.required && forma.get('puntoEntrega').touched">*El campo es
-                    requerido</small>
-                </div>
-            </div>
-            <div class="col-md-3 d-flex justify-content-center align-items-end">
-                <button type="submit" class="btn btn-primary btn-block mb-3" [disabled]="forma.invalid">
-                    <fa-icon [icon]="faFileDownload" class="mr-1"></fa-icon>
-                    Descargar
-                </button>
             </div>
         </div>
     </div>
-</form>
+</div>

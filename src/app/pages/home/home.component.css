@@ -8,12 +8,16 @@
 
 @media (max-width: 1000px) {
 
+    .img-carousel {
+        height: 400px !important;
+    }
+
     .carousel-caption {
         width: 100% !important;
     }
 
-    .img-carousel {
-        height: 400px !important;
+    .carousel-caption .texto p {
+        font-size: 15px;
     }
 }
 
@@ -48,6 +52,16 @@ div.card-body {
     text-transform: uppercase;
 }
 
+.texto p {
+    font-size: 22px;
+}
+
 .carousel-control-next, .carousel-control-prev {
     z-index: 100 !important;
+}
+
+#info {
+    background: #f8f9faab;
+    padding-bottom: 40px;
+    padding-top: 80px;
 }

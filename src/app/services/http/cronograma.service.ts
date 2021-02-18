@@ -28,7 +28,7 @@ export class CronogramaService {
     );
   }
 
-  public getAllByFecha(solicitud: IsolicitudListado): Observable<any> {
+  public getAllByFechaRetiro(solicitud: IsolicitudListado): Observable<any> {
     this._fx.showSpinner();
 
     let params = new HttpParams()
@@ -39,7 +39,29 @@ export class CronogramaService {
       ? params = params.append('idPuntoEntrega', solicitud.puntoEntrega.toString())
       : params = params;
 
-    return this._http.get(`${environment.apiUrl}/cronograma/all-by-fecha`, 
+    return this._http.get(`${environment.apiUrl}/cronograma/all-by-fecha-retiro`, 
+      { params }
+    ).pipe(
+      finalize(() => this._fx.hideSpinner(500))
+    );
+  }
+
+  public getAllByFechaAlta(solicitud: IsolicitudListado): Observable<any> {
+    this._fx.showSpinner();
+
+    let params = new HttpParams()
+    .set('fechaDesde', solicitud.fechaDesde)
+    .set('fechaHasta', solicitud.fechaHasta);
+
+      solicitud.puntoEntrega !== ''
+      ? params = params.append('idPuntoEntrega', solicitud.puntoEntrega.toString())
+      : params = params;
+
+      solicitud.estado !== ''
+      ? params = params.append('estado', solicitud.estado.toString())
+      : params = params;
+
+    return this._http.get(`${environment.apiUrl}/cronograma/all-by-fecha-alta`, 
       { params }
     ).pipe(
       finalize(() => this._fx.hideSpinner(500))
