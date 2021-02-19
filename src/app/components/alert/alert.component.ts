@@ -1,3 +1,4 @@
+import { StateService } from './../../services/state.service';
 import { Component, OnInit } from '@angular/core';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,11 +10,14 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 export class AlertComponent implements OnInit {
 
   public faExclamation = faExclamationTriangle;
-  public text = "Estás editando tu solicitud";
+  public text: string;
 
-  constructor() { }
+  constructor(private _state: StateService) { }
 
   ngOnInit() {
+    this._state.consultarOperationType() === 'editar'
+      ? this.text = "Estás editando tu solicitud"
+      : this.text = "Recordá que el día de retiro deberás llevar las constancias de alumno regular";
   }
 
 }
