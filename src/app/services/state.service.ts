@@ -82,7 +82,6 @@ export class StateService implements OnInit {
   }
 
   public guardarSolicitud(solicitud) {
-    this.operationType = 'edicion';
     this.clearStorage();
     this.guardarTitular(solicitud.titular);
     this.guardarPuntoEntrega(this._data.lnglatTransform([solicitud.puntoEntrega])[0]);

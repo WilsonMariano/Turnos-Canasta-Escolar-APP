@@ -30,8 +30,6 @@ export class ModalSolicitudComponent implements OnInit, OnChanges {
       'idTitular': new FormControl(''),
       'idPuntoEntrega': new FormControl('')
     });
-
-    console.log(this.fechaHoy);
   }
 
   ngOnChanges() {

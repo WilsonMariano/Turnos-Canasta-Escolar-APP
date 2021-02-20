@@ -20,7 +20,7 @@ export class ExportarListadosComponent implements OnInit {
   public faFileDownload = faFileDownload;
   constructor(
     private _auth: AuthService,
-    private _data: DataService,
+    public _data: DataService,
     private _fx: FxGlobalsService,
     private _http: CronogramaService,
     private _exportsData: ExportsDataService,
@@ -29,15 +29,15 @@ export class ExportarListadosComponent implements OnInit {
   ngOnInit() {
     const user = this._auth.getData();
     this.formaCronograma = this.fb.group({
-      'fechaDesde': ['2021-01-01', Validators.required],
-      'fechaHasta': ['2021-02-20', Validators.required],
+      'fechaDesde': ['', Validators.required],
+      'fechaHasta': ['', Validators.required],
       'puntoEntrega': [user.idPuntoEntrega],
       'estado': ''
     });
 
     this.formaListado = this.fb.group({
-      'fechaDesde': ['2021-01-01', Validators.required],
-      'fechaHasta': ['2021-02-20', Validators.required],
+      'fechaDesde': ['', Validators.required],
+      'fechaHasta': ['', Validators.required],
       'puntoEntrega': [user.idPuntoEntrega],
       'estado': ''
     });

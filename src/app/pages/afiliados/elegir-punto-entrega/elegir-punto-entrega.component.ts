@@ -31,7 +31,6 @@ export class ElegirPuntoEntregaComponent implements OnInit {
 
     let puntoGuardado = this._state.consultarPuntoEntrega();
     puntoGuardado && this.setMarker(puntoGuardado);
-    console.log(puntoGuardado);
   }
 
   public guardarPuntoEntrega(puntoEntrega) {
@@ -44,7 +43,6 @@ export class ElegirPuntoEntregaComponent implements OnInit {
       this.marker.remove();
     }
 
-    console.log(puntoEntrega);
     this.map.setCenter(puntoEntrega.lnglat);
     this.marker = new mapboxgl.Marker()
       .setLngLat(puntoEntrega.lnglat)

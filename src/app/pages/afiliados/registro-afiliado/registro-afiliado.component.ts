@@ -45,19 +45,6 @@ export class RegistroAfiliadoComponent implements OnInit {
       'email': new FormControl('', [Validators.required, Validators.email])
     });
 
-    // this.forma.setValue({
-    //   'numAfiliado': 8116,
-    //   'cuil': 20375584973,
-    //   'apellido': 'Wilson',
-    //   'nombre': 'Mariano',
-    //   'domicilio': 'Hunter 1034',
-    //   'localidad': 'Adrogué',
-    //   'cuitEmpresa': 20375584973,
-    //   'razonSocialEmpresa': 'SECAB',
-    //   'telefono': 1123896955,
-    //   'celular': 1123896955,
-    //   'email': 'mgw009@gmail.com'
-    // });
 
     this._state.consultarTitular()
       && this.forma.setValue(this._state.consultarTitular());
