@@ -32,7 +32,7 @@ export class RegistroAfiliadoComponent implements OnInit {
     this.forma = new FormGroup({
       'id': new FormControl(''),
       'fechaAlta': new FormControl(''),
-      'numAfiliado': new FormControl('', [Validators.required, Validators.min(1111), Validators.max(9999)]),
+      'numAfiliado': new FormControl('', [Validators.required, Validators.min(11), Validators.max(99999)]),
       'cuil': new FormControl('', [Validators.required, this._validators.validarCuit]),
       'apellido': new FormControl('', Validators.required),
       'nombre': new FormControl('', Validators.required),

@@ -13,7 +13,7 @@
                     *ngIf="forma.controls['numAfiliado'].errors?.required && forma.get('numAfiliado').touched">*El campo es
                     requerido</small>
                     <small class="form-invalid"
-                    *ngIf="forma.controls['numAfiliado'].errors?.max || forma.controls['numAfiliado'].errors?.min">*Deben ser 4 números</small>
+                    *ngIf="forma.controls['numAfiliado'].errors?.max || forma.controls['numAfiliado'].errors?.min">*Máximo 5 números</small>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12">
@@ -24,7 +24,7 @@
                         *ngIf="forma.controls['cuil'].errors?.required && forma.get('cuil').touched">*El campo es
                         requerido</small>
                     <small class="form-invalid"
-                    *ngIf="forma.controls['cuil'].errors?.cuitInvalid && forma.get('cuil').touched">*El CUIL es inválido</small>
+                    *ngIf="forma.controls['cuil'].errors?.cuitInvalid && forma.controls['cuil'].value != ''">*El CUIL es inválido</small>
                     <small class="form-invalid"
                     *ngIf="forma.controls['cuil'].errors?.cuilRegistrado && !forma.get('cuil').errors?.cuitInvalid">*El CUIL ya se ha registrado</small>
                 </div>
