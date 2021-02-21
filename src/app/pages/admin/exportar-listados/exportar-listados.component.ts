@@ -7,6 +7,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+declare const moment;
 
 @Component({
   selector: 'app-exportar-listados',
@@ -49,7 +50,9 @@ export class ExportarListadosComponent implements OnInit {
   }
 
   public exportarCronograma(): void {
-    const solicitud: IsolicitudListado = this.formaCronograma.getRawValue();
+    let solicitud: IsolicitudListado = this.formaCronograma.getRawValue();
+    solicitud = this.formatDate(solicitud);
+
     this._http.getAllByFechaRetiro(solicitud).subscribe(
       data => this._exportsData.exportAsExcelFile(data, 'listado'), 
       err => this._fx.showAlert("Importante", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
@@ -57,10 +60,18 @@ export class ExportarListadosComponent implements OnInit {
   }
 
   public exportarListado(): void {
-    const solicitud: IsolicitudListado = this.formaListado.getRawValue();
+    let solicitud: IsolicitudListado = this.formaListado.getRawValue();
+    solicitud = this.formatDate(solicitud);
+
     this._http.getAllByFechaAlta(solicitud).subscribe(
       data => this._exportsData.exportAsExcelFile(data, 'listado'), 
       err => this._fx.showAlert("Importante", `No se encontraron solicitudes, revise las fechas ingresadas`, "info", 500)
     );
+  }
+
+  private formatDate(solicitud: IsolicitudListado): IsolicitudListado {
+    solicitud.fechaDesde = moment(solicitud.fechaDesde).set({hour: 0, minute: 0, second: 0}).format('YYYY-MM-DD HH:mm:ss');
+    solicitud.fechaHasta = moment(solicitud.fechaHasta).set({hour: 23, minute: 59, second: 59}).format('YYYY-MM-DD HH:mm:ss');
+    return solicitud;
   }
 }

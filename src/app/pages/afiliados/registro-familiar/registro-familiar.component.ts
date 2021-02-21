@@ -45,6 +45,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
     if(this.edicion) {
       this.forma.setValue(this.edicion);
       this.changeUsaGuardapolvo();
+      this.changeNivelEducacion();
     } 
   }
 
@@ -121,6 +122,7 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       talleGuardapolvoControl.setValue('');
       usaGuardapolvoControl.disable();
       usaGuardapolvoControl.setValue('');
+      this.changeToggle(false);
     } else {
       usaGuardapolvoControl.enable();
     }
