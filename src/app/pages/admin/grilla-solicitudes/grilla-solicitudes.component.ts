@@ -31,11 +31,12 @@ export class GrillaSolicitudesComponent implements OnInit {
     { 'attr': 'apellido', 'type': 'String' },
     { 'attr': 'nombre', 'type': 'String' },
     { 'attr': 'cuitEmpresa', 'type': 'Number' },
+    { 'attr': 'razonSocialEmpresa', 'type': 'String' },
     { 'attr': 'puntoEntrega', 'type': 'String' },
     { 'attr': 'nombreEstado', 'type': 'String' }
   ];
 
-  public arrControls = ['id', 'Fecha alta', 'Afiliado', 'CUIL', 'Apellido', 'Nombre', 'CUIT', 'Lugar entrega', 'Estado'];
+  public arrControls = ['id', 'Fecha alta', 'Afiliado', 'CUIL', 'Apellido', 'Nombre', 'CUIT', 'Empresa', 'Lugar entrega', 'Estado'];
 
   private filterParams = {
     'col': 'idPuntoEntrega',
