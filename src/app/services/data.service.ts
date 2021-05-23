@@ -11,6 +11,7 @@ export class DataService {
   public estadosSolicitud = [];
   public tallesGuardapolvo = [];
   public mostrarGuardapolvo: boolean;
+  public habilitarInscripcion: boolean;
 
   constructor(private _httpGeneric: GenericService) {
     this.traerNivelesEducacion();
@@ -18,6 +19,7 @@ export class DataService {
     this.traerEstadosSolicitud();
     this.traerTallesGuardapolvos();
     this.traerMostrarGuardapolvo();
+    this.traerHabilitarInscripcion();
   }
 
     private traerPuntosEntrega() {
@@ -72,6 +74,18 @@ export class DataService {
         }])
         .subscribe(
           data => this.mostrarGuardapolvo = parseInt(data.data[0].valor) ? true : false,
+          err => console.error(err)
+        );
+    }
+
+    private traerHabilitarInscripcion() {
+      this._httpGeneric.getWithPaged('Diccionario', 100, 0, [
+        {
+          col: 'clave', 
+          txt: 'PARAM_HABILITAR_INSCRIPCION'
+        }])
+        .subscribe(
+          data => this.habilitarInscripcion = parseInt(data.data[0].valor) ? true : false,
           err => console.error(err)
         );
     }

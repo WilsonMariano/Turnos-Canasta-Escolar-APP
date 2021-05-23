@@ -1,3 +1,4 @@
+import { DataService } from 'src/app/services/data.service';
 import { StateService } from './../../services/state.service';
 import { SolicitudService } from 'src/app/services/http/solicitud.service';
 import { FxGlobalsService } from './../../services/fx-globals.service';
@@ -23,7 +24,8 @@ export class HomeComponent implements OnInit {
     public _router: Router,
     private _fx: FxGlobalsService,
     private _http: SolicitudService,
-    private _state: StateService
+    private _state: StateService,
+    private _data: DataService
     ) { }
 
   ngOnInit() {

@@ -7,11 +7,14 @@ import { ListadoCargaComponent } from './listado-carga/listado-carga.component';
 import { ElegirPuntoEntregaComponent } from './elegir-punto-entrega/elegir-punto-entrega.component';
 import { ConsultarTramiteComponent } from './consultar-tramite/consultar-tramite.component';
 
+import { InscripcionGuardService } from 'src/app/guards/inscripcion-guard.service';
+
 
 const pagesRoutes: Routes = [
     {
         path: 'afiliados',
         component: PagesAfiliadosComponent,
+        canActivate: [InscripcionGuardService],
         children: [
             { path: '',                             redirectTo: '/registro-afiliado',       pathMatch: 'full'                            },
             { path: 'registro-afiliado',            component: RegistroAfiliadoComponent,   data: { titulo: 'Registro afiliado' }        },
