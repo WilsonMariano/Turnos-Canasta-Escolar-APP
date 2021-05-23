@@ -7,7 +7,7 @@ export class Familiar{
     public fechaNacimiento: string;
     public edad: number;
     public nivelEducacion: string;
-    public usaGuardapolvo: boolean;
-    public talleGuardapolvo: number;
+    public usaGuardapolvo?: boolean;
+    public talleGuardapolvo?: number;
     public sexo: string;
 }

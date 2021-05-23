@@ -31,8 +31,10 @@
                 <th>Nombre</th>
                 <th>DNI</th>
                 <th>Estudios</th>
-                <th>Guardapolvo</th>
-                <th>Talle</th>
+                <ng-container *ngIf="_data.mostrarGuardapolvo">
+                  <th>Guardapolvo</th>
+                  <th>Talle</th>
+                </ng-container>
                 <th colspan="2">Opciones</th>
               </thead>
                 <tbody>
@@ -40,8 +42,10 @@
                     <td>{{familiar.nombre +" "+ familiar.apellido}}</td>
                     <td>{{familiar.dni}}</td>
                     <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion)?.valor}}</td>
-                    <td>{{familiar.usaGuardapolvo ? 'Si' : 'No'}}</td>
-                    <td>{{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
+                    <ng-container *ngIf="_data.mostrarGuardapolvo">
+                      <td>{{familiar.usaGuardapolvo ? 'Si' : 'No'}}</td>
+                      <td>{{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
+                    </ng-container>
                     <td>
                       <fa-icon [icon]="faTrash" class="mr-5 fa-button" (click)="borrarFamiliar(familiar)" style="color:red"></fa-icon>
                       <fa-icon [icon]="faEdit" class="fa-button" (click)="editarFamiliar(familiar)" style="color: #005387"></fa-icon></td>

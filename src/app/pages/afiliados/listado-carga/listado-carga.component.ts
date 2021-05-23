@@ -26,7 +26,7 @@ export class ListadoCargaComponent implements OnInit {
 
   ngOnInit() {
     this.titular = this._state.consultarTitular()
-    this._state.usaGuardapolvoParser();
+    this._data.mostrarGuardapolvo && this._state.usaGuardapolvoParser();
     this.familiares = this._state.consultarFamiliares();
   }
 

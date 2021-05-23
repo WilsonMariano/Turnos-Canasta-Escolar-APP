@@ -34,18 +34,24 @@ export class RegistroFamiliarComponent implements OnInit, OnDestroy {
       'sexo': new FormControl('', Validators.required),
       'fechaNacimiento': new FormControl('', Validators.required),
       'edad': new FormControl({ value: '', disabled: true }, [Validators.required, Validators.min(0), Validators.max(18)]),
-      'nivelEducacion': new FormControl('', Validators.required),
-      'usaGuardapolvo': new FormControl(false),
-      'talleGuardapolvo': new FormControl({value: '', disabled: true}, Validators.required)
+      'nivelEducacion': new FormControl('', Validators.required)
     });
+
+    if(this._data.mostrarGuardapolvo) {
+      this.forma.addControl('usaGuardapolvo', new FormControl(false));
+      this.forma.addControl('talleGuardapolvo', new FormControl({value: '', disabled: true}, Validators.required));
+    }
 
     // Verifico si se recibe un familiar a editar
     this.edicion = JSON.parse(localStorage.getItem('familiarEditar')) || null;
 
     if(this.edicion) {
       this.forma.setValue(this.edicion);
-      this.changeUsaGuardapolvo();
-      this.changeNivelEducacion();
+
+      if(this._data.mostrarGuardapolvo) {
+        this.changeUsaGuardapolvo();
+        this.changeNivelEducacion();
+      }
     } 
   }
 

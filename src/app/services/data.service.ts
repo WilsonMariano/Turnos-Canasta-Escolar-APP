@@ -10,12 +10,14 @@ export class DataService {
   public puntosEntrega = [];
   public estadosSolicitud = [];
   public tallesGuardapolvo = [];
+  public mostrarGuardapolvo: boolean;
 
   constructor(private _httpGeneric: GenericService) {
     this.traerNivelesEducacion();
     this.traerPuntosEntrega();
     this.traerEstadosSolicitud();
     this.traerTallesGuardapolvos();
+    this.traerMostrarGuardapolvo();
   }
 
     private traerPuntosEntrega() {
@@ -58,6 +60,18 @@ export class DataService {
         }])
         .subscribe(
           data => this.tallesGuardapolvo = data.data,
+          err => console.error(err)
+        );
+    }
+
+    private traerMostrarGuardapolvo() {
+      this._httpGeneric.getWithPaged('Diccionario', 100, 0, [
+        {
+          col: 'clave', 
+          txt: 'PARAM_MOSTRAR_GUARDAPOLVO'
+        }])
+        .subscribe(
+          data => this.mostrarGuardapolvo = parseInt(data.data[0].valor) ? true : false,
           err => console.error(err)
         );
     }

@@ -17,14 +17,14 @@
                 <th>DNI</th>
                 <th>Edad</th>
                 <th>Educación</th>
-                <th>Talle</th>
+                <th *ngIf="_data.mostrarGuardapolvo">Talle</th>
               </tr>
               <tr *ngFor="let familiar of familiares">
                 <td>{{familiar.nombre}}</td>
                 <td>{{familiar.dni}}</td>
                 <td>{{familiar.edad}}</td>
                 <td>{{_data.obtenerNivelEducacion(familiar.nivelEducacion).valor}}</td>
-                <td>{{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
+                <td *ngIf="_data.mostrarGuardapolvo">{{_data.obtenerTalleGuardapolvo(familiar.talleGuardapolvo).valor}}</td>
               </tr>
             </thead>
           </table>

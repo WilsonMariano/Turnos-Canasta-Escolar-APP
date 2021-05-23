@@ -90,7 +90,7 @@ export class StateService implements OnInit {
 
   private loadStorage() {
     this.state = JSON.parse(localStorage.getItem('state')) || this.stateInit();
-    this.usaGuardapolvoParser();
+    this._data.mostrarGuardapolvo && this.usaGuardapolvoParser();
     this.operationType = localStorage.getItem('operationType') || 'alta';
   }
 
