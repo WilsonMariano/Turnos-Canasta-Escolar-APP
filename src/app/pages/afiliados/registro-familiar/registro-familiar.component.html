@@ -60,12 +60,12 @@
             <div class="col-md-2 col-xs-12">
                 <div class="form-group">
                     <label for="edad">Edad</label>
-                    <input type="number" class="form-control" id="edad" formControlName="edad" placeholder="Edad">
+                    <input type="number" class="form-control" id="edad" [value]="getEdad()" placeholder="Edad" disabled>
                     <small class="form-invalid"
                         *ngIf="forma.controls['edad'].errors?.required && forma.get('edad').touched">*El campo
                         es requerido</small>
                     <small class="form-invalid"
-                    *ngIf="forma.controls['edad'].errors?.min || forma.controls['edad'].errors?.max">*La edad debe ser de 0 a 18 años</small>
+                    *ngIf="forma.controls['edad'].errors?.min || forma.controls['edad'].errors?.max">*La edad debe ser de 2 años como mínimo</small>
                         
                 </div>
             </div>
