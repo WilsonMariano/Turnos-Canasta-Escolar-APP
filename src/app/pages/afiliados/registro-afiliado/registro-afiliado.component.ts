@@ -32,34 +32,18 @@ export class RegistroAfiliadoComponent implements OnInit {
     this.forma = new FormGroup({
       'id': new FormControl(''),
       'fechaAlta': new FormControl(''),
-      'numAfiliado': new FormControl('8116', [Validators.required, Validators.min(11), Validators.max(99999)]),
-      'cuil': new FormControl('20375584973', [Validators.required, this._validators.validarCuit]),
-      'apellido': new FormControl('Wilson', Validators.required),
-      'nombre': new FormControl('Mariano', Validators.required),
-      'domicilio': new FormControl('Segurola 844', Validators.required),
-      'localidad': new FormControl('CABA', Validators.required),
-      'cuitEmpresa': new FormControl('30549493196', [Validators.required, this._validators.validarCuit]),
-      'razonSocialEmpresa': new FormControl('SECAB'),
-      'telefono': new FormControl('42932851'),
-      'celular': new FormControl('1123589654', Validators.required),
-      'email': new FormControl('mgw009@gmail.com', [Validators.required, Validators.email])
+      'numAfiliado': new FormControl('', [Validators.required, Validators.min(11), Validators.max(99999)]),
+      'cuil': new FormControl('', [Validators.required, this._validators.validarCuit]),
+      'apellido': new FormControl('', Validators.required),
+      'nombre': new FormControl('', Validators.required),
+      'domicilio': new FormControl('', Validators.required),
+      'localidad': new FormControl('', Validators.required),
+      'cuitEmpresa': new FormControl('', [Validators.required, this._validators.validarCuit]),
+      'razonSocialEmpresa': new FormControl(''),
+      'telefono': new FormControl(''),
+      'celular': new FormControl('', Validators.required),
+      'email': new FormControl('', [Validators.required, Validators.email])
     });
-
-    // this.forma.setValue({
-    //   id: 1,
-    //   fechaAlta: '2021-05-22',
-    //   numAfiliado: "8116",
-    //   cuil: "20375584973",
-    //   apellido: "Wilson",
-    //   nombre: "Mariano",
-    //   domicilio: "Segurola 844",
-    //   localidad: "CABA",
-    //   cuitEmpresa: "30549493196",
-    //   razonSocialEmpresa: "SECAB",
-    //   telefono: "42932851",
-    //   celular: "1123589654",
-    //   email: "mgw009@gmail.com",
-    // })
 
 
     this._state.consultarTitular()

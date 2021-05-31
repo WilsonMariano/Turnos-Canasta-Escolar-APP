@@ -1,3 +1,4 @@
+import { Familiar } from './../models/familiar.model';
 import { DataService } from './data.service';
 import { Injectable, OnInit } from '@angular/core';
 
@@ -85,7 +86,14 @@ export class StateService implements OnInit {
     this.clearStorage();
     this.guardarTitular(solicitud.titular);
     this.guardarPuntoEntrega(this._data.lnglatTransform([solicitud.puntoEntrega])[0]);
-    solicitud.familiares.map(e => this.guardarFamiliar(e));
+    
+    solicitud.familiares.map((e: Familiar) => {
+      if(!this._data.mostrarGuardapolvo) {
+        delete e.usaGuardapolvo;
+        delete e.talleGuardapolvo;
+      }  
+      this.guardarFamiliar(e)
+    });
   }
 
   private loadStorage() {

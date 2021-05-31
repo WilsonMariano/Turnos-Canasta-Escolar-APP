@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'http://www.secab-ddjj.com.ar/api_dia_del_nino'
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://www.secab-ddjj.com.ar/api_dia_del_nino'
+  // apiUrl: 'http://localhost:8080'
 };
 
 /*

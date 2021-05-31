@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     private _fx: FxGlobalsService,
     private _http: SolicitudService,
     private _state: StateService,
-    private _data: DataService
+    public _data: DataService
     ) { }
 
   ngOnInit() {
